@@ -21,33 +21,35 @@ img{max-width:100%}[hidden]{display:none!important}
 canvas{position:fixed;inset:0;width:100vw;height:100vh;display:block}
 button{font:inherit;cursor:pointer}
 
-/* HUD */
 .hud{position:fixed;top:calc(var(--st) + 10px);left:calc(var(--sl) + 14px);right:calc(var(--sr) + 14px);
   display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none}
-.score{font-weight:800;font-size:22px;line-height:1.1;text-shadow:0 2px 6px rgba(0,0,0,.5);font-variant-numeric:tabular-nums}
-.score small{display:block;font-size:13px;font-weight:600;color:var(--muted)}
+.score{font-weight:800;font-size:22px;line-height:1.1;text-shadow:0 2px 6px rgba(0,0,0,.6);font-variant-numeric:tabular-nums}
+.score small{display:block;font-size:13px;font-weight:600;color:rgba(255,255,255,.85)}
 .pauseBtn{pointer-events:auto;width:44px;height:44px;border-radius:12px;border:0;background:rgba(0,0,0,.35);color:#fff;font-size:18px;font-weight:800}
 
-/* Joystick */
+#pops{position:fixed;left:0;right:0;top:18%;display:flex;flex-direction:column;align-items:center;pointer-events:none;gap:4px}
+.pop{font-weight:900;font-style:italic;font-size:30px;color:#fff;text-shadow:0 0 6px rgba(0,0,0,.7),0 3px 0 rgba(0,0,0,.45);animation:pop 1.8s ease-out forwards;text-align:center}
+.pop small{display:block;font-style:normal;font-size:22px;color:#ffd23a}
+@keyframes pop{0%{opacity:0;transform:scale(.6)}10%{opacity:1;transform:scale(1.08)}20%{transform:scale(1)}75%{opacity:1}100%{opacity:0;transform:translateY(-24px)}}
+#live{position:fixed;left:0;right:0;top:calc(var(--st) + 14px);text-align:center;font-weight:800;font-size:18px;text-shadow:0 2px 6px rgba(0,0,0,.7);pointer-events:none}
+
 #stickZone{position:fixed;left:0;top:0;bottom:0;width:48vw}
 #stickBase{position:fixed;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;
-  background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.35);pointer-events:none}
+  background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.45);pointer-events:none}
 #stickKnob{position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;
-  background:rgba(255,255,255,.85);box-shadow:0 3px 8px rgba(0,0,0,.4)}
+  background:rgba(255,255,255,.88);box-shadow:0 3px 8px rgba(0,0,0,.4)}
 
-/* Action buttons */
 .act{position:fixed;border-radius:50%;border:3px solid rgba(255,255,255,.75);color:#fff;font-weight:900;
   letter-spacing:.04em;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.05;
   box-shadow:0 4px 12px rgba(0,0,0,.35);touch-action:none}
 .act.on{transform:scale(.92);filter:brightness(1.25)}
-#bJump{width:96px;height:96px;right:calc(var(--sr) + 22px);bottom:calc(var(--sb) + 22px);background:rgba(255,122,26,.85);font-size:18px}
-#bWhip{width:74px;height:74px;right:calc(var(--sr) + 132px);bottom:calc(var(--sb) + 18px);background:rgba(58,209,255,.75);font-size:13px}
-#bBar{width:74px;height:74px;right:calc(var(--sr) + 34px);bottom:calc(var(--sb) + 130px);background:rgba(160,110,255,.8);font-size:13px}
+#bJump{width:96px;height:96px;right:calc(var(--sr) + 22px);bottom:calc(var(--sb) + 22px);background:rgba(255,122,26,.88);font-size:18px}
+#bWhip{width:74px;height:74px;right:calc(var(--sr) + 132px);bottom:calc(var(--sb) + 18px);background:rgba(58,170,230,.85);font-size:13px}
+#bBar{width:74px;height:74px;right:calc(var(--sr) + 34px);bottom:calc(var(--sb) + 130px);background:rgba(140,95,240,.85);font-size:13px}
 
-/* Overlays */
 .overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
   background:rgba(16,20,30,.82);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);padding:16px calc(var(--sr) + 16px) 16px calc(var(--sl) + 16px)}
-.panel{max-width:520px;width:100%;text-align:center}
+.panel{max-width:540px;width:100%;text-align:center}
 .panel h1{font-size:56px;margin:0;letter-spacing:.06em;font-weight:900;font-style:italic;color:var(--accent);text-shadow:0 4px 0 rgba(0,0,0,.35)}
 .panel p{color:var(--muted);margin:6px 0 14px;font-size:15px}
 .big{background:var(--accent);color:#fff;border:0;border-radius:14px;padding:14px 38px;font-size:20px;font-weight:900;letter-spacing:.04em}
@@ -57,11 +59,13 @@ button{font:inherit;cursor:pointer}
 .appfoot b{color:#fff;font-weight:700;font-variant-numeric:tabular-nums}
 .updBtn{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:8px;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:7px 12px}
 .updBtn:disabled{opacity:.6}
+#err{color:#ff8a8a;font-size:14px;margin-top:10px}
 #rotate{display:none;position:fixed;inset:0;z-index:50;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:12px;font-size:20px;font-weight:800;text-align:center;padding:24px}
 #rotate span{font-size:60px;display:block;animation:tilt 1.6s ease-in-out infinite}
 @keyframes tilt{0%,30%{transform:rotate(0)}60%,100%{transform:rotate(-90deg)}}
 @media (orientation:portrait) and (max-width:900px){#rotate{display:flex}}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 <canvas id="cv"></canvas>
@@ -70,6 +74,8 @@ button{font:inherit;cursor:pointer}
   <div class="score"><span id="sc">0</span><small>Rekord trick: <span id="best">0</span></small></div>
   <button class="pauseBtn" id="bPause" aria-label="Paus">II</button>
 </div>
+<div id="live"></div>
+<div id="pops"></div>
 
 <div id="stickZone"></div>
 <div id="stickBase"><div id="stickKnob"></div></div>
@@ -82,8 +88,9 @@ button{font:inherit;cursor:pointer}
     <h1>KICK</h1>
     <p>Åk runt i skateparken och gör trick i luften.</p>
     <button class="big" id="bStart">ÅK!</button>
-    <div class="help">Joystick: åk och styr · HOPP: hoppa · BARSPIN: snurra styret · TAILWHIP: snurra decket<br>
-      Tricks går bara i luften. Landa inte mitt i ett snurr! Ramperna ger högre luft.</div>
+    <div id="err" hidden>Spelet kunde inte laddas. Öppna appen med internet en gång.</div>
+    <div class="help">Joystick: framåt = åk, åt sidan = sväng, bakåt = broms · HOPP: hoppa<br>
+      BARSPIN: snurra styret · TAILWHIP: snurra decket · Tricks går bara i luften – landa inte mitt i ett snurr!</div>
     <footer class="appfoot"><span>Version <b class="appver"></b></span><button type="button" class="updBtn">Uppdatera appen</button></footer>
   </div>
 </div>
@@ -93,18 +100,29 @@ button{font:inherit;cursor:pointer}
 <script>
 (function(){
 'use strict';
-const APP_VERSION='0.2';
+const APP_VERSION='0.3';
 const LS_BEST='kick:best';
 
-/* ---------- Park ---------- */
-const W=2200,H=1400,QP=140,QPH=85;
-const G=820, ACC=430, MAXS=460, FRICT=55, SLOPE=650, TURN=3.4;
+document.querySelectorAll('.appver').forEach(el=>el.textContent=APP_VERSION);
+document.querySelectorAll('.updBtn').forEach(btn=>btn.addEventListener('click',async()=>{
+  document.querySelectorAll('.updBtn').forEach(b=>{b.disabled=true;b.textContent='Uppdaterar…';});
+  try{
+    if('serviceWorker' in navigator){const regs=await navigator.serviceWorker.getRegistrations();await Promise.all(regs.map(r=>r.update().catch(()=>{})));}
+    if(window.caches){const ks=await caches.keys();await Promise.all(ks.filter(k=>k.startsWith('kick-')).map(k=>caches.delete(k)));}
+  }catch(e){}
+  location.reload();
+}));
+if(!window.THREE){document.getElementById('err').hidden=false;document.getElementById('bStart').disabled=true;return;}
+
+/* ---------- Park (x,y på marken, z = höjd) ---------- */
+const W=2200,H=1400,QP=150,QPH=95;
+const G=820, ACC=430, MAXS=470, FRICT=55, SLOPE=650, TURN=2.7;
 const BAR_DUR=0.30, WHIP_DUR=0.40;
 
 const boxes=[{x:960,y:610,w:280,h:180,top:46}];
 const kickers=[
-  {x:960-160,y:700,ang:0,len:160,wid:150,h:46},          // upp på boxen från vänster
-  {x:1240+160,y:700,ang:Math.PI,len:160,wid:150,h:46},   // upp på boxen från höger
+  {x:960-160,y:700,ang:0,len:160,wid:150,h:46},
+  {x:1240+160,y:700,ang:Math.PI,len:160,wid:150,h:46},
   {x:420,y:330,ang:0.35,len:150,wid:110,h:50},
   {x:1700,y:1080,ang:Math.PI+0.3,len:150,wid:110,h:50},
   {x:480,y:1060,ang:-0.5,len:130,wid:100,h:42},
@@ -115,8 +133,9 @@ const kickers=[
 kickers.forEach(k=>{k.c=Math.cos(k.ang);k.s=Math.sin(k.ang);});
 
 function qp(d){return d<QP?Math.pow(1-d/QP,2)*QPH:0;}
+function qpGround(x,y){return Math.max(qp(x),qp(W-x),qp(y),qp(H-y));}
 function ground(x,y){
-  let h=Math.max(qp(x),qp(W-x),qp(y),qp(H-y));
+  let h=qpGround(x,y);
   for(const b of boxes){if(x>=b.x&&x<=b.x+b.w&&y>=b.y&&y<=b.y+b.h)h=Math.max(h,b.top);}
   for(const k of kickers){
     const dx=x-k.x,dy=y-k.y,u=dx*k.c+dy*k.s,v=-dx*k.s+dy*k.c;
@@ -128,25 +147,20 @@ function ground(x,y){
 /* ---------- State ---------- */
 let best=0;try{best=+localStorage.getItem(LS_BEST)||0;}catch(e){}
 const P={};
-let score=0,running=false,popups=[];
+let score=0,running=false;
 function reset(){
-  Object.assign(P,{x:W/2,y:H/2+260,ang:-Math.PI/2,vx:0,vy:0,z:0,vz:0,air:false,airT:0,
-    flipTo:null,barT:0,whipT:0,barAng:0,whipAng:0,tricks:[],crashT:0});
+  Object.assign(P,{x:W/2,y:H/2+300,ang:-Math.PI/2,vx:0,vy:0,z:0,vz:0,air:false,airT:0,
+    flipTo:null,barT:0,whipT:0,barAng:0,whipAng:0,tricks:[],crashT:0,pitch:0,roll:0});
 }
 reset();
 
 /* ---------- Input ---------- */
-const js={x:0,y:0,mag:0,ang:0,id:null};
+const js={x:0,y:0,mag:0,id:null};
 const keys={};
 const stickBase=document.getElementById('stickBase'),stickKnob=document.getElementById('stickKnob');
-function restStick(){
-  const sl=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sl'))||0;
-  stickBase.style.left=(Math.max(sl,0)+100)+'px';stickBase.style.top=(innerHeight-100)+'px';
-  stickKnob.style.transform='translate(0,0)';
-}
+function restStick(){stickBase.style.left='110px';stickBase.style.top=(innerHeight-100)+'px';stickKnob.style.transform='translate(0,0)';}
 let stickCx=0,stickCy=0;const R=55;
-const zone=document.getElementById('stickZone');
-zone.addEventListener('pointerdown',e=>{
+document.getElementById('stickZone').addEventListener('pointerdown',e=>{
   e.preventDefault();if(js.id!==null)return;js.id=e.pointerId;
   stickCx=Math.max(70,e.clientX);stickCy=Math.min(innerHeight-70,Math.max(70,e.clientY));
   stickBase.style.left=stickCx+'px';stickBase.style.top=stickCy+'px';moveStick(e);
@@ -158,7 +172,7 @@ function moveStick(e){
   let dx=e.clientX-stickCx,dy=e.clientY-stickCy;const d=Math.hypot(dx,dy);
   if(d>R){dx*=R/d;dy*=R/d;}
   stickKnob.style.transform=`translate(${dx}px,${dy}px)`;
-  js.x=dx/R;js.y=dy/R;js.mag=Math.min(1,d/R);js.ang=Math.atan2(dy,dx);
+  js.x=dx/R;js.y=dy/R;js.mag=Math.min(1,d/R);
 }
 function bindBtn(id,fn){
   const b=document.getElementById(id);
@@ -168,38 +182,25 @@ function bindBtn(id,fn){
 }
 bindBtn('bJump',jump);bindBtn('bBar',barspin);bindBtn('bWhip',tailwhip);
 window.addEventListener('keydown',e=>{
-  keys[e.key.toLowerCase()]=true;
-  if(e.repeat)return;
+  keys[e.key.toLowerCase()]=true;if(e.repeat)return;
   if(e.key===' ')jump();if(e.key.toLowerCase()==='j')barspin();if(e.key.toLowerCase()==='k')tailwhip();
 });
 window.addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false;});
 document.addEventListener('gesturestart',e=>e.preventDefault());
-document.addEventListener('dblclick',e=>e.preventDefault());
 function readKeys(){
   if(js.id!==null)return;
   const kx=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0);
   const ky=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
-  if(kx||ky){js.ang=Math.atan2(ky,kx);js.mag=1;}else js.mag=0;
+  js.x=kx;js.y=ky;js.mag=Math.min(1,Math.hypot(kx,ky));
 }
 
 /* ---------- Actions ---------- */
-function jump(){
-  if(!running||P.crashT>0||P.air)return;
-  takeoff(330);
-}
-function barspin(){
-  if(!running||!P.air||P.crashT>0||P.barT>0)return;
-  P.barT=BAR_DUR;
-}
-function tailwhip(){
-  if(!running||!P.air||P.crashT>0||P.whipT>0)return;
-  P.whipT=WHIP_DUR;
-}
-function takeoff(vz){
-  P.air=true;P.vz=vz;P.airT=0;P.tricks=[];
-}
+function jump(){if(!running||P.crashT>0||P.air)return;takeoff(330);}
+function barspin(){if(!running||!P.air||P.crashT>0||P.barT>0)return;P.barT=BAR_DUR;}
+function tailwhip(){if(!running||!P.air||P.crashT>0||P.whipT>0)return;P.whipT=WHIP_DUR;}
+function takeoff(vz){P.air=true;P.vz=vz;P.airT=0;P.tricks=[];}
 
-/* ---------- Tricks & scoring ---------- */
+/* ---------- Tricks & poäng ---------- */
 const N=['','','Double','Triple','Quad'];
 function trickName(n,base,plural){return n===1?base:(N[n]?N[n]+' '+plural:n+'x '+plural);}
 function land(){
@@ -211,52 +212,51 @@ function land(){
   const parts=[];
   if(nw)parts.push(trickName(nw,'Tailwhip','whip'));
   if(nb)parts.push(trickName(nb,'Barspin','barspin'));
-  const n=nw+nb;
-  const pts=Math.round((nw*150+nb*100)*n+P.airT*60);
+  const n=nw+nb,pts=Math.round((nw*150+nb*100)*n+P.airT*60);
   score+=pts;
-  addPopup(parts.join(' + '),'+'+pts,'#fff');
-  if(pts>best){best=pts;try{localStorage.setItem(LS_BEST,best);}catch(e){}addPopup('Nytt rekord!','','#ffd23a',0.4);}
+  addPopup(parts.join(' + '),'+'+pts);
+  if(pts>best){best=pts;try{localStorage.setItem(LS_BEST,best);}catch(e){}setTimeout(()=>addPopup('Nytt rekord!','',  '#ffd23a'),350);}
   updHud();
 }
-function crash(){
-  P.crashT=1.3;P.barT=P.whipT=0;P.barAng=P.whipAng=0;P.tricks=[];
-  addPopup('Krasch!','','#ff5a5a');
+function crash(){P.crashT=1.3;P.barT=P.whipT=0;P.barAng=P.whipAng=0;P.tricks=[];addPopup('Krasch!','','#ff5a5a');}
+const pops=document.getElementById('pops');
+function addPopup(t,sub,col){
+  const d=document.createElement('div');d.className='pop';d.textContent=t;if(col)d.style.color=col;
+  if(sub){const s=document.createElement('small');s.textContent=sub;d.appendChild(s);}
+  pops.appendChild(d);setTimeout(()=>d.remove(),1850);
 }
-function addPopup(t,sub,col,delay){popups.push({t,sub,col,life:1.8,delay:delay||0});}
 function updHud(){document.getElementById('sc').textContent=score;document.getElementById('best').textContent=best;}
+const live=document.getElementById('live');
 
-/* ---------- Physics ---------- */
+/* ---------- Fysik ---------- */
 const wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
 function update(dt){
   readKeys();
   if(P.crashT>0){
     P.crashT-=dt;P.vx*=Math.pow(0.02,dt);P.vy*=Math.pow(0.02,dt);
     moveFlat(dt);
-    if(P.air){P.vz-=G*dt;P.z+=P.vz*dt;const gh=ground(P.x,P.y);if(P.z<=gh){P.z=gh;P.air=false;P.vz=0;}}
+    if(P.air){P.vz-=G*dt;P.z+=P.vz*dt;const gh=ground(P.x,P.y);if(P.z<=gh){P.z=gh;P.air=false;P.vz=0;P.flipTo=null;}}
     if(P.crashT<=0){P.vx=P.vy=0;}
     return;
   }
-  // trick timers
   if(P.barT>0){P.barT-=dt;P.barAng=(1-Math.max(P.barT,0)/BAR_DUR)*Math.PI*2;if(P.barT<=0){P.barT=0;P.barAng=0;P.tricks.push('bar');}}
   if(P.whipT>0){P.whipT-=dt;P.whipAng=(1-Math.max(P.whipT,0)/WHIP_DUR)*Math.PI*2;if(P.whipT<=0){P.whipT=0;P.whipAng=0;P.tricks.push('whip');}}
 
+  const steer=Math.abs(js.x)>0.12?js.x:0, thr=-js.y;
   if(!P.air){
     const hc=Math.cos(P.ang),hs=Math.sin(P.ang);
     let spd=P.vx*hc+P.vy*hs;
-    if(js.mag>0.15){
-      const diff=wrap(js.ang-P.ang);
-      P.ang+=Math.max(-TURN*dt,Math.min(TURN*dt,diff))*(Math.abs(spd)>20||Math.abs(diff)>0.2?1:0.6);
-      if(Math.abs(diff)<1.7){if(spd<MAXS)spd+=ACC*js.mag*dt*(spd<0?2:1);}
-      else spd-=Math.sign(spd)*Math.min(Math.abs(spd),ACC*1.4*dt);
-    }
+    P.ang+=steer*TURN*dt*(Math.abs(spd)<30?0.7:1)*(spd<-10?-1:1);
+    if(thr>0.15){if(spd<MAXS)spd+=ACC*thr*dt*(spd<0?2:1);}
+    else if(thr<-0.3&&spd>0)spd-=Math.min(spd,ACC*1.5*-thr*dt);
     spd-=Math.sign(spd)*Math.min(Math.abs(spd),FRICT*dt);
     const gx=(ground(P.x+2,P.y)-ground(P.x-2,P.y))/4,gy=(ground(P.x,P.y+2)-ground(P.x,P.y-2))/4;
     const nc=Math.cos(P.ang),ns=Math.sin(P.ang);
     spd-=(gx*nc+gy*ns)*SLOPE*dt;
     P.vx=nc*spd;P.vy=ns*spd;
+    P.pitch=Math.atan(gx*nc+gy*ns);P.roll=Math.atan(-gx*ns+gy*nc);
     const g0=ground(P.x,P.y);
     let nx=P.x+P.vx*dt,ny=P.y+P.vy*dt;
-    // coping: launch from quarter pipe
     const out=nx<1?[-1,0]:nx>W-1?[1,0]:ny<1?[0,-1]:ny>H-1?[0,1]:null;
     if(out){
       const vn=P.vx*out[0]+P.vy*out[1];
@@ -269,7 +269,7 @@ function update(dt){
       nx=Math.min(W-2,Math.max(2,nx));ny=Math.min(H-2,Math.max(2,ny));
     }
     const g1=ground(nx,ny);
-    if(g1>g0+10){P.vx*=-0.3;P.vy*=-0.3;return;} // vägg
+    if(g1>g0+10){P.vx*=-0.3;P.vy*=-0.3;return;}
     if(g1<g0-3){
       const rate=(g0-ground(P.x-P.vx*dt,P.y-P.vy*dt))/dt;
       P.x=nx;P.y=ny;P.z=g0;
@@ -279,13 +279,13 @@ function update(dt){
     P.x=nx;P.y=ny;P.z=g1;
   }else{
     P.airT+=dt;
-    if(P.flipTo!==null){P.ang+=wrap(P.flipTo-P.ang)*Math.min(1,dt*5);}
-    else if(js.mag>0.15){P.ang+=Math.max(-1.5*dt,Math.min(1.5*dt,wrap(js.ang-P.ang)));}
+    if(P.flipTo!==null)P.ang+=wrap(P.flipTo-P.ang)*Math.min(1,dt*4);
+    else P.ang+=steer*1.6*dt;
+    P.pitch*=Math.pow(0.1,dt);P.roll*=Math.pow(0.1,dt);
     moveFlat(dt);
     P.vz-=G*dt;P.z+=P.vz*dt;
     const gh=ground(P.x,P.y);
     if(P.z<=gh){P.z=gh;
-      // landa – rikta åkaren efter farten om vi inte vänt i en ramp
       if(P.flipTo===null){const sp=Math.hypot(P.vx,P.vy);if(sp>40){const va=Math.atan2(P.vy,P.vx);if(Math.abs(wrap(va-P.ang))<1.6)P.ang=va;}}
       land();
     }
@@ -300,154 +300,178 @@ function moveFlat(dt){
   if(!P.air)P.z=ground(P.x,P.y);
 }
 
-/* ---------- Rendering ---------- */
-const cv=document.getElementById('cv'),ctx=cv.getContext('2d');
-let cw=0,ch=0,dpr=1,zoom=1;
+/* ---------- 3D-scen ---------- */
+const cv=document.getElementById('cv');
+const renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+const scene=new THREE.Scene();
+const SKY=0x9fd3f5;
+scene.background=new THREE.Color(SKY);
+scene.fog=new THREE.Fog(SKY,1100,3200);
+const camera=new THREE.PerspectiveCamera(62,1,2,6000);
+scene.add(new THREE.HemisphereLight(0xffffff,0x6b6f78,0.75));
+const sun=new THREE.DirectionalLight(0xffffff,0.75);sun.position.set(-0.6,1,-0.4);scene.add(sun);
+
+function canvasTex(w,h,draw,rx,ry){
+  const c=document.createElement('canvas');c.width=w;c.height=h;draw(c.getContext('2d'),w,h);
+  const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;if(rx)t.repeat.set(rx,ry);
+  t.anisotropy=renderer.capabilities.getMaxAnisotropy();return t;
+}
+const concrete=(g,w,h)=>{g.fillStyle='#9a9da4';g.fillRect(0,0,w,h);
+  for(let i=0;i<2500;i++){const v=Math.random()<.5?0:255;g.fillStyle=`rgba(${v},${v},${v},0.05)`;g.fillRect(Math.random()*w,Math.random()*h,2,2);}
+  g.strokeStyle='rgba(0,0,0,.18)';g.lineWidth=3;g.strokeRect(0,0,w,h);};
+// mark med quarterpipes
+const gGeo=new THREE.PlaneGeometry(W,H,W/20,H/20);gGeo.rotateX(-Math.PI/2);gGeo.translate(W/2,0,H/2);
+{const pos=gGeo.attributes.position;for(let i=0;i<pos.count;i++){pos.setY(i,qpGround(pos.getX(i),pos.getZ(i)));}gGeo.computeVertexNormals();}
+scene.add(new THREE.Mesh(gGeo,new THREE.MeshLambertMaterial({map:canvasTex(256,256,concrete,W/220,H/220)})));
+// plattform utanför coping
+const deckMat=new THREE.MeshLambertMaterial({color:0x7d8089});
+const M=260;
+[[W/2,-M/2,W+2*M,M],[W/2,H+M/2,W+2*M,M],[-M/2,H/2,M,H],[W+M/2,H/2,M,H]].forEach(([cx,cz,sx,sz])=>{
+  const m=new THREE.Mesh(new THREE.BoxGeometry(sx,QPH,sz),deckMat);m.position.set(cx,QPH/2,cz);scene.add(m);});
+// staket
+const fenceMat=new THREE.MeshLambertMaterial({color:0x3a3f4a});
+[[W/2,-M,W+2*M,4],[W/2,H+M,W+2*M,4],[-M,H/2,4,H+2*M],[W+M,H/2,4,H+2*M]].forEach(([cx,cz,sx,sz])=>{
+  const m=new THREE.Mesh(new THREE.BoxGeometry(sx,60,sz),fenceMat);m.position.set(cx,QPH+30,cz);scene.add(m);});
+// gräs runt om
+const grass=new THREE.Mesh(new THREE.PlaneGeometry(12000,12000),new THREE.MeshLambertMaterial({color:0x6aa84f}));
+grass.rotation.x=-Math.PI/2;grass.position.set(W/2,-1,H/2);scene.add(grass);
+// coping
+const copMat=new THREE.MeshLambertMaterial({color:0xe6eaf0});
+[[W/2,0,W,true],[W/2,H,W,true],[0,H/2,H,false],[W,H/2,H,false]].forEach(([cx,cz,len,alongX])=>{
+  const m=new THREE.Mesh(new THREE.CylinderGeometry(4,4,len,8),copMat);
+  m.rotation[alongX?'z':'x']=Math.PI/2;m.position.set(cx,QPH,cz);scene.add(m);});
+// golvmålning
+const paint=new THREE.Mesh(new THREE.PlaneGeometry(900,300),new THREE.MeshBasicMaterial({transparent:true,depthWrite:false,
+  map:canvasTex(1024,340,(g,w,h)=>{g.font='900 italic 260px system-ui,sans-serif';g.textAlign='center';g.textBaseline='middle';g.fillStyle='rgba(255,122,26,.55)';g.fillText('KICK',w/2,h/2+10);})}));
+paint.rotation.x=-Math.PI/2;paint.position.set(W/2,0.5,H/2+330);scene.add(paint);
+// boxar
+for(const b of boxes){
+  const m=new THREE.Mesh(new THREE.BoxGeometry(b.w,b.top,b.h),new THREE.MeshLambertMaterial({map:canvasTex(256,256,concrete,2,1.5)}));
+  m.position.set(b.x+b.w/2,b.top/2,b.y+b.h/2);scene.add(m);
+  const e=new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry),new THREE.LineBasicMaterial({color:0xffffff}));e.position.copy(m.position);scene.add(e);
+}
+// kickers (kilar)
+const woodTex=canvasTex(128,128,(g,w,h)=>{g.fillStyle='#c79a62';g.fillRect(0,0,w,h);g.strokeStyle='rgba(80,50,20,.35)';g.lineWidth=3;
+  for(let y=0;y<h;y+=32){g.beginPath();g.moveTo(0,y);g.lineTo(w,y);g.stroke();}});
+const woodMat=new THREE.MeshLambertMaterial({map:woodTex,side:THREE.DoubleSide});
+for(const k of kickers){
+  const w=k.wid/2,L=k.len,h=k.h;
+  const P3=(u,v,z)=>[k.x+u*k.c-v*k.s,z,k.y+u*k.s+v*k.c];
+  const A=P3(0,-w,0),B=P3(0,w,0),C=P3(L,-w,h),D=P3(L,w,h),E=P3(L,-w,0),F=P3(L,w,0);
+  const tris=[A,C,D, A,D,B, C,E,F, C,F,D, A,E,C, B,D,F];
+  const uvs=[0,0,0,L/40,w/20,L/40, 0,0,w/20,L/40,w/20,0, 0,0,0,1,1,1, 0,0,1,1,1,0, 0,0,1,0,1,1, 0,0,1,1,1,0];
+  const geo=new THREE.BufferGeometry();
+  geo.setAttribute('position',new THREE.Float32BufferAttribute(tris.flat(),3));
+  geo.setAttribute('uv',new THREE.Float32BufferAttribute(uvs,2));
+  geo.computeVertexNormals();
+  scene.add(new THREE.Mesh(geo,woodMat));
+  const lip=new THREE.Mesh(new THREE.CylinderGeometry(2.5,2.5,k.wid,6),copMat);
+  lip.position.set(...P3(L,0,h));lip.rotation.y=-k.ang;lip.rotation.x=Math.PI/2;
+  lip.rotation.order='YXZ';scene.add(lip);
+}
+
+/* ---------- Åkare och kickbike ---------- */
+const S=0.62; // modellskala
+const rider=new THREE.Group();scene.add(rider);
+const tilt=new THREE.Group();rider.add(tilt);
+const body=new THREE.Group();body.scale.setScalar(S);tilt.add(body);
+const mat=c=>new THREE.MeshLambertMaterial({color:c});
+const box=(w,h,d,c)=>new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(c));
+const cyl=(r,h,c,seg)=>new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,seg||10),mat(c));
+// modellen pekar längs +x. Styrstången står vid x=24.
+const STEM=24;
+const deckPivot=new THREE.Group();deckPivot.position.x=STEM;body.add(deckPivot);
+const deck=box(52,4,15,0xff7a1a);deck.position.set(-STEM-4,8,0);deckPivot.add(deck);
+const grip=box(46,1,13,0x1b1b1b);grip.position.set(-STEM-4,10.5,0);deckPivot.add(grip);
+const wheelR=cyl(6,5,0x111111,14);wheelR.rotation.x=Math.PI/2;wheelR.position.set(-STEM-30,6,0);deckPivot.add(wheelR);
+const hubR=cyl(3,5.4,0x3ad1ff);hubR.rotation.x=Math.PI/2;hubR.position.copy(wheelR.position);deckPivot.add(hubR);
+const barPivot=new THREE.Group();barPivot.position.x=STEM;body.add(barPivot);
+const wheelF=cyl(6,5,0x111111,14);wheelF.rotation.x=Math.PI/2;wheelF.position.set(2,6,0);barPivot.add(wheelF);
+const hubF=cyl(3,5.4,0x3ad1ff);hubF.rotation.x=Math.PI/2;hubF.position.copy(wheelF.position);barPivot.add(hubF);
+const stem=cyl(2.2,74,0xdfe4ea);stem.position.set(0,46,0);barPivot.add(stem);
+const bar=cyl(2,46,0xdfe4ea);bar.rotation.x=Math.PI/2;bar.position.set(0,83,0);barPivot.add(bar);
+[-1,1].forEach(s=>{const g=cyl(2.8,10,0x111111);g.rotation.x=Math.PI/2;g.position.set(0,83,s*19);barPivot.add(g);});
+// åkaren
+const person=new THREE.Group();body.add(person);
+const legs=new THREE.Group();person.add(legs);
+const pants=0x2f3540, hoodie=0x2b6cff, skin=0xf1c7a4, helmet=0xffd23a;
+const legF=box(9,44,9,pants);legF.position.set(4,33,-5);legs.add(legF);
+const legB=box(9,44,9,pants);legB.position.set(-12,33,5);legs.add(legB);
+[legF,legB].forEach(l=>{const s=box(13,6,10,0xffffff);s.position.set(l.position.x+2,13,l.position.z);legs.add(s);});
+const torso=box(16,36,26,hoodie);torso.position.set(-3,72,0);torso.rotation.z=-0.12;person.add(torso);
+const head=new THREE.Mesh(new THREE.SphereGeometry(10,16,12),mat(skin));head.position.set(0,100,0);person.add(head);
+const helm=new THREE.Mesh(new THREE.SphereGeometry(11.5,16,12,0,Math.PI*2,0,Math.PI*0.55),mat(helmet));helm.position.set(-1,101,0);person.add(helm);
+const arms=[];
+[-1,1].forEach(s=>{
+  const a=new THREE.Group();a.position.set(0,86,s*13);person.add(a);
+  const m=box(26,7,7,hoodie);m.position.x=13;a.add(m);
+  const h=new THREE.Mesh(new THREE.SphereGeometry(4,8,6),mat(skin));h.position.x=27;a.add(h);
+  arms.push({g:a,s});
+});
+// skugga
+const shadow=new THREE.Mesh(new THREE.CircleGeometry(26,24),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.3,depthWrite:false}));
+shadow.rotation.x=-Math.PI/2;scene.add(shadow);
+
+function poseRider(dt){
+  rider.position.set(P.x,P.z,P.y);
+  rider.rotation.y=-P.ang;
+  tilt.rotation.z=P.pitch;tilt.rotation.x=-P.roll;
+  deckPivot.rotation.y=P.whipAng;
+  barPivot.rotation.y=P.barAng;
+  const crashed=P.crashT>0;
+  // händer: på styret, ut vid barspin
+  arms.forEach(a=>{
+    if(P.barT>0||crashed){a.g.rotation.y=a.s*0.9;a.g.rotation.z=0.7;}
+    else{a.g.rotation.y=a.s*0.08;a.g.rotation.z=-0.05;}
+  });
+  // benen dras upp vid tailwhip
+  legs.position.y=P.whipT>0?14:0;person.position.y=P.air?4:0;
+  person.rotation.z=crashed?Math.sin(P.crashT*14)*0.4-0.6:(P.air?0:0.04);
+  // skugga
+  const gh=ground(P.x,P.y);
+  shadow.position.set(P.x,gh+0.6,P.y);
+  const hgt=Math.max(0,P.z-gh);shadow.scale.setScalar(1+hgt/300);shadow.material.opacity=Math.max(.08,.32-hgt/800);
+}
+
+/* ---------- Kamera bakom åkaren ---------- */
+let camYaw=P.ang,camH=P.z;
+const BACK=150,UP=70;
+function updateCamera(dt,snap){
+  const k=snap?1:Math.min(1,dt*(P.air?2.2:3.5));
+  camYaw+=wrap(P.ang-camYaw)*k;
+  camH+=(P.z-camH)*Math.min(1,snap?1:dt*(P.air?2:5));
+  let cx=P.x-Math.cos(camYaw)*BACK, cz=P.y-Math.sin(camYaw)*BACK;
+  cx=Math.max(-200,Math.min(W+200,cx));cz=Math.max(-200,Math.min(H+200,cz));
+  const inside=cx>0&&cx<W&&cz>0&&cz<H;
+  let cy=camH+UP;
+  const floor=(inside?ground(cx,cz):QPH)+25;
+  if(cy<floor)cy=floor;
+  camera.position.set(cx,cy,cz);
+  camera.lookAt(P.x+Math.cos(camYaw)*70,P.z+35,P.y+Math.sin(camYaw)*70);
+}
+
 function resize(){
-  dpr=Math.min(window.devicePixelRatio||1,2.5);cw=innerWidth;ch=innerHeight;
-  cv.width=Math.round(cw*dpr);cv.height=Math.round(ch*dpr);
-  zoom=Math.max(0.45,Math.min(1.1,ch/640));
-  restStick();
+  const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);
+  camera.aspect=w/h;camera.fov=w/h<1.2?75:62;camera.updateProjectionMatrix();restStick();
 }
 window.addEventListener('resize',resize);resize();
 
-let floorPat=null;
-function makeFloor(){
-  const c=document.createElement('canvas');c.width=c.height=200;const g=c.getContext('2d');
-  g.fillStyle='#8e9198';g.fillRect(0,0,200,200);
-  for(let i=0;i<900;i++){g.fillStyle=`rgba(${Math.random()<.5?0:255},${Math.random()<.5?0:255},${Math.random()<.5?0:255},0.04)`;g.fillRect(Math.random()*200,Math.random()*200,2,2);}
-  g.strokeStyle='rgba(0,0,0,.14)';g.lineWidth=2;g.strokeRect(0,0,200,200);
-  floorPat=ctx.createPattern(c,'repeat');
-}
-makeFloor();
-
-function drawPark(){
-  ctx.fillStyle='#2a303d';ctx.fillRect(-2000,-2000,W+4000,H+4000);
-  ctx.fillStyle=floorPat;ctx.fillRect(0,0,W,H);
-  // färg på golvet
-  ctx.save();ctx.globalAlpha=.16;ctx.fillStyle='#ff7a1a';ctx.font='900 italic 220px system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
-  ctx.fillText('KICK',W/2,H/2+300);ctx.restore();
-  ctx.save();ctx.globalAlpha=.2;ctx.strokeStyle='#3ad1ff';ctx.lineWidth=14;ctx.beginPath();ctx.arc(W/2,H/2-40,420,Math.PI*1.1,Math.PI*1.9);ctx.stroke();ctx.restore();
-  // quarter pipes
-  const edge=(x0,y0,x1,y1,w,h)=>{const gr=ctx.createLinearGradient(x0,y0,x1,y1);gr.addColorStop(0,'#8e9198');gr.addColorStop(0.55,'#a9acb3');gr.addColorStop(1,'#d3d6dc');ctx.fillStyle=gr;};
-  edge(QP,0,0,0);ctx.fillRect(0,0,QP,H);
-  edge(W-QP,0,W,0);ctx.fillRect(W-QP,0,QP,H);
-  edge(0,QP,0,0);ctx.fillRect(QP,0,W-2*QP,QP);
-  edge(0,H-QP,0,H);ctx.fillRect(QP,H-QP,W-2*QP,QP);
-  ctx.strokeStyle='rgba(0,0,0,.18)';ctx.lineWidth=2;ctx.strokeRect(QP,QP,W-2*QP,H-2*QP);
-  ctx.strokeStyle='#e9edf3';ctx.lineWidth=8;ctx.strokeRect(4,4,W-8,H-8); // coping
-  // boxar
-  for(const b of boxes){
-    ctx.fillStyle='rgba(0,0,0,.25)';ctx.fillRect(b.x+8,b.y+10,b.w,b.h);
-    ctx.fillStyle='#b4b7be';ctx.fillRect(b.x,b.y,b.w,b.h);
-    ctx.strokeStyle='#e9edf3';ctx.lineWidth=6;ctx.strokeRect(b.x+3,b.y+3,b.w-6,b.h-6);
-  }
-  // kickers
-  for(const k of kickers){
-    ctx.save();ctx.translate(k.x,k.y);ctx.rotate(k.ang);
-    ctx.fillStyle='rgba(0,0,0,.25)';ctx.fillRect(10,-k.wid/2+8,k.len,k.wid);
-    const gr=ctx.createLinearGradient(0,0,k.len,0);gr.addColorStop(0,'#7a5a3a');gr.addColorStop(1,'#d9b27a');
-    ctx.fillStyle=gr;ctx.fillRect(0,-k.wid/2,k.len,k.wid);
-    ctx.strokeStyle='rgba(0,0,0,.18)';ctx.lineWidth=2;
-    for(let u=24;u<k.len;u+=24){ctx.beginPath();ctx.moveTo(u,-k.wid/2);ctx.lineTo(u,k.wid/2);ctx.stroke();}
-    ctx.fillStyle='#e9edf3';ctx.fillRect(k.len-6,-k.wid/2,6,k.wid);
-    ctx.restore();
-  }
-}
-
-function drawRider(){
-  const lift=P.z*0.6, s=1+P.z/260;
-  const gh=ground(P.x,P.y);
-  // skugga
-  ctx.save();ctx.translate(P.x,P.y-gh*0.6);
-  ctx.fillStyle=`rgba(0,0,0,${Math.max(.12,.35-(P.z-gh)/700)})`;
-  ctx.beginPath();ctx.ellipse(0,0,30,14,P.ang,0,Math.PI*2);ctx.fill();ctx.restore();
-
-  ctx.save();ctx.translate(P.x,P.y-lift);ctx.scale(s,s);ctx.rotate(P.ang);
-  const crashed=P.crashT>0;
-  if(crashed)ctx.rotate(Math.sin(P.crashT*18)*0.15);
-  // deck (roterar runt styrstången vid tailwhip)
-  ctx.save();ctx.translate(20,0);ctx.rotate(P.whipAng);ctx.translate(-20,0);
-  ctx.fillStyle='#111';ctx.fillRect(-30,-5,10,10);ctx.fillRect(16,-5,10,10);   // hjul
-  ctx.fillStyle='#ff7a1a';roundRect(-26,-7,46,14,6);ctx.fill();
-  ctx.fillStyle='#222';roundRect(-22,-5,36,10,4);ctx.fill();
-  ctx.restore();
-  // styre (roterar vid barspin)
-  ctx.fillStyle='#e9edf3';ctx.beginPath();ctx.arc(20,0,4,0,Math.PI*2);ctx.fill();
-  ctx.save();ctx.translate(20,0);ctx.rotate(P.barAng);
-  ctx.strokeStyle='#e9edf3';ctx.lineWidth=4;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(0,-17);ctx.lineTo(0,17);ctx.stroke();
-  ctx.strokeStyle='#111';ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(0,-17);ctx.lineTo(0,-10);ctx.moveTo(0,10);ctx.lineTo(0,17);ctx.stroke();
-  ctx.restore();
-  // åkare
-  const hands=P.barT<=0&&!crashed;
-  ctx.strokeStyle='#2b6cff';ctx.lineWidth=5;ctx.lineCap='round';
-  ctx.beginPath();
-  if(hands){ctx.moveTo(2,-11);ctx.lineTo(19,-14);ctx.moveTo(2,11);ctx.lineTo(19,14);}
-  else{ctx.moveTo(2,-11);ctx.lineTo(-4,-22);ctx.moveTo(2,11);ctx.lineTo(-4,22);}
-  ctx.stroke();
-  ctx.fillStyle='#2b6cff';ctx.beginPath();ctx.ellipse(0,0,9,13,0,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle=crashed?'#ff5a5a':'#ffd23a';ctx.beginPath();ctx.arc(3,0,8,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle='rgba(0,0,0,.25)';ctx.fillRect(7,-5,3,10);
-  ctx.restore();
-}
-function roundRect(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
-
-function drawPopups(dt){
-  ctx.textAlign='center';ctx.textBaseline='middle';
-  let yOff=0;
-  for(const p of popups){
-    if(p.delay>0){p.delay-=dt;continue;}
-    p.life-=dt;const a=Math.min(1,p.life/0.5),rise=(1.8-p.life)*14;
-    ctx.globalAlpha=Math.max(0,a);
-    ctx.font='900 italic 30px system-ui,sans-serif';ctx.lineWidth=6;ctx.strokeStyle='rgba(0,0,0,.55)';
-    const y=ch*0.26-rise+yOff;
-    ctx.strokeText(p.t,cw/2,y);ctx.fillStyle=p.col;ctx.fillText(p.t,cw/2,y);
-    if(p.sub){ctx.font='800 22px system-ui,sans-serif';ctx.strokeText(p.sub,cw/2,y+30);ctx.fillStyle='#ffd23a';ctx.fillText(p.sub,cw/2,y+30);}
-    yOff+=60;
-  }
-  ctx.globalAlpha=1;popups=popups.filter(p=>p.life>0);
-  // pågående trick i luften
-  if(P.air&&P.tricks.length&&P.crashT<=0){
-    ctx.font='800 18px system-ui,sans-serif';ctx.fillStyle='rgba(255,255,255,.9)';
-    ctx.fillText(P.tricks.map(t=>t==='whip'?'Whip':'Bar').join(' + '),cw/2,ch*0.14);
-  }
-}
-
-function render(dt){
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-  const vw=cw/zoom,vh=ch/zoom;
-  let camX=P.x,camY=P.y-P.z*0.3;
-  camX=vw>=W?W/2:Math.max(vw/2-60,Math.min(W-vw/2+60,camX));
-  camY=vh>=H?H/2:Math.max(vh/2-60,Math.min(H-vh/2+60,camY));
-  ctx.save();ctx.translate(cw/2,ch/2);ctx.scale(zoom,zoom);ctx.translate(-camX,-camY);
-  drawPark();drawRider();
-  ctx.restore();
-  drawPopups(dt);
-}
-
-/* ---------- Loop & menu ---------- */
+/* ---------- Loop & meny ---------- */
 let last=performance.now();
 function frame(t){
   const dt=Math.min(0.033,(t-last)/1000);last=t;
   if(running)update(dt);
-  render(running?dt:0);
+  poseRider(dt);updateCamera(dt,false);
+  live.textContent=(P.air&&P.tricks.length&&P.crashT<=0)?P.tricks.map(x=>x==='whip'?'Whip':'Bar').join(' + '):'';
+  renderer.render(scene,camera);
   requestAnimationFrame(frame);
 }
 const menu=document.getElementById('menu');
 document.getElementById('bStart').addEventListener('click',()=>{menu.hidden=true;running=true;last=performance.now();});
 document.getElementById('bPause').addEventListener('click',()=>{running=false;menu.hidden=false;document.getElementById('bStart').textContent='FORTSÄTT';});
-
-document.querySelectorAll('.appver').forEach(el=>el.textContent=APP_VERSION);
-document.querySelectorAll('.updBtn').forEach(btn=>btn.addEventListener('click',async()=>{
-  document.querySelectorAll('.updBtn').forEach(b=>{b.disabled=true;b.textContent='Uppdaterar…';});
-  try{
-    if('serviceWorker' in navigator){const regs=await navigator.serviceWorker.getRegistrations();await Promise.all(regs.map(r=>r.update().catch(()=>{})));}
-    if(window.caches){const ks=await caches.keys();await Promise.all(ks.filter(k=>k.startsWith('kick-')).map(k=>caches.delete(k)));}
-  }catch(e){}
-  location.reload();
-}));
-updHud();
-window.__kick={P,ground,update,jump,barspin,tailwhip,js,start:()=>{menu.hidden=true;running=true;}};
+updHud();updateCamera(0,true);
+window.__kick={P,ground,update,jump,barspin,tailwhip,js,poseRider,updateCamera,render:()=>renderer.render(scene,camera),start:()=>{menu.hidden=true;running=true;}};
 requestAnimationFrame(frame);
 })();
 </script>
