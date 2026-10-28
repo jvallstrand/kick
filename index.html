@@ -25,22 +25,22 @@ button{font:inherit;cursor:pointer}
   display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none}
 .score{font-weight:800;font-size:22px;line-height:1.1;text-shadow:0 2px 6px rgba(0,0,0,.6);font-variant-numeric:tabular-nums}
 .score small{display:block;font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
-.pauseBtn{pointer-events:auto;width:44px;height:44px;border-radius:12px;border:0;background:rgba(0,0,0,.35);color:#fff;font-size:18px;font-weight:800}
+.topbtns{display:flex;gap:8px;pointer-events:auto}
+.tb{width:44px;height:44px;border-radius:12px;border:0;background:rgba(0,0,0,.38);color:#fff;font-size:22px;font-weight:800;padding:0;display:flex;align-items:center;justify-content:center}
+.tb.pause{font-size:18px}
 
-#pops{position:fixed;left:0;right:0;top:22%;display:flex;flex-direction:column;align-items:center;pointer-events:none;gap:4px}
+#pops{position:fixed;left:0;right:0;top:24%;display:flex;flex-direction:column;align-items:center;pointer-events:none;gap:4px}
 .pop{font-weight:900;font-style:italic;font-size:30px;color:#fff;text-shadow:0 0 6px rgba(0,0,0,.7),0 3px 0 rgba(0,0,0,.45);animation:pop 1.8s ease-out forwards;text-align:center}
 .pop small{display:block;font-style:normal;font-size:22px;color:#ffd23a}
 .pop.big{font-size:64px}
 @keyframes pop{0%{opacity:0;transform:scale(.6)}10%{opacity:1;transform:scale(1.08)}20%{transform:scale(1)}75%{opacity:1}100%{opacity:0;transform:translateY(-24px)}}
-#live{position:fixed;left:0;right:0;top:calc(var(--st) + 14px);text-align:center;font-weight:800;font-size:18px;text-shadow:0 2px 6px rgba(0,0,0,.7);pointer-events:none}
-body.incomp #live{top:calc(var(--st) + 54px)}
-#compHud{position:fixed;left:50%;transform:translateX(-50%);top:calc(var(--st) + 8px);background:rgba(0,0,0,.45);border-radius:12px;padding:6px 14px;
-  font-weight:900;font-size:18px;white-space:nowrap;pointer-events:none;font-variant-numeric:tabular-nums}
+#live{position:fixed;left:0;right:0;top:calc(var(--st) + 62px);text-align:center;font-weight:800;font-size:18px;text-shadow:0 2px 6px rgba(0,0,0,.7);pointer-events:none}
+#compHud{position:fixed;left:50%;transform:translateX(-50%);top:calc(var(--st) + 60px);background:rgba(0,0,0,.45);border-radius:12px;padding:6px 14px;
+  font-weight:900;font-size:17px;white-space:nowrap;pointer-events:none;font-variant-numeric:tabular-nums}
+body.incomp #live{top:calc(var(--st) + 100px)}
 #where{position:fixed;left:0;right:0;bottom:calc(var(--sb) + 8px);text-align:center;font-weight:800;font-size:14px;color:rgba(255,255,255,.9);text-shadow:0 2px 6px rgba(0,0,0,.7);pointer-events:none}
-#shopBtn{position:fixed;left:50%;transform:translateX(-50%);top:calc(var(--st) + 84px);background:#16a34a;color:#fff;border:3px solid #fff;border-radius:14px;
-  font-weight:900;font-size:18px;padding:10px 20px;box-shadow:0 4px 14px rgba(0,0,0,.4)}
 
-#stickZone{position:fixed;left:0;top:0;bottom:0;width:46vw}
+#stickZone{position:fixed;left:0;top:70px;bottom:0;width:46vw}
 #stickBase{position:fixed;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;
   background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.45);pointer-events:none}
 #stickKnob{position:absolute;left:50%;top:50%;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;
@@ -55,13 +55,13 @@ body.incomp #live{top:calc(var(--st) + 54px)}
 #t1{width:68px;height:68px;right:calc(var(--sr) + 28px);bottom:calc(var(--sb) + 126px);background:rgba(140,95,240,.88)}
 #t2{width:62px;height:62px;right:calc(var(--sr) + 112px);bottom:calc(var(--sb) + 104px);background:rgba(22,163,74,.88)}
 #t3{width:62px;height:62px;right:calc(var(--sr) + 206px);bottom:calc(var(--sb) + 20px);background:rgba(236,72,153,.88)}
-body.editing .hud,body.editing .act,body.editing #stickBase,body.editing #stickZone,body.editing #where,body.editing #live,body.editing #shopBtn{display:none}
+body.editing .hud,body.editing .act,body.editing #stickBase,body.editing #stickZone,body.editing #where,body.editing #live{display:none}
 
 .overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-  background:rgba(16,20,30,.84);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);padding:14px calc(var(--sr) + 16px) 14px calc(var(--sl) + 16px);overflow-y:auto;box-sizing:border-box}
-.panel{max-width:640px;width:100%;text-align:center;margin:auto}
+  background:rgba(16,20,30,.86);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);padding:14px calc(var(--sr) + 16px) 14px calc(var(--sl) + 16px);overflow-y:auto;box-sizing:border-box;touch-action:pan-y}
+.panel{max-width:660px;width:100%;text-align:center;margin:auto}
 .panel h1{font-size:46px;margin:0;letter-spacing:.06em;font-weight:900;font-style:italic;color:var(--accent);text-shadow:0 4px 0 rgba(0,0,0,.35)}
-.panel h2{font-size:28px;margin:0 0 6px;font-weight:900;font-style:italic;color:var(--accent)}
+.panel h2{font-size:26px;margin:0 0 6px;font-weight:900;font-style:italic;color:var(--accent)}
 .panel p{color:var(--muted);margin:4px 0 10px;font-size:15px}
 .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .big{background:var(--accent);color:#fff;border:0;border-radius:14px;padding:12px 26px;font-size:19px;font-weight:900;letter-spacing:.04em}
@@ -79,11 +79,18 @@ body.editing .hud,body.editing .act,body.editing #stickBase,body.editing #stickZ
 .card b{display:block;font-size:17px;font-weight:900}
 .card span{display:block;font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.35}
 .card i{display:block;font-style:normal;font-size:13px;margin-top:6px;color:#ffd23a;font-weight:800}
-.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin:10px 0 14px}
-.vbtn{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.25);border-radius:14px;color:#fff;padding:10px 6px;font-weight:900;font-size:15px}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;margin:10px 0 14px}
+.vbtn{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.25);border-radius:14px;color:#fff;padding:9px 6px;font-weight:900;font-size:14px}
 .vbtn em{display:block;font-style:normal;font-size:30px;margin-bottom:2px}
 .vbtn.sel{background:var(--accent);border-color:#fff}
 .medal{font-size:64px;line-height:1.1}
+
+#mapBox{position:fixed;inset:0;background:rgba(16,20,30,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:calc(var(--st) + 8px) calc(var(--sr) + 10px) calc(var(--sb) + 8px) calc(var(--sl) + 10px);box-sizing:border-box;gap:6px}
+#mapBox canvas{position:static;width:auto;height:auto;max-width:100%;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.5);touch-action:none}
+#mapBox .mapTop{display:flex;align-items:center;gap:12px;width:100%;justify-content:space-between;max-width:1100px}
+#mapBox .mapTop b{font-size:20px;font-style:italic;color:var(--accent)}
+#mapBox .mapTop span{font-size:13px;color:var(--muted)}
 
 #editor{position:fixed;top:0;bottom:0;right:0;width:min(56vw,460px);background:rgba(16,20,30,.86);
   padding:calc(var(--st) + 12px) calc(var(--sr) + 14px) calc(var(--sb) + 12px) 16px;box-sizing:border-box;
@@ -97,7 +104,6 @@ body.editing .hud,body.editing .act,body.editing #stickBase,body.editing #stickZ
 .chip{border-radius:10px;border:2px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-weight:800;font-size:14px;padding:8px 11px}
 .chip.sel{border-color:#fff;background:var(--accent)}
 #bDone{margin-top:12px;width:100%}
-.overlay,#editor{touch-action:pan-y}
 
 #rotate{display:none;position:fixed;inset:0;z-index:50;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:12px;font-size:20px;font-weight:800;text-align:center;padding:24px}
 #rotate span{font-size:60px;display:block;animation:tilt 1.6s ease-in-out infinite}
@@ -111,13 +117,17 @@ body.editing .hud,body.editing .act,body.editing #stickBase,body.editing #stickZ
 
 <div class="hud">
   <div class="score"><span id="sc">0</span><small>Rekord trick: <span id="best">0</span></small></div>
-  <button class="pauseBtn" id="bPause" aria-label="Paus">II</button>
+  <div class="topbtns">
+    <button class="tb" id="bVeh" aria-label="Byt fordon">🛴</button>
+    <button class="tb" id="bMap" aria-label="Karta">🗺️</button>
+    <button class="tb" id="bSeason" aria-label="Byt årstid">❄️</button>
+    <button class="tb pause" id="bPause" aria-label="Paus">II</button>
+  </div>
 </div>
 <div id="compHud" hidden></div>
 <div id="live"></div>
 <div id="pops"></div>
 <div id="where"></div>
-<button id="shopBtn" hidden>BYT FORDON</button>
 
 <div id="stickZone"></div>
 <div id="stickBase"><div id="stickKnob"></div></div>
@@ -130,13 +140,13 @@ body.editing .hud,body.editing .act,body.editing #stickBase,body.editing #stickZ
 <div class="overlay" id="menu">
   <div class="panel">
     <h1>KICK</h1>
-    <p>Åk runt i skateparkerna, staden och på skidberget.</p>
+    <p>Skateparker, två städer och ett stort berg – sommar som vinter.</p>
     <div class="btns"><button class="big" id="bStart">ÅK!</button><button class="big alt" id="bComps">TÄVLINGAR</button><button class="big alt" id="bEdit">MIN ÅKARE</button></div>
     <div id="err" hidden>Spelet kunde inte laddas. Öppna appen med internet en gång.</div>
     <div class="help"><b>På marken:</b> joystick framåt = åk, åt sidan = sväng, bakåt = broms · HOPP: hoppa<br>
       <b>I luften:</b> åt sidan = 180/360 · knuffa framåt = frontflip · bakåt = backflip · fyra trickknappar per sport<br>
-      <b>Grind:</b> landa rakt på ett räcke · <b>Byt fordon</b> i butiken uppe i hörnet vid lilla parken<br>
-      <b>Skidberget</b> ligger österut bakom stan – åk in under liften så tar den dig upp.</div>
+      <b>Uppe i hörnet:</b> 🛴 byt fordon · 🗺️ karta (tryck på kartan för att resa dit) · ❄️/☀️ byt årstid<br>
+      <b>Liftar:</b> åk in på den röda LIFT-cirkeln vid liftens nedre station.</div>
     <footer class="appfoot"><span>Version <b class="appver"></b></span><button type="button" class="updBtn">Uppdatera appen</button></footer>
   </div>
 </div>
@@ -166,6 +176,11 @@ body.editing .hud,body.editing .act,body.editing #stickBase,body.editing #stickZ
   </div>
 </div>
 
+<div id="mapBox" hidden>
+  <div class="mapTop"><b>KARTA</b><span>Tryck på kartan för att resa dit</span><button class="big alt" id="bMapClose" style="padding:8px 18px;font-size:16px">STÄNG</button></div>
+  <canvas id="mapCv"></canvas>
+</div>
+
 <div id="editor" hidden>
   <h2>MIN ÅKARE</h2>
   <div id="edRows"></div>
@@ -177,8 +192,8 @@ body.editing .hud,body.editing .act,body.editing #stickBase,body.editing #stickZ
 <script>
 (function(){
 'use strict';
-const APP_VERSION='0.7';
-const LS_BEST='kick:best',LS_LOOK='kick:look',LS_COMP='kick:comp:';
+const APP_VERSION='0.8';
+const LS_BEST='kick:best',LS_LOOK='kick:look',LS_COMP='kick:comp:',LS_SEASON='kick:season';
 
 document.querySelectorAll('.appver').forEach(el=>el.textContent=APP_VERSION);
 document.querySelectorAll('.updBtn').forEach(btn=>btn.addEventListener('click',async()=>{
@@ -196,27 +211,32 @@ const wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 let seed=7;const rnd=()=>((seed=(seed*16807)%2147483647)/2147483647);
 const $=id=>document.getElementById(id);
+let season='winter';try{season=localStorage.getItem(LS_SEASON)||'winter';}catch(e){}
 
 /* =========================================================
    VÄRLDEN  (x,y = marken, z = höjd)
    ========================================================= */
-const CX0=-1700,CX1=9400,CY0=-1600,CY1=3900;          // staden
-const WX0=-1700,WX1=16600,WY0=-1700,WY1=4700;         // hela världen
-const MX0=9900,MX1=15300,MH=1900;                     // skidberget
-const G=820, SPIN_RATE=8.5, FLIP_DUR=0.6, CRASH_T=2.6, SLOPE=650, DRAG=0.00042;
+const CX0=-1700,CX1=9400,CY0=-1600,CY1=3900;          // stan
+const C2X0=21500,C2X1=27700;                          // Bergsbyn
+const WX0=-1700,WX1=27800,WY0=-1700,WY1=4700;
+const MX0=9900,MP0=15300,MP1=16300,MX1=21200,MH=1900;  // berget: fot – topp – topp – fot
+const G=820, SPIN_RATE=8.5, FLIP_DUR=0.6, CRASH_T=2.6, SLOPE=650, DRAG=0.00042, SNOW_DRAG=0.0016;
 
 function terrain(x,y){
-  if(x<=MX0)return 0;
-  const u=Math.min(1,(x-MX0)/(MX1-MX0)),s=u*u*(3-2*u);
+  if(x<=MX0||x>=MX1)return 0;
+  const u=x<MP0?(x-MX0)/(MP0-MX0):x<=MP1?1:1-(x-MP1)/(MX1-MP1);
+  const s=u*u*(3-2*u);
   const v=(y-1500)/3600,lat=Math.max(0.3,1-0.5*v*v);
   const h=MH*s*lat+u*(38*Math.sin(x*0.0031+y*0.0017)+26*Math.sin(y*0.0049-x*0.0012));
   return h>0?h:0;
 }
-const isSnow=(x)=>x>MX0-150;
+const onMountain=x=>x>MX0-150&&x<MX1+150;
+const isSnow=x=>season==='winter'&&onMountain(x);
 
 const PARKS=[
   {id:'A',name:'Lilla parken',x0:0,y0:0,x1:3400,y1:2300,H:105,D:160,deck:70,gaps:{n:[],s:[[1550,1850]],w:[[1000,1300]],e:[[1000,1300]]},light:false},
   {id:'B',name:'Stora parken',x0:4400,y0:0,x1:7900,y1:2300,H:175,D:260,deck:80,gaps:{n:[],s:[[5950,6350]],w:[[1000,1300]],e:[]},light:true},
+  {id:'C',name:'Gigantparken',x0:22700,y0:0,x1:26900,y1:2700,H:300,D:380,deck:110,gaps:{n:[],s:[[24600,25100]],w:[[1150,1550]],e:[]},light:true},
 ];
 const qps=[];
 for(const pk of PARKS){
@@ -232,15 +252,19 @@ for(const pk of PARKS){
 function qpST(q,x,y){const s=q.horiz?(q.ny<0?q.c-y:y-q.c):(q.nx<0?q.c-x:x-q.c);return [s,q.horiz?x:y];}
 function worldOf(q,s,t){return q.horiz?[t,q.c+(q.ny<0?-s:s)]:[q.c+(q.nx<0?-s:s),t];}
 
-/* ---------- skidberget: pister, offpist, lift ---------- */
+/* ---------- backar, offpist och liftar ---------- */
 const PISTES=[
   {name:'Hoppbacken',col:0xd93030,w:380,pts:[[15200,1750],[13900,1850],[12600,1650],[11300,1800],[10150,1700]]},
   {name:'Skogsbacken',col:0x2b6cff,w:270,pts:[[15200,2350],[14300,2950],[13300,2550],[12400,3200],[11400,2750],[10150,2550]]},
   {name:'Blå backen',col:0x2b6cff,w:320,pts:[[15200,650],[14100,250],[12900,600],[11600,200],[10150,650]]},
+  {name:'Barnbacken',col:0x16a34a,w:300,pts:[[12300,4380],[11300,4330],[10300,4380]]},
+  {name:'Östra backen',col:0xd93030,w:340,pts:[[16400,1750],[17600,1450],[18800,1950],[20000,1550],[21150,1750]]},
+  {name:'Älgleden',col:0x2b6cff,w:260,pts:[[16400,3000],[17500,3500],[18700,3000],[19900,3550],[21150,3150]]},
 ];
 const OFFPISTE=[
-  {name:'Skogsleden',w:150,pts:[[14900,3450],[13900,3950],[12700,3750],[11500,4050],[10300,3450]]},
+  {name:'Skogsleden',w:150,pts:[[14900,3450],[13900,3950],[12700,3750],[11500,4000],[10300,3500]]},
   {name:'Vilda spåret',w:150,pts:[[14700,-350],[13500,-800],[12100,-550],[10700,-250],[10150,150]]},
+  {name:'Bakvägen',w:150,pts:[[16400,-300],[17800,-800],[19300,-400],[21100,-900]]},
 ];
 [...PISTES,...OFFPISTE].forEach(p=>{p.len=0;p.seg=[];for(let i=0;i<p.pts.length-1;i++){const [ax,ay]=p.pts[i],[bx,by]=p.pts[i+1];const L=Math.hypot(bx-ax,by-ay);p.seg.push({ax,ay,bx,by,L,s0:p.len});p.len+=L;}});
 function polyDist(p,x,y){
@@ -255,14 +279,26 @@ function pointAlong(p,dist,lat){
     return {x:s.ax+dx*s.L*u-dy*(lat||0),y:s.ay+dy*s.L*u+dx*(lat||0),ang:Math.atan2(dy,dx)};}}
   const s=p.seg[p.seg.length-1];return {x:s.bx,y:s.by,ang:Math.atan2(s.by-s.ay,s.bx-s.ax)};
 }
-const LY=1100,LBX=10250,LTX=15250;   // stolliften
-const LIFT_T=22;
-const LIFT_PAD={x:LBX-70,y:LY-28,r:75};
-const TOWERS=[];for(let x=LBX;x<=LTX+1;x+=(LTX-LBX)/7)TOWERS.push({x,top:terrain(x,LY)+230});
-function cableZ(x){
-  for(let i=0;i<TOWERS.length-1;i++){const a=TOWERS[i],b=TOWERS[i+1];if(x<=b.x){const u=clamp((x-a.x)/(b.x-a.x),0,1);return a.top+(b.top-a.top)*u-14*Math.sin(u*Math.PI);}}
-  return TOWERS[TOWERS.length-1].top;
+const LIFTS=[
+  {name:'Stolliften',type:'chair',x0:10250,y0:1100,x1:15250,y1:1100,T:24},
+  {name:'Gondolen',type:'gondola',x0:10250,y0:-1250,x1:15450,y1:-1250,T:28},
+  {name:'Knappliften',type:'tbar',x0:10250,y0:4560,x1:12350,y1:4560,T:22},
+  {name:'Östra stolliften',type:'chair',x0:21050,y0:1100,x1:16450,y1:1100,T:24},
+  {name:'Östra knappliften',type:'tbar',x0:21100,y0:4000,x1:19050,y1:4000,T:20},
+];
+const HANG={chair:230,gondola:330,tbar:120};
+for(const L of LIFTS){
+  L.len=Math.hypot(L.x1-L.x0,L.y1-L.y0);L.ux=(L.x1-L.x0)/L.len;L.uy=(L.y1-L.y0)/L.len;L.px=-L.uy;L.py=L.ux;
+  const n=Math.max(2,Math.ceil(L.len/700));L.towers=[];
+  for(let i=0;i<=n;i++){const t=i/n,x=L.x0+(L.x1-L.x0)*t,y=L.y0+(L.y1-L.y0)*t;L.towers.push({t,x,y,top:terrain(x,y)+HANG[L.type]});}
+  L.off=L.type==='tbar'?-22:-30;
+  L.pad={x:L.x0-L.ux*80+L.px*L.off,y:L.y0-L.uy*80+L.py*L.off,r:72};
 }
+function cableZ(L,t){
+  const T=L.towers;for(let i=0;i<T.length-1;i++){const a=T[i],b=T[i+1];if(t<=b.t){const u=clamp((t-a.t)/(b.t-a.t),0,1);return a.top+(b.top-a.top)*u-16*Math.sin(u*Math.PI);}}
+  return T[T.length-1].top;
+}
+const nearLift=(x,y,m)=>LIFTS.some(L=>{const u=clamp(((x-L.x0)*L.ux+(y-L.y0)*L.uy)/L.len,-0.05,1.05),qx=L.x0+L.ux*L.len*u,qy=L.y0+L.uy*L.len*u;return Math.hypot(x-qx,y-qy)<m;});
 
 /* ---------- objekt ---------- */
 const boxes=[
@@ -272,73 +308,71 @@ const boxes=[
   {x:3600,y:300,w:300,h:400,top:63},
   {x:5500,y:300,w:300,h:300,top:72},
   {x:-330,y:-330,w:150,h:100,top:140,shop:true},
+  {x:23300,y:1700,w:400,h:400,top:280,tower:true},     // drop-in-tornet i Gigantparken
+  {x:9850,y:2060,w:260,h:180,top:120,lodge:true},
 ];
 const kickers=[
-  {x:1380,y:1150,ang:0,len:170,wid:300,h:52,p:'A'},
-  {x:2020,y:1150,ang:Math.PI,len:170,wid:300,h:52,p:'A'},
-  {x:1700,y:830,ang:Math.PI/2,len:170,wid:300,h:52,p:'A'},
-  {x:1700,y:1470,ang:-Math.PI/2,len:170,wid:300,h:52,p:'A'},
-  {x:480,y:1750,ang:0,len:160,wid:150,h:62,p:'A'},
-  {x:1390,y:1750,ang:Math.PI,len:190,wid:170,h:62,p:'A'},
-  {x:2300,y:520,ang:0,len:170,wid:240,h:72,p:'A'},
-  {x:2640,y:520,ang:Math.PI,len:170,wid:240,h:72,p:'A'},
-  {x:2230,y:1710,ang:0,len:70,wid:120,h:22,p:'A'},
-  {x:2790,y:1710,ang:Math.PI,len:70,wid:120,h:22,p:'A'},
-  {x:620,y:520,ang:0.4,len:150,wid:120,h:50,p:'A'},
-  {x:3000,y:780,ang:Math.PI-0.5,len:140,wid:110,h:46,p:'A'},
+  {x:1380,y:1150,ang:0,len:170,wid:300,h:52,p:'A'},{x:2020,y:1150,ang:Math.PI,len:170,wid:300,h:52,p:'A'},
+  {x:1700,y:830,ang:Math.PI/2,len:170,wid:300,h:52,p:'A'},{x:1700,y:1470,ang:-Math.PI/2,len:170,wid:300,h:52,p:'A'},
+  {x:480,y:1750,ang:0,len:160,wid:150,h:62,p:'A'},{x:1390,y:1750,ang:Math.PI,len:190,wid:170,h:62,p:'A'},
+  {x:2300,y:520,ang:0,len:170,wid:240,h:72,p:'A'},{x:2640,y:520,ang:Math.PI,len:170,wid:240,h:72,p:'A'},
+  {x:2230,y:1710,ang:0,len:70,wid:120,h:22,p:'A'},{x:2790,y:1710,ang:Math.PI,len:70,wid:120,h:22,p:'A'},
+  {x:620,y:520,ang:0.4,len:150,wid:120,h:50,p:'A'},{x:3000,y:780,ang:Math.PI-0.5,len:140,wid:110,h:46,p:'A'},
   {x:560,y:700,ang:0,len:150,wid:130,h:48,p:'A'},
-  {x:4750,y:1150,ang:0,len:300,wid:240,h:125,p:'B'},
-  {x:6050,y:1150,ang:Math.PI,len:330,wid:280,h:125,p:'B'},
-  {x:6800,y:250,ang:Math.PI/2,len:260,wid:340,h:135,p:'B'},
-  {x:6800,y:770,ang:-Math.PI/2,len:260,wid:340,h:135,p:'B'},
-  {x:5080,y:1920,ang:0,len:220,wid:200,h:80,p:'B'},
-  {x:5920,y:1920,ang:Math.PI,len:220,wid:200,h:80,p:'B'},
-  {x:4950,y:820,ang:0.2,len:220,wid:180,h:95,p:'B'},
-  {x:7300,y:1500,ang:Math.PI+0.4,len:240,wid:200,h:100,p:'B'},
+  {x:4750,y:1150,ang:0,len:300,wid:240,h:125,p:'B'},{x:6050,y:1150,ang:Math.PI,len:330,wid:280,h:125,p:'B'},
+  {x:6800,y:250,ang:Math.PI/2,len:260,wid:340,h:135,p:'B'},{x:6800,y:770,ang:-Math.PI/2,len:260,wid:340,h:135,p:'B'},
+  {x:5080,y:1920,ang:0,len:220,wid:200,h:80,p:'B'},{x:5920,y:1920,ang:Math.PI,len:220,wid:200,h:80,p:'B'},
+  {x:4950,y:820,ang:0.2,len:220,wid:180,h:95,p:'B'},{x:7300,y:1500,ang:Math.PI+0.4,len:240,wid:200,h:100,p:'B'},
   {x:5250,y:450,ang:0,len:250,wid:220,h:72,p:'B'},
   {x:5650,y:900,ang:-Math.PI/2,len:300,wid:180,h:72,p:'B',stairs:true},
   {x:3750,y:50,ang:Math.PI/2,len:250,wid:200,h:63,p:'S'},
   {x:3750,y:1000,ang:-Math.PI/2,len:300,wid:180,h:63,p:'S',stairs:true},
   {x:2900,y:2750,ang:Math.PI,len:120,wid:120,h:36,p:'S'},
+  // Gigantparken
+  {x:24900,y:1900,ang:Math.PI,len:1200,wid:170,h:280,p:'C',ramp:true},   // upp till tornet
+  {x:23500,y:1050,ang:Math.PI/2,len:650,wid:220,h:280,p:'C',ramp:true},  // drop-in
+  {x:24050,y:800,ang:0,len:450,wid:320,h:200,p:'C'},{x:25800,y:800,ang:Math.PI,len:520,wid:380,h:200,p:'C'},
+  {x:25550,y:1950,ang:0,len:420,wid:480,h:230,p:'C'},{x:26390,y:1950,ang:Math.PI,len:420,wid:480,h:230,p:'C'},
 ];
-// hopp i backarna (riktade nedför)
 {
-  const hb=PISTES[0];
-  [[800,170,220,70],[1800,180,240,80],[2900,190,240,90],[4000,220,260,110]].forEach(([d,len,wid,h])=>{const p=pointAlong(hb,d);kickers.push({x:p.x,y:p.y,ang:p.ang,len,wid,h,p:'M',snow:true});});
-  const sk=PISTES[1];[2400].forEach(d=>{const p=pointAlong(sk,d);kickers.push({x:p.x,y:p.y,ang:p.ang,len:150,wid:160,h:60,p:'M',snow:true});});
-  const bl=PISTES[2];[1500,3200].forEach(d=>{const p=pointAlong(bl,d,60);kickers.push({x:p.x,y:p.y,ang:p.ang,len:140,wid:140,h:50,p:'M',snow:true});});
+  const add=(p,list,lat)=>list.forEach(([d,len,wid,h])=>{const q=pointAlong(p,d,lat||0);kickers.push({x:q.x,y:q.y,ang:q.ang,len,wid,h,p:'M',snow:true});});
+  add(PISTES[0],[[800,160,220,55],[1800,170,240,62],[2900,180,240,70],[4000,200,260,80]]);
+  add(PISTES[1],[[2400,140,160,50]]);
+  add(PISTES[2],[[1500,130,140,42],[3200,130,140,42]],60);
+  add(PISTES[3],[[900,90,140,22]]);
+  add(PISTES[4],[[700,160,220,55],[1900,180,240,65],[3300,200,260,75]]);
+  add(PISTES[5],[[2100,140,170,50]]);
 }
 kickers.forEach(k=>{k.c=Math.cos(k.ang);k.s=Math.sin(k.ang);});
 const rails=[
-  {x0:500,y0:1990,z0:32,x1:1050,y1:1990,z1:32},
-  {x0:6250,y0:1500,z0:40,x1:6950,y1:1500,z1:40},
-  {x0:2750,y0:300,z0:30,x1:2750,y1:900,z1:30},
+  {x0:500,y0:1990,z0:32,x1:1050,y1:1990,z1:32},{x0:6250,y0:1500,z0:40,x1:6950,y1:1500,z1:40},
+  {x0:2750,y0:300,z0:30,x1:2750,y1:900,z1:30},{x0:24100,y0:1450,z0:45,x1:25400,y1:1450,z1:45},
 ];
 for(const k of kickers.filter(k=>k.stairs)){
   for(const s of [-1,1]){const v=s*(k.wid/2-10);
     rails.push({x0:k.x-v*k.s-k.c*20,y0:k.y+v*k.c-k.s*20,z0:28,x1:k.x+(k.len+40)*k.c-v*k.s,y1:k.y+(k.len+40)*k.s+v*k.c,z1:k.h+30,stair:true});}
 }
-// räcken i backarna
-[[PISTES[0],1250,1600,110],[PISTES[0],2300,2650,-120],[PISTES[2],2300,2600,-80]].forEach(([p,a,b,lat])=>{
+[[PISTES[0],1250,1600,110],[PISTES[0],2300,2650,-120],[PISTES[2],2300,2600,-80],[PISTES[4],1200,1550,-110],[PISTES[4],2500,2850,110]].forEach(([p,a,b,lat])=>{
   const A=pointAlong(p,a,lat),B=pointAlong(p,b,lat);
   rails.push({x0:A.x,y0:A.y,z0:terrain(A.x,A.y)+32,x1:B.x,y1:B.y,z1:terrain(B.x,B.y)+32,snow:true});
 });
 rails.forEach(r=>{r.dx=r.x1-r.x0;r.dy=r.y1-r.y0;r.L=Math.hypot(r.dx,r.dy);});
 
-// cirklar (planteringar och träd) i ett rutnät för snabb uppslagning
+// rutnät för cirklar (planteringar = höjd, träd = stammar man krockar med)
 const GRID=200,grid=new Map();
 const gkey=(ix,iy)=>(ix+100)*1000+(iy+100);
 const circles=[];
 function addCircle(c){circles.push(c);
   for(let ix=Math.floor((c.x-c.r)/GRID);ix<=Math.floor((c.x+c.r)/GRID);ix++)for(let iy=Math.floor((c.y-c.r)/GRID);iy<=Math.floor((c.y+c.r)/GRID);iy++){
     const k=gkey(ix,iy);let a=grid.get(k);if(!a){a=[];grid.set(k,a);}a.push(c);}}
-[{x:1100,y:650,r:55,top:30},{x:1120,y:1420,r:55,top:30},{x:2620,y:1150,r:55,top:30},{x:2200,y:2020,r:55,top:30},{x:2050,y:350,r:55,top:30}].forEach(c=>{c.planter=true;addCircle(c);});
+[{x:1100,y:650},{x:1120,y:1420},{x:2620,y:1150},{x:2200,y:2020},{x:2050,y:350}].forEach(c=>addCircle({...c,r:55,top:30,planter:true}));
 
 // vägar, hus, bilar
 const ROADW=260;
 const roads=[
   {h:true,c:-450,a:CX0,b:CX1},{h:true,c:2750,a:CX0,b:CX1},
   {h:false,c:-450,a:CY0,b:CY1},{h:false,c:4150,a:CY0,b:CY1},{h:false,c:8450,a:CY0,b:CY1},
+  {h:true,c:-650,a:C2X0,b:C2X1},{h:true,c:3250,a:C2X0,b:C2X1},{h:false,c:21950,a:-1500,b:4500},{h:false,c:27300,a:-1500,b:4500},
 ];
 const onRoad=(x,y,m)=>roads.some(r=>Math.abs((r.h?y:x)-r.c)<ROADW/2+(m||0)&&(r.h?x>r.a&&x<r.b:y>r.a&&y<r.b));
 const inPark=(x,y,m)=>PARKS.some(p=>x>p.x0-p.deck-m&&x<p.x1+p.deck+m&&y>p.y0-p.deck-m&&y<p.y1+p.deck+m);
@@ -346,7 +380,8 @@ const SHOP_PAD={x:-235,y:-150,r:62};
 const houses=[];
 function addHouse(x,y,w,d){
   if(onRoad(x+w/2,y+d/2,Math.max(w,d)/2+20)||inPark(x+w/2,y+d/2,Math.max(w,d)/2+60))return;
-  if(x<CX0+40||x+w>CX1-40||y<CY0+40||y+d>CY1-40)return;
+  if(x<WX0+40||x+w>WX1-40||y<WY0+40||y+d>WY1-40)return;
+  if(terrain(x,y)>0||terrain(x+w,y+d)>0)return;
   const top=170+Math.floor(rnd()*4)*45;
   const b={x,y,w,h:d,top,house:true,col:[0xf2e3c6,0xd9e6f2,0xf2d0c4,0xe1f0d4,0xf4f1ea,0xc9d7e8][Math.floor(rnd()*6)],
     roof:[0x8a3b2e,0x3d4a5c,0x5c4033,0x2f3d33][Math.floor(rnd()*4)]};
@@ -354,15 +389,17 @@ function addHouse(x,y,w,d){
 }
 for(let x=CX0+100;x<CX1-300;x+=480){addHouse(x,-1260,320,320);addHouse(x,3010,320,320);}
 for(let y=-200;y<2600;y+=520){addHouse(CX0+110,y,300,320);addHouse(8720,y,300,320);}
+for(let x=C2X0+250;x<C2X1-300;x+=480){addHouse(x,-1300,320,320);addHouse(x,3500,320,320);}
+for(let y=-200;y<3000;y+=520)addHouse(27480,y,220,300);
 const cars=[];
-[[600,-450+100,0],[2300,-450-100,Math.PI],[5200,-450+100,0],[7100,-450-100,Math.PI],[1200,2750+100,0],[6400,2750-100,Math.PI],[4150+100,-1100,Math.PI/2],[8450-100,1800,-Math.PI/2],[-450+100,1600,Math.PI/2]]
+[[600,-350,0],[2300,-550,Math.PI],[5200,-350,0],[7100,-550,Math.PI],[1200,2850,0],[6400,2650,Math.PI],[4250,-1100,Math.PI/2],[8350,1800,-Math.PI/2],[-350,1600,Math.PI/2],[23500,-550,0],[26000,3150,Math.PI]]
   .forEach(([x,y,a])=>{const along=Math.abs(Math.sin(a))<0.5;const w=along?120:56,h=along?56:120;
     const c={x:x-w/2,y:y-h/2,w,h,top:44,car:true,ang:a,col:[0xd93030,0x1d4ed8,0xf5f5f5,0x222222,0x16a34a,0xf59e0b][Math.floor(rnd()*6)]};boxes.push(c);cars.push(c);});
 
-// höjdfunktionen: terräng + allt som står på den
+// höjdfunktionen: terräng + saker som står på den (träd räknas inte – de är stammar)
 function local(x,y,noRamp){
   let h=0;
-  if(x<10300){
+  if(x<10300||x>21300){
     for(const q of qps){
       const [s,t]=qpST(q,x,y);
       if(s>0){if(s<=q.deck&&t>=q.t0-q.e0&&t<=q.t1+q.e1&&q.H>h)h=q.H;}
@@ -371,7 +408,7 @@ function local(x,y,noRamp){
     for(const b of boxes){if(x>=b.x&&x<=b.x+b.w&&y>=b.y&&y<=b.y+b.h&&b.top>h)h=b.top;}
   }
   const cell=grid.get(gkey(Math.floor(x/GRID),Math.floor(y/GRID)));
-  if(cell)for(const p of cell){const dx=x-p.x,dy=y-p.y;if(dx*dx+dy*dy<p.r*p.r&&p.top>h)h=p.top;}
+  if(cell)for(const p of cell){if(p.tree)continue;const dx=x-p.x,dy=y-p.y;if(dx*dx+dy*dy<p.r*p.r&&p.top>h)h=p.top;}
   for(const k of kickers){
     const dx=x-k.x,dy=y-k.y,u=dx*k.c+dy*k.s;if(u<0||u>k.len)continue;
     const v=-dx*k.s+dy*k.c;if(Math.abs(v)<=k.wid/2){const r=u/k.len*k.h;if(r>h)h=r;}
@@ -380,31 +417,34 @@ function local(x,y,noRamp){
 }
 const ground=(x,y)=>terrain(x,y)+local(x,y,false);
 const obstacle=(x,y)=>local(x,y,true);
-function treeAt(x,y){const cell=grid.get(gkey(Math.floor(x/GRID),Math.floor(y/GRID)));if(!cell)return false;
-  for(const p of cell){if(!p.tree)continue;const dx=x-p.x,dy=y-p.y;if(dx*dx+dy*dy<p.r*p.r)return true;}return false;}
+function treeAt(x,y,extra){const cell=grid.get(gkey(Math.floor(x/GRID),Math.floor(y/GRID)));if(!cell)return null;
+  for(const p of cell){if(!p.tree)continue;const dx=x-p.x,dy=y-p.y,r=p.r+(extra||0);if(dx*dx+dy*dy<r*r)return p;}return null;}
 
-// träd i stan
+// träd i städerna
 const treeList=[];
-for(let i=0;i<520&&treeList.length<220;i++){
-  const x=CX0+80+rnd()*(CX1-CX0-160),y=CY0+80+rnd()*(CY1-CY0-160);
+for(let i=0;i<900&&treeList.length<300;i++){
+  const x=WX0+80+rnd()*(WX1-WX0-160),y=WY0+80+rnd()*(WY1-WY0-160);
+  if(onMountain(x)&&!(x>C2X0-200))continue;
   if(onRoad(x,y,40)||inPark(x,y,140))continue;
   if(boxes.some(b=>x>b.x-60&&x<b.x+b.w+60&&y>b.y-60&&y<b.y+b.h+60))continue;
   if(local(x,y)>0||local(x+60,y)>0||local(x-60,y)>0||local(x,y+60)>0||local(x,y-60)>0)continue;
   if(x>3450&&x<4050&&y>-100&&y<1400)continue;
   if(Math.hypot(x-SHOP_PAD.x,y-SHOP_PAD.y)<160)continue;
+  if(x>9400&&x<9950&&Math.abs(y-1100)<200)continue;
   treeList.push({x,y,s:0.7+rnd()*0.8,pine:rnd()<0.4,base:0});
   addCircle({x,y,r:12,top:400,tree:true});
 }
 circles.filter(c=>c.planter).forEach(p=>treeList.push({x:p.x,y:p.y,s:0.75,pine:false,base:p.top}));
 // skog på berget
 const forest=[];
-for(let gx=10480;gx<16500;gx+=118)for(let gy=-1620;gy<4640;gy+=118){
+for(let gx=10480;gx<21000;gx+=118)for(let gy=-1620;gy<4640;gy+=118){
   const x=gx+(rnd()-0.5)*80,y=gy+(rnd()-0.5)*80;
-  if(rnd()>0.62)continue;
-  if(Math.abs(y-LY)<150&&x<15500)continue;
-  if(x>15000&&y>-700&&y<3750)continue;
+  if(rnd()>0.6)continue;
+  if(x>MP0-300&&x<MP1+300&&y>-1500&&y<4100)continue;
+  if(nearLift(x,y,170))continue;
   if(PISTES.some(p=>polyDist(p,x,y).d<p.w/2+45))continue;
   if(OFFPISTE.some(p=>polyDist(p,x,y).d<p.w/2))continue;
+  if(LIFTS.some(L=>Math.hypot(x-L.pad.x,y-L.pad.y)<300||Math.hypot(x-L.x1,y-L.y1)<300))continue;
   const s=0.75+rnd()*0.7;
   forest.push({x,y,s,z:terrain(x,y)});
   addCircle({x,y,r:14,top:500,tree:true});
@@ -412,9 +452,13 @@ for(let gx=10480;gx<16500;gx+=118)for(let gy=-1620;gy<4640;gy+=118){
 function whereAmI(x,y){
   for(const p of PARKS)if(x>p.x0&&x<p.x1&&y>p.y0&&y<p.y1)return p.name;
   if(Math.hypot(x-SHOP_PAD.x,y-SHOP_PAD.y)<220)return 'Butiken';
-  if(x>CX1){for(const p of PISTES)if(polyDist(p,x,y).d<p.w/2+20)return p.name;
+  if(x>C2X0)return onRoad(x,y,0)?'Bergsbyn – vägen':'Bergsbyn';
+  if(x>CX1){
+    for(const L of LIFTS)if(Math.hypot(x-L.pad.x,y-L.pad.y)<260)return L.name;
+    for(const p of PISTES)if(polyDist(p,x,y).d<p.w/2+20)return p.name+(season==='summer'?' (MTB-led)':'');
     for(const p of OFFPISTE)if(polyDist(p,x,y).d<p.w/2+20)return p.name+' (offpist)';
-    return x<10500?'Skidbacken – liftkön':'Skidberget';}
+    if(x>MP0-200&&x<MP1+200)return 'Toppen';
+    return 'Berget';}
   if(x>3450&&x<4050&&y>-100&&y<1400)return 'Trapporna';
   return onRoad(x,y,0)?'Vägen':'Stan';
 }
@@ -429,16 +473,19 @@ const VEH={
     tricks:[{n:'Barspin',k:'bar',d:0.30,pts:120},{n:'Tailwhip',k:'whip',d:0.40,pts:150},{n:'Heelwhip',k:'whipR',d:0.42,pts:170},{n:'Superman',k:'super',d:0.55,pts:180}]},
   bmx:{name:'BMX',icon:'🚲',maxs:500,acc:430,frict:55,turn:2.6,g:'Peg grind',
     tricks:[{n:'Barspin',k:'bar',d:0.32,pts:120},{n:'Tailwhip',k:'whip',d:0.45,pts:160},{n:'Superman',k:'super',d:0.55,pts:180},{n:'Table top',k:'table',d:0.5,pts:140}]},
+  mtb:{name:'Mountainbike',icon:'🚵',maxs:470,acc:400,frict:60,turn:2.5,g:'Rail ride',
+    tricks:[{n:'No hander',k:'nohand',d:0.5,pts:130},{n:'Superman',k:'super',d:0.55,pts:180},{n:'Tailwhip',k:'whip',d:0.5,pts:170},{n:'Table top',k:'table',d:0.5,pts:140}]},
   skate:{name:'Skateboard',icon:'🛹',maxs:410,acc:400,frict:55,turn:2.8,g:'50-50',
     tricks:[{n:'Kickflip',k:'kflip',d:0.36,pts:130},{n:'Heelflip',k:'hflip',d:0.36,pts:130},{n:'Shove-it',k:'shove',d:0.34,pts:100},{n:'Indy grab',k:'grab',d:0.5,pts:140}]},
   inline:{name:'Inlines',icon:'🛼',maxs:480,acc:450,frict:50,turn:3.0,g:'Soul grind',
     tricks:[{n:'Mute grab',k:'grab',d:0.5,pts:130},{n:'Christ air',k:'christ',d:0.5,pts:140},{n:'Liu Kang',k:'liu',d:0.5,pts:150},{n:'Misty flip',k:'misty',d:0.7,pts:300}]},
-  snowboard:{name:'Snowboard',icon:'🏂',maxs:620,acc:260,frict:30,turn:2.6,snowOnly:true,g:'Boardslide',
+  snowboard:{name:'Snowboard',icon:'🏂',maxs:480,acc:240,frict:30,turn:2.6,snowOnly:true,g:'Boardslide',
     tricks:[{n:'Indy grab',k:'grab',d:0.5,pts:130},{n:'Method',k:'method',d:0.55,pts:160},{n:'Tail grab',k:'tail',d:0.5,pts:130},{n:'Rodeo',k:'misty',d:0.7,pts:300}]},
-  ski:{name:'Skidor',icon:'⛷️',maxs:640,acc:280,frict:28,turn:2.8,snowOnly:true,g:'Railslide',
+  ski:{name:'Skidor',icon:'⛷️',maxs:500,acc:260,frict:28,turn:2.8,snowOnly:true,g:'Railslide',
     tricks:[{n:'Mute grab',k:'grab',d:0.5,pts:130},{n:'Iron cross',k:'iron',d:0.5,pts:150},{n:'Daffy',k:'daffy',d:0.5,pts:140},{n:'Misty flip',k:'misty',d:0.7,pts:300}]},
+  car:{name:'Bil',icon:'🚗',maxs:680,acc:380,frict:80,turn:1.9,car:true,g:'',tricks:[]},
 };
-const VEH_ORDER=['walk','kick','bmx','skate','inline','snowboard','ski'];
+const VEH_ORDER=['walk','kick','bmx','mtb','skate','inline','snowboard','ski','car'];
 const PAL={
   hat:[['helmet','Hjälm'],['cap','Keps']],
   helmet:[0xffd23a,0xd93030,0xffffff,0x111111,0x16a34a,0xec4899,0x2b6cff,0xff7a1a],
@@ -452,7 +499,7 @@ let look={veh:'kick',hat:'helmet',helmet:0xffd23a,top:0x2b6cff,pants:0x2f3540,sk
 try{const s=JSON.parse(localStorage.getItem(LS_LOOK)||'null');if(s&&VEH[s.veh])look=Object.assign(look,s);}catch(e){}
 function lookToAvatar(l){
   return {deck:l.vcol,frame:l.vcol,hub:0x3ad1ff,bar:0xdfe4ea,top:l.top,pants:l.pants,skin:l.skin,glove:0x1b1b1b,shoe:l.shoe,
-    helmet:l.helmet,stripe:0x111111,hat:l.hat==='cap'?'cap':null,skiCol:l.vcol};
+    helmet:l.helmet,stripe:0x111111,hat:l.hat==='cap'?'cap':null,skiCol:l.vcol,car:l.vcol};
 }
 
 /* =========================================================
@@ -467,14 +514,14 @@ function takeoff(R,vz){
   if(R.onTakeoff)R.onTakeoff(R);
 }
 function coping(R,nx,ny,g0){
-  if(R.x>CX1)return null;
+  if(R.x>CX1&&R.x<C2X0)return null;
   for(const q of qps){
     const [s0,t0]=qpST(q,R.x,R.y);if(s0>0||s0<-q.D*0.6||t0<q.t0||t0>q.t1)continue;
     const [s1]=qpST(q,nx,ny);if(s1<=0)continue;
     const vn=R.vx*q.nx+R.vy*q.ny;
     if(vn>40&&g0>q.H*0.55){
       R.vx-=q.nx*(vn+35);R.vy-=q.ny*(vn+35);R.z=g0;
-      takeoff(R,vn*1.05+110);R.flipTo=Math.atan2(-q.ny,-q.nx);
+      takeoff(R,vn*1.0+100);R.flipTo=Math.atan2(-q.ny,-q.nx);
       return 'air';
     }
     R.vx-=q.nx*(Math.max(vn,0)+15);R.vy-=q.ny*(Math.max(vn,0)+15);
@@ -482,6 +529,7 @@ function coping(R,nx,ny,g0){
   }
   return null;
 }
+const TREE_HIT=170;
 function physics(R,steer,thr,dt){
   const V=VEH[R.veh];
   if(!R.air){
@@ -491,12 +539,14 @@ function physics(R,steer,thr,dt){
     else if(!V.snowOnly&&snow&&R.veh!=='walk'){acc*=0.5;maxs=Math.min(maxs,260);fr*=1.6;}
     const hc=Math.cos(R.ang),hs=Math.sin(R.ang);
     let spd=R.vx*hc+R.vy*hs;
-    R.ang+=steer*V.turn*dt*(Math.abs(spd)<30?0.7:1)*(spd<-10?-1:1);
+    if(V.car)R.ang+=steer*V.turn*dt*clamp(Math.abs(spd)/140,0,1)*Math.sign(spd||1);
+    else R.ang+=steer*V.turn*dt*(Math.abs(spd)<30?0.7:1)*(spd<-10?-1:1);
     if(thr>0.15){if(spd<maxs)spd+=acc*thr*dt*(spd<0?2:1);}
-    else if(thr<-0.3&&spd>0)spd-=Math.min(spd,Math.max(acc,400)*1.5*-thr*dt);
+    else if(thr<-0.3){if(spd>0)spd-=Math.min(spd,Math.max(acc,400)*1.5*-thr*dt);else if(V.car&&spd>-180)spd-=acc*0.6*-thr*dt;}
     else if(R.veh==='walk')spd-=Math.sign(spd)*Math.min(Math.abs(spd),fr*dt);
     spd-=Math.sign(spd)*Math.min(Math.abs(spd),(R.veh==='walk'?40:fr)*dt);
-    spd-=Math.sign(spd)*spd*spd*DRAG*dt;
+    spd-=Math.sign(spd)*spd*spd*(onMountain(R.x)?SNOW_DRAG:DRAG)*dt;
+    if(onMountain(R.x)&&Math.abs(spd)>maxs){spd-=Math.sign(spd)*Math.min(Math.abs(spd)-maxs,900*dt);spd=clamp(spd,-maxs*1.1,maxs*1.1);}
     const gx=(ground(R.x+2,R.y)-ground(R.x-2,R.y))/4,gy=(ground(R.x,R.y+2)-ground(R.x,R.y-2))/4;
     const nc=Math.cos(R.ang),ns=Math.sin(R.ang);
     spd-=(gx*nc+gy*ns)*SLOPE*(R.veh==='walk'?0.25:1)*dt;
@@ -508,14 +558,18 @@ function physics(R,steer,thr,dt){
     if(cp==='air')return false;
     if(cp==='stop'){nx=R.x+R.vx*dt;ny=R.y+R.vy*dt;}
     if(nx<WX0||nx>WX1||ny<WY0||ny>WY1){R.vx*=-0.3;R.vy*=-0.3;return false;}
+    // träd: krock
+    const tr=treeAt(nx,ny,V.car?22:4);
+    if(tr){if(Math.abs(spd)>TREE_HIT)R.hitHard=true;const ax=R.x-tr.x,ay=R.y-tr.y,d=Math.hypot(ax,ay)||1;R.vx=ax/d*60;R.vy=ay/d*60;R.bumped=true;return false;}
     const g1=ground(nx,ny);
-    if(g1>g0+10){if(Math.abs(spd)>230)R.hitHard=true;R.vx*=-0.3;R.vy*=-0.3;R.bumped=true;return false;}
+    if(g1>g0+10){if(Math.abs(spd)>TREE_HIT)R.hitHard=true;R.vx*=-0.3;R.vy*=-0.3;R.bumped=true;return false;}
     const bx=R.x-R.vx*dt,by=R.y-R.vy*dt,gb=ground(bx,by);
     if(g1<g0-3&&g1<g0+(g0-gb)-4){
       const t0=terrain(R.x,R.y),tb=terrain(bx,by);
-      const rel=((g0-t0)-(gb-tb))/dt,tr=(t0-tb)/dt;
+      const rel=((g0-t0)-(gb-tb))/dt,trr=(t0-tb)/dt,lipH=g0-t0;
       R.x=nx;R.y=ny;R.z=g0;
-      takeoff(R,rel>30?rel*2.4+150+Math.min(0,tr)*0.6:Math.max(0,tr)*0);
+      // kortare hopp: begränsat av hur hög kanten är
+      takeoff(R,rel>30?Math.min(rel*1.2+90,200+lipH*1.2)+Math.min(0,trr)*0.6:0);
       return false;
     }
     R.x=nx;R.y=ny;R.z=g1;
@@ -535,7 +589,10 @@ function moveFlat(R,dt){
   let nx=R.x+R.vx*dt,ny=R.y+R.vy*dt;
   if(nx<WX0||nx>WX1){R.vx*=-0.4;nx=clamp(nx,WX0,WX1);}
   if(ny<WY0||ny>WY1){R.vy*=-0.4;ny=clamp(ny,WY0,WY1);}
-  if(ground(nx,ny)>R.z+12){if(Math.hypot(R.vx,R.vy)>260)R.hitHard=true;R.vx*=-0.4;R.vy*=-0.4;return;}
+  const sp=Math.hypot(R.vx,R.vy);
+  const tr=treeAt(nx,ny,4);
+  if(tr&&R.z<terrain(tr.x,tr.y)+330){if(sp>120)R.hitHard=true;const ax=R.x-tr.x,ay=R.y-tr.y,d=Math.hypot(ax,ay)||1;R.vx=ax/d*50;R.vy=ay/d*50;return;}
+  if(ground(nx,ny)>R.z+12){if(sp>200)R.hitHard=true;R.vx*=-0.4;R.vy*=-0.4;return;}
   R.x=nx;R.y=ny;
   if(!R.air)R.z=ground(R.x,R.y);
 }
@@ -582,19 +639,22 @@ function bindBtn(id,fn){
 bindBtn('bJump',jump);[0,1,2,3].forEach(i=>bindBtn('t'+i,()=>trickBtn(i)));
 window.addEventListener('keydown',e=>{
   const k=e.key.toLowerCase();keys[k]=true;if(e.repeat)return;
-  if(e.key===' ')jump();const ti='jklö'.indexOf(k);if(ti>=0)trickBtn(ti);if(k==='u')trickBtn(3);
+  if(e.key===' ')jump();const ti='jklu'.indexOf(k);if(ti>=0)trickBtn(ti);
 });
 window.addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false;});
 document.addEventListener('gesturestart',e=>e.preventDefault());
 function readKeys(){
-  if(js.id!==null)return;
+  if(js.id!==null||!Object.values(keys).some(v=>v)&&!readKeys.was)return;
+  readKeys.was=Object.values(keys).some(v=>v);
   const kx=(keys.arrowright||keys.d?1:0)-(keys.arrowleft||keys.a?1:0);
   const ky=(keys.arrowdown||keys.s?1:0)-(keys.arrowup||keys.w?1:0);
   js.x=kx;js.y=ky;js.mag=Math.min(1,Math.hypot(kx,ky));
 }
 function canAct(){return running&&!P.crashT&&!P.lift&&!(comp&&comp.pre>0);}
+let honkT=0;
 function jump(){
   if(!canAct())return;
+  if(VEH[P.veh].car){honkT=1.2;addPopup('TUUT!','','#fff');return;}
   if(P.grind){leaveGrind(320);return;}
   if(P.air)return;P.tr=[];takeoff(P,P.veh==='walk'?300:330);
 }
@@ -610,11 +670,13 @@ P.onTakeoff=R=>{R.tricks=[];R.tr=[];R.flipT=0;R.flipArm=Math.abs(js.y)<0.3;R.spi
 function setButtons(){
   const v=VEH[P.veh];
   [0,1,2,3].forEach(i=>{const b=$('t'+i),t=v.tricks[i];b.hidden=!t;if(t)b.textContent=t.n.toUpperCase();});
+  $('bJump').textContent=v.car?'TUTA':'HOPP';
+  $('bVeh').textContent=v.icon;
 }
 
 /* ---------- grind ---------- */
 function tryGrind(){
-  if(!P.air||P.grind||P.vz>60||P.crashT>0||P.tr.length)return;
+  if(!P.air||P.grind||P.vz>60||P.crashT>0||P.tr.length||VEH[P.veh].car)return;
   for(const r of rails){
     const u=((P.x-r.x0)*r.dx+(P.y-r.y0)*r.dy)/(r.L*r.L);if(u<0.02||u>0.98)continue;
     const px=r.x0+r.dx*u,py=r.y0+r.dy*u;if(Math.hypot(P.x-px,P.y-py)>20)continue;
@@ -646,16 +708,21 @@ function leaveGrind(vz){
   P.air=true;P.vz=vz;P.spin=0;P.flip=0;P.baseAng=P.ang;P.flipArm=Math.abs(js.y)<0.3;P.spinArm=Math.abs(js.x)<0.15;
 }
 
-/* ---------- lift ---------- */
+/* ---------- liftar ---------- */
 let liftCool=0;
+function liftPos(L,s){return {x:L.x0+L.ux*L.len*s+L.px*L.off,y:L.y0+L.uy*L.len*s+L.py*L.off};}
 function updateLift(dt){
-  const L=P.lift;L.s+=dt/LIFT_T;
-  const x=LBX+L.s*(LTX-LBX);
-  P.x=x;P.y=LY-28;P.z=cableZ(x)-58;P.ang=0;P.baseAng=0;P.vx=P.vy=0;P.air=false;P.pitch=0;P.roll=0;
-  if(L.s>=1){
+  const lf=P.lift,L=lf.L;lf.s+=dt/L.T;
+  const q=liftPos(L,Math.min(lf.s,1));
+  P.x=q.x;P.y=q.y;P.ang=Math.atan2(L.uy,L.ux);P.baseAng=P.ang;P.vx=P.vy=0;P.air=false;P.pitch=0;P.roll=0;
+  const cz=cableZ(L,Math.min(lf.s,1));
+  if(L.type==='chair')P.z=cz-58-24;
+  else if(L.type==='gondola')P.z=cz-150;
+  else{P.z=ground(P.x,P.y);P.wheel+=dt*30;}
+  if(lf.s>=1){
     P.lift=null;liftCool=3;
-    P.x=LTX+140;P.y=LY+160;P.ang=Math.atan2(1750-P.y,15200-P.x);P.baseAng=P.ang;P.z=ground(P.x,P.y);
-    addPopup('Toppen!','Välj en backe');
+    P.x=L.x1+L.ux*140-L.px*120;P.y=L.y1+L.uy*140-L.py*120;P.ang=Math.atan2(L.uy,L.ux);P.baseAng=P.ang;P.z=ground(P.x,P.y);
+    addPopup(L.type==='tbar'?'Uppe!':'Toppen!',L.name);
   }
 }
 
@@ -684,7 +751,7 @@ function landPlayer(){
   if(!t.parts.length||t.pts<=0)return;
   const pts=Math.round(t.pts*Math.max(1,t.n)+P.airT*60);
   score+=pts;cheerT=2;
-  addPopup(t.parts.join(' + ')+(fakie&&!(t.parts.some(p=>/^\d/.test(p)))?' (fakie)':''),'+'+pts);
+  addPopup(t.parts.join(' + '),'+'+pts);
   if(comp&&!comp.pre){if(comp.def.type==='score'||comp.def.type==='run')comp.val+=pts;if(comp.def.type==='best')comp.val=Math.max(comp.val,pts);}
   if(pts>best){best=pts;try{localStorage.setItem(LS_BEST,best);}catch(e){}setTimeout(()=>addPopup('Nytt rekord!','','#ffd23a'),350);}
   updHud();
@@ -722,11 +789,10 @@ function updatePlayer(dt){
     }else if(P.flipArm&&Math.abs(thr)>0.5){P.flipDir=Math.sign(thr);P.flipStart=P.flip;P.flipT=FLIP_DUR;}
   }
   const landed=physics(P,steer,thr,dt);
-  if(P.hitHard){P.hitHard=false;if(!P.air||landed){crash();return;}crash();return;}
+  if(P.hitHard){P.hitHard=false;crash();return;}
   if(landed)landPlayer();else tryGrind();
-  // liften
   liftCool-=dt;
-  if(!P.air&&liftCool<=0&&Math.hypot(P.x-LIFT_PAD.x,P.y-LIFT_PAD.y)<LIFT_PAD.r){P.lift={s:0};P.tr=[];addPopup('Liften','Upp mot toppen!');}
+  if(!P.air&&liftCool<=0&&!VEH[P.veh].car){for(const L of LIFTS)if(Math.hypot(P.x-L.pad.x,P.y-L.pad.y)<L.pad.r){P.lift={L,s:0};P.tr=[];addPopup(L.name,L.type==='tbar'?'Håll i dig!':'Upp mot toppen!');break;}}
 }
 
 /* =========================================================
@@ -764,10 +830,12 @@ function setLimb(m,a,b){
 }
 const V3=(x,y,z)=>new THREE.Vector3(x,y,z);
 
-// gräs
-const grassTex=canvasTex(128,128,(g,w,h)=>{g.fillStyle='#6aa84f';g.fillRect(0,0,w,h);for(let i=0;i<900;i++){g.fillStyle=Math.random()<.5?'rgba(40,90,30,.25)':'rgba(150,200,110,.25)';g.fillRect(Math.random()*w,Math.random()*h,2,3);}},140,80);
-const grass=new THREE.Mesh(new THREE.PlaneGeometry(30000,20000),new THREE.MeshLambertMaterial({map:grassTex}));
-grass.rotation.x=-Math.PI/2;grass.position.set(4000,-0.5,1500);scene.add(grass);
+// gräs / snö
+const grassTex=canvasTex(128,128,(g,w,h)=>{g.fillStyle='#6aa84f';g.fillRect(0,0,w,h);for(let i=0;i<900;i++){g.fillStyle=Math.random()<.5?'rgba(40,90,30,.25)':'rgba(150,200,110,.25)';g.fillRect(Math.random()*w,Math.random()*h,2,3);}},200,80);
+const snowTex=canvasTex(128,128,(g,w,h)=>{g.fillStyle='#eef3f8';g.fillRect(0,0,w,h);for(let i=0;i<700;i++){g.fillStyle=Math.random()<.5?'rgba(170,190,215,.25)':'rgba(255,255,255,.6)';g.fillRect(Math.random()*w,Math.random()*h,2,2);}},200,80);
+const grassMat=new THREE.MeshLambertMaterial({map:grassTex});
+const grass=new THREE.Mesh(new THREE.PlaneGeometry(40000,20000),grassMat);
+grass.rotation.x=-Math.PI/2;grass.position.set(13000,-0.5,1500);scene.add(grass);
 // vägar
 const roadTex=canvasTex(256,256,(g,w,h)=>{g.fillStyle='#3a3d44';g.fillRect(0,0,w,h);
   for(let i=0;i<1600;i++){const v=Math.random()<.5?0:255;g.fillStyle=`rgba(${v},${v},${v},0.06)`;g.fillRect(Math.random()*w,Math.random()*h,2,2);}
@@ -780,9 +848,8 @@ for(const r of roads){
   [-1,1].forEach(s=>{const sw=new THREE.Mesh(new THREE.PlaneGeometry(40,len),lam(0xc9ccd2));sw.rotation.x=-Math.PI/2;if(r.h)sw.rotation.z=Math.PI/2;
     sw.position.set(r.h?(r.a+r.b)/2:r.c+s*(ROADW/2+20),0.25,r.h?r.c+s*(ROADW/2+20):(r.a+r.b)/2);scene.add(sw);});
 }
-// väg till berget
 {const m=new THREE.Mesh(new THREE.PlaneGeometry(1300,ROADW),new THREE.MeshLambertMaterial({map:concreteTex(6,1),color:0xbfc3c9}));
-  m.rotation.x=-Math.PI/2;m.position.set(CX1+250,0.28,LY);scene.add(m);}
+  m.rotation.x=-Math.PI/2;m.position.set(CX1+250,0.28,1100);scene.add(m);}
 {const m=new THREE.Mesh(new THREE.PlaneGeometry(560,1500),new THREE.MeshLambertMaterial({map:concreteTex(3,7),color:0xd8d2c6}));
   m.rotation.x=-Math.PI/2;m.position.set(3750,0.35,600);scene.add(m);}
 // parkgolv
@@ -802,7 +869,7 @@ for(const pk of PARKS){
 const rampMat=new THREE.MeshLambertMaterial({map:concreteTex(6,1),side:THREE.DoubleSide});
 const deckMat=new THREE.MeshLambertMaterial({map:concreteTex(8,1),color:0xc4c7cd});
 const sideMatQ=new THREE.MeshLambertMaterial({color:0x8f939b,side:THREE.DoubleSide});
-const QSEG=14;
+const QSEG=16;
 for(const q of qps){
   const len=q.t1-q.t0;
   const pos=[],uv=[],idx=[];
@@ -824,7 +891,8 @@ for(const q of qps){
   const d=new THREE.Mesh(new THREE.BoxGeometry(q.horiz?dlen:q.deck,q.H,q.horiz?q.deck:dlen),deckMat);
   d.position.set(dx,q.H/2,dy);scene.add(d);
   const [cx,cy]=worldOf(q,0,(q.t0+q.t1)/2);
-  const c=new THREE.Mesh(new THREE.CylinderGeometry(q.H>150?5:4,q.H>150?5:4,len,8),copMat);
+  const cr=q.H>150?5:4;
+  const c=new THREE.Mesh(new THREE.CylinderGeometry(cr,cr,len,8),copMat);
   c.rotation[q.horiz?'z':'x']=Math.PI/2;c.position.set(cx,q.H,cy);scene.add(c);
   const [rx,ry]=worldOf(q,q.deck-6,mid);
   const rail=new THREE.Mesh(new THREE.CylinderGeometry(2.5,2.5,dlen,6),darkMetal);rail.rotation[q.horiz?'z':'x']=Math.PI/2;rail.position.set(rx,q.H+60,ry);scene.add(rail);
@@ -843,10 +911,11 @@ decal(900,300,1700,1950,0,txt('KICK','rgba(255,122,26,.6)',true));
 decal(500,500,800,1150,0.3,(g,w,h)=>{g.lineWidth=40;g.strokeStyle='rgba(58,209,255,.45)';g.beginPath();g.arc(w/2,h/2,w/2-30,0,TAU);g.stroke();g.fillStyle='rgba(255,210,58,.45)';g.beginPath();g.arc(w/2,h/2,w/5,0,TAU);g.fill();});
 decal(700,220,2750,1150,-Math.PI/2,txt('SKATE','rgba(160,110,255,.5)'));
 decal(1100,320,6150,1700,0,txt('MEGA','rgba(217,48,48,.55)',true));
+decal(1600,420,24900,2250,0,txt('GIGANT','rgba(58,170,230,.55)',true));
 decal(240,300,4150,1150,0,(g,w,h)=>{g.fillStyle='rgba(255,255,255,.85)';for(let i=0;i<6;i++)g.fillRect(0,i*h/6+8,w,h/12);});
 decal(SHOP_PAD.r*2,SHOP_PAD.r*2,SHOP_PAD.x,SHOP_PAD.y,0,(g,w,h)=>{g.fillStyle='rgba(22,163,74,.75)';g.beginPath();g.arc(w/2,h/2,w/2-6,0,TAU);g.fill();
   g.fillStyle='#fff';g.font=`900 ${h*0.16}px system-ui`;g.textAlign='center';g.textBaseline='middle';g.fillText('BYT',w/2,h/2-h*0.1);g.fillText('FORDON',w/2,h/2+h*0.1);});
-// hus (ett material per hus), bilar, boxar, butik
+// hus, bilar, boxar
 const winTex=canvasTex(128,128,(g,w,h)=>{g.fillStyle='#fff';g.fillRect(0,0,w,h);g.fillStyle='#5a7da6';
   g.fillRect(18,22,36,34);g.fillRect(74,22,36,34);g.fillStyle='rgba(255,255,255,.5)';g.fillRect(22,26,10,26);g.fillRect(78,26,10,26);});
 function makeCarMesh(col){
@@ -858,6 +927,7 @@ function makeCarMesh(col){
   [[61,14],[61,-14]].forEach(([x,z])=>{const l=new THREE.Mesh(new THREE.BoxGeometry(2,6,10),new THREE.MeshBasicMaterial({color:0xfff6cc}));l.position.set(x,24,z);g.add(l);});
   return g;
 }
+const towerMat=new THREE.MeshLambertMaterial({map:concreteTex(3,3),color:0xb8c0cc});
 for(const b of boxes){
   if(b.house){
     const t=winTex.clone();t.needsUpdate=true;t.repeat.set(Math.max(1,Math.round(b.w/90)),Math.max(1,Math.round(b.top/90)));
@@ -865,7 +935,7 @@ for(const b of boxes){
     m.position.set(b.x+b.w/2,b.top/2,b.y+b.h/2);scene.add(m);
     const roof=new THREE.Mesh(new THREE.ConeGeometry(Math.hypot(b.w,b.h)/2+14,90,4),lam(b.roof));roof.rotation.y=Math.PI/4;
     roof.position.set(b.x+b.w/2,b.top+45,b.y+b.h/2);scene.add(roof);
-    const front=b.y<0?1:-1;const door=new THREE.Mesh(new THREE.BoxGeometry(34,64,3),lam(0x6b4226));
+    const front=b.y<1000?1:-1;const door=new THREE.Mesh(new THREE.BoxGeometry(34,64,3),lam(0x6b4226));
     door.position.set(b.x+b.w/2,32,b.y+(front>0?b.h+1.5:-1.5));scene.add(door);
     continue;
   }
@@ -878,9 +948,15 @@ for(const b of boxes){
     const win=new THREE.Mesh(new THREE.PlaneGeometry(90,40),lam(0x6fa8dc));win.position.set(b.x+b.w/2,55,b.y+b.h+0.8);scene.add(win);
     continue;
   }
-  const m=new THREE.Mesh(new THREE.BoxGeometry(b.w,b.top,b.h),new THREE.MeshLambertMaterial({map:concreteTex(b.w/150,b.h/150),color:0xd2d5db}));
+  if(b.lodge){
+    const lw=new THREE.Mesh(new THREE.BoxGeometry(b.w,b.top,b.h),lam(0x8b5a2b));lw.position.set(b.x+b.w/2,b.top/2,b.y+b.h/2);scene.add(lw);
+    const lr=new THREE.Mesh(new THREE.ConeGeometry(190,90,4),lam(0x3d2b1f));lr.rotation.y=Math.PI/4;lr.scale.set(1.1,1,0.8);lr.position.set(b.x+b.w/2,b.top+45,b.y+b.h/2);scene.add(lr);
+    continue;
+  }
+  const m=new THREE.Mesh(new THREE.BoxGeometry(b.w,b.top,b.h),b.tower?towerMat:new THREE.MeshLambertMaterial({map:concreteTex(b.w/150,b.h/150),color:0xd2d5db}));
   m.position.set(b.x+b.w/2,b.top/2,b.y+b.h/2);scene.add(m);
   const e=new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry),new THREE.LineBasicMaterial({color:0xffffff}));e.position.copy(m.position);scene.add(e);
+  if(b.tower){for(const [dx,dz] of [[0,0],[b.w,0],[0,b.h],[b.w,b.h]]){const p=new THREE.Mesh(new THREE.CylinderGeometry(2.5,2.5,60,6),darkMetal);p.position.set(b.x+dx,b.top+30,b.y+dz);scene.add(p);}}
 }
 for(const p of circles.filter(c=>c.planter)){
   const m=new THREE.Mesh(new THREE.CylinderGeometry(p.r,p.r+4,p.top,20),lam(0xbcbfc6));m.position.set(p.x,p.top/2,p.y);scene.add(m);
@@ -893,6 +969,7 @@ const woodMat=new THREE.MeshLambertMaterial({map:woodTex,side:THREE.DoubleSide})
 const sideMat=new THREE.MeshLambertMaterial({color:0x8a6a45,side:THREE.DoubleSide});
 const snowKMat=new THREE.MeshLambertMaterial({color:0xf3f7fb,side:THREE.DoubleSide});
 const snowSide=new THREE.MeshLambertMaterial({color:0xd8e3ee,side:THREE.DoubleSide});
+const rampConc=new THREE.MeshLambertMaterial({map:concreteTex(2,6),side:THREE.DoubleSide});
 const stepMat=new THREE.MeshLambertMaterial({map:concreteTex(1,1),color:0xdcdfe4});
 for(const k of kickers){
   if(k.stairs){
@@ -909,12 +986,12 @@ for(const k of kickers){
   const top=new THREE.BufferGeometry();
   top.setAttribute('position',new THREE.Float32BufferAttribute([A,C,D,A,D,B].flat(),3));
   top.setAttribute('uv',new THREE.Float32BufferAttribute([0,0,0,L/40,w/20,L/40,0,0,w/20,L/40,w/20,0],2));
-  top.computeVertexNormals();scene.add(new THREE.Mesh(top,k.snow?snowKMat:woodMat));
+  top.computeVertexNormals();scene.add(new THREE.Mesh(top,k.snow?snowKMat:k.ramp?rampConc:woodMat));
   const sides=new THREE.BufferGeometry();
   sides.setAttribute('position',new THREE.Float32BufferAttribute([C,E,F,C,F,D,A,E,C,B,D,F].flat(),3));
-  sides.computeVertexNormals();scene.add(new THREE.Mesh(sides,k.snow?snowSide:sideMat));
-  const lip=new THREE.Mesh(new THREE.CylinderGeometry(2.5,2.5,k.wid,6),k.snow?lam(0x2b6cff):copMat);
-  lip.position.set(...P3(L,0,h));lip.rotation.order='YXZ';lip.rotation.y=-k.ang;lip.rotation.x=Math.PI/2;scene.add(lip);
+  sides.computeVertexNormals();scene.add(new THREE.Mesh(sides,k.snow?snowSide:k.ramp?sideMatQ:sideMat));
+  if(!k.ramp){const lip=new THREE.Mesh(new THREE.CylinderGeometry(2.5,2.5,k.wid,6),k.snow?lam(0x2b6cff):copMat);
+    lip.position.set(...P3(L,0,h));lip.rotation.order='YXZ';lip.rotation.y=-k.ang;lip.rotation.x=Math.PI/2;scene.add(lip);}
 }
 // räcken
 for(const r of rails){
@@ -924,7 +1001,7 @@ for(const r of rails){
   for(let i=0;i<=n;i++){const u=0.04+0.92*i/n,x=r.x0+r.dx*u,y=r.y0+r.dy*u,z=r.z0+(r.z1-r.z0)*u,g=ground(x,y);
     if(z-g<4)continue;const p=new THREE.Mesh(new THREE.CylinderGeometry(2.4,2.4,z-g,8),metalMat);p.position.set(x,g+(z-g)/2,y);scene.add(p);}
 }
-// träd i stan (instansade)
+// stadsträd (instansade)
 {
   const dummy=new THREE.Object3D();
   const trunk=new THREE.InstancedMesh(new THREE.CylinderGeometry(6,9,90,6),lam(0x7a5233),treeList.length);
@@ -937,46 +1014,53 @@ for(const r of rails){
     dummy.position.set(t.x,t.base+120*t.s,t.y);dummy.scale.set(t.s,t.s*0.9,t.s);dummy.rotation.y=i;dummy.updateMatrix();leafM.setMatrixAt(i*2,dummy.matrix);
     dummy.position.set(t.x+18*t.s,t.base+160*t.s,t.y-10*t.s);dummy.scale.setScalar(t.s*0.7);dummy.updateMatrix();leafM.setMatrixAt(i*2+1,dummy.matrix);});
   scene.add(trunk,pineM,leafM);
+  window.__leafM=leafM;
 }
 // gatlampor
 for(const r of roads){for(let p=r.a+300;p<r.b;p+=900){
   const x=r.h?p:r.c+ROADW/2+30,z=r.h?r.c+ROADW/2+30:p;
-  if(inPark(x,z,10)||local(x,z)>0)continue;
+  if(inPark(x,z,10)||local(x,z)>0||terrain(x,z)>0)continue;
   const pl=new THREE.Mesh(new THREE.CylinderGeometry(3,4,220,6),darkMetal);pl.position.set(x,110,z);scene.add(pl);
   const hd=new THREE.Mesh(new THREE.BoxGeometry(34,8,14),darkMetal);hd.position.set(x,222,z);scene.add(hd);
   const lt=new THREE.Mesh(new THREE.BoxGeometry(26,3,10),new THREE.MeshBasicMaterial({color:0xfff3c4}));lt.position.set(x,217,z);scene.add(lt);
 }}
 
-/* ---------- skidberget i 3D ---------- */
+/* ---------- berget i 3D ---------- */
+const TX0=9500,TX1=21600,TY0=-1700,TY1=4700,TS=40;
+const terrGeo=new THREE.PlaneGeometry(TX1-TX0,TY1-TY0,(TX1-TX0)/TS,(TY1-TY0)/TS);terrGeo.rotateX(-Math.PI/2);terrGeo.translate((TX0+TX1)/2,0,(TY0+TY1)/2);
+const terrCols={};
 {
-  const TX0=9500,TX1=16600,TY0=-1700,TY1=4700,TS=40;
-  const geo=new THREE.PlaneGeometry(TX1-TX0,TY1-TY0,(TX1-TX0)/TS,(TY1-TY0)/TS);geo.rotateX(-Math.PI/2);geo.translate((TX0+TX1)/2,0,(TY0+TY1)/2);
-  const pos=geo.attributes.position,cols=new Float32Array(pos.count*3),c=new THREE.Color();
-  const base=new THREE.Color(0xe2eaf3),piste=new THREE.Color(0xffffff),trail=new THREE.Color(0xeff3f8),grassC=new THREE.Color(0x8fbf6a);
+  const pos=terrGeo.attributes.position,c=new THREE.Color();
+  const W={base:new THREE.Color(0xe2eaf3),piste:new THREE.Color(0xffffff),trail:new THREE.Color(0xeff3f8)};
+  const Su={base:new THREE.Color(0x76a653),piste:new THREE.Color(0xa88a5c),trail:new THREE.Color(0x8b7a52)};
+  const grassC=new THREE.Color(0x8fbf6a);
+  const cw=new Float32Array(pos.count*3),cs=new Float32Array(pos.count*3);
   for(let i=0;i<pos.count;i++){
     const x=pos.getX(i),y=pos.getZ(i);pos.setY(i,terrain(x,y)+0.8);
-    if(x<MX0-120){c.copy(grassC).lerp(base,clamp((x-(MX0-400))/280,0,1));}
-    else{c.copy(base);
-      if(PISTES.some(p=>polyDist(p,x,y).d<p.w/2))c.copy(piste);
-      else if(OFFPISTE.some(p=>polyDist(p,x,y).d<p.w/2))c.copy(trail);
-      const n=(Math.sin(x*0.05)*Math.sin(y*0.06))*0.015;c.r+=n;c.g+=n;c.b+=n;}
-    cols[i*3]=c.r;cols[i*3+1]=c.g;cols[i*3+2]=c.b;
+    let kind='base';
+    if(PISTES.some(p=>polyDist(p,x,y).d<p.w/2))kind='piste';else if(OFFPISTE.some(p=>polyDist(p,x,y).d<p.w/2))kind='trail';
+    const edge=x<MX0?clamp((x-(MX0-400))/400,0,1):x>MX1?clamp(((MX1+400)-x)/400,0,1):1;
+    const n=(Math.sin(x*0.05)*Math.sin(y*0.06))*0.015;
+    for(const [arr,S] of [[cw,W],[cs,Su]]){c.copy(grassC).lerp(S[kind],edge);c.r+=n;c.g+=n;c.b+=n;arr[i*3]=c.r;arr[i*3+1]=c.g;arr[i*3+2]=c.b;}
   }
-  geo.setAttribute('color',new THREE.BufferAttribute(cols,3));geo.computeVertexNormals();
-  scene.add(new THREE.Mesh(geo,new THREE.MeshLambertMaterial({vertexColors:true})));
-  // skog
+  terrCols.winter=cw;terrCols.summer=cs;
+  terrGeo.setAttribute('color',new THREE.BufferAttribute(season==='winter'?cw.slice():cs.slice(),3));terrGeo.computeVertexNormals();
+  scene.add(new THREE.Mesh(terrGeo,new THREE.MeshLambertMaterial({vertexColors:true})));
+}
+let capM,forestLow,forestHigh;
+{
   const dummy=new THREE.Object3D();
   const trunk=new THREE.InstancedMesh(new THREE.CylinderGeometry(6,9,70,5),lam(0x6b4a2e),forest.length);
-  const low=new THREE.InstancedMesh(new THREE.ConeGeometry(62,140,7),lam(0x245a33),forest.length);
-  const high=new THREE.InstancedMesh(new THREE.ConeGeometry(42,110,7),lam(0x2c6b3d),forest.length);
-  const capM=new THREE.InstancedMesh(new THREE.ConeGeometry(20,40,7),lam(0xf4f8fc),forest.length);
+  forestLow=new THREE.InstancedMesh(new THREE.ConeGeometry(62,140,7),lam(0x245a33),forest.length);
+  forestHigh=new THREE.InstancedMesh(new THREE.ConeGeometry(42,110,7),lam(0x2c6b3d),forest.length);
+  capM=new THREE.InstancedMesh(new THREE.ConeGeometry(20,40,7),lam(0xf4f8fc),forest.length);
   forest.forEach((t,i)=>{const s=t.s;
     dummy.position.set(t.x,t.z+35*s,t.y);dummy.scale.setScalar(s);dummy.rotation.set(0,i,0);dummy.updateMatrix();trunk.setMatrixAt(i,dummy.matrix);
-    dummy.position.set(t.x,t.z+120*s,t.y);dummy.updateMatrix();low.setMatrixAt(i,dummy.matrix);
-    dummy.position.set(t.x,t.z+190*s,t.y);dummy.updateMatrix();high.setMatrixAt(i,dummy.matrix);
+    dummy.position.set(t.x,t.z+120*s,t.y);dummy.updateMatrix();forestLow.setMatrixAt(i,dummy.matrix);
+    dummy.position.set(t.x,t.z+190*s,t.y);dummy.updateMatrix();forestHigh.setMatrixAt(i,dummy.matrix);
     dummy.position.set(t.x,t.z+238*s,t.y);dummy.updateMatrix();capM.setMatrixAt(i,dummy.matrix);});
-  scene.add(trunk,low,high,capM);
-  // pistkäppar och offpist-markeringar
+  scene.add(trunk,forestLow,forestHigh,capM);
+  // käppar
   const poleList=[];
   PISTES.forEach(p=>{for(let d=150;d<p.len-100;d+=300)for(const s of [-1,1]){const q=pointAlong(p,d,s*(p.w/2+8));poleList.push({x:q.x,y:q.y,c:p.col});}});
   OFFPISTE.forEach(p=>{for(let d=100;d<p.len-50;d+=220)for(const s of [-1,1]){const q=pointAlong(p,d,s*(p.w/2+4));poleList.push({x:q.x,y:q.y,c:0xff7a1a});}});
@@ -984,38 +1068,38 @@ for(const r of roads){for(let p=r.a+300;p<r.b;p+=900){
   const byCol=new Map();poleList.forEach(p=>{if(!byCol.has(p.c))byCol.set(p.c,[]);byCol.get(p.c).push(p);});
   for(const [col,list] of byCol){const im=new THREE.InstancedMesh(poleG,lam(col),list.length);
     list.forEach((p,i)=>{dummy.position.set(p.x,terrain(p.x,p.y)+35,p.y);dummy.scale.setScalar(1);dummy.rotation.set(0,0,0);dummy.updateMatrix();im.setMatrixAt(i,dummy.matrix);});scene.add(im);}
-  // skyltar vid toppen
-  [...PISTES,...OFFPISTE].forEach(p=>{const s=p.pts[0];const z=terrain(s[0]+60,s[1]);
-    const sg=new THREE.Mesh(new THREE.PlaneGeometry(130,34),new THREE.MeshBasicMaterial({side:THREE.DoubleSide,map:canvasTex(512,134,(g,w,h)=>{g.fillStyle=p.col?'#'+p.col.toString(16).padStart(6,'0'):'#ff7a1a';g.fillRect(0,0,w,h);g.font=`900 ${h*0.48}px system-ui`;g.fillStyle='#fff';g.textAlign='center';g.textBaseline='middle';g.fillText(p.name.toUpperCase(),w/2,h/2+3);})}));
-    sg.position.set(s[0]+90,z+95,s[1]);sg.rotation.y=Math.PI/2;scene.add(sg);
-    const post=new THREE.Mesh(new THREE.CylinderGeometry(3,3,80,6),darkMetal);post.position.set(s[0]+90,z+40,s[1]);scene.add(post);});
-  // stolliften
-  TOWERS.forEach(t=>{const z=terrain(t.x,LY);
-    const m=new THREE.Mesh(new THREE.CylinderGeometry(7,10,t.top-z,8),lam(0x6b7280));m.position.set(t.x,z+(t.top-z)/2,LY);scene.add(m);
-    const cb=new THREE.Mesh(new THREE.BoxGeometry(10,8,90),lam(0x4b5563));cb.position.set(t.x,t.top,LY);scene.add(cb);});
-  for(const off of [-28,28]){const pts=[];for(let x=LBX;x<=LTX;x+=60)pts.push(V3(x,cableZ(x),LY+off));pts.push(V3(LTX,cableZ(LTX),LY+off));
-    scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:0x222222})));}
-  const station=(x,label)=>{const z=terrain(x,LY);
-    const roof=new THREE.Mesh(new THREE.BoxGeometry(220,10,190),lam(0xd93030));roof.position.set(x,z+250,LY);scene.add(roof);
-    [[-100,-85],[100,-85],[-100,85],[100,85]].forEach(([dx,dz])=>{const p=new THREE.Mesh(new THREE.CylinderGeometry(5,5,250,6),lam(0x6b7280));p.position.set(x+dx,z+125,LY+dz);scene.add(p);});
-    const sg=new THREE.Mesh(new THREE.PlaneGeometry(160,40),new THREE.MeshBasicMaterial({side:THREE.DoubleSide,map:canvasTex(512,128,(g,w,h)=>{g.fillStyle='#d93030';g.fillRect(0,0,w,h);txt(label,'#fff')(g,w,h);})}));
-    sg.position.set(x-111,z+225,LY);sg.rotation.y=-Math.PI/2;scene.add(sg);};
-  station(LBX,'LIFTEN');station(LTX,'TOPPEN');
-  decal(LIFT_PAD.r*2,LIFT_PAD.r*2,LIFT_PAD.x,LIFT_PAD.y,0,(g,w,h)=>{g.fillStyle='rgba(217,48,48,.7)';g.beginPath();g.arc(w/2,h/2,w/2-6,0,TAU);g.fill();
-    g.fillStyle='#fff';g.font=`900 ${h*0.2}px system-ui`;g.textAlign='center';g.textBaseline='middle';g.fillText('LIFT',w/2,h/2);},terrain(LIFT_PAD.x,LIFT_PAD.y)+1.2);
-  // stuga vid backen
-  const lodge=new THREE.Group();lodge.position.set(9980,0,2150);scene.add(lodge);
-  const lw=new THREE.Mesh(new THREE.BoxGeometry(260,120,180),lam(0x8b5a2b));lw.position.y=60;lodge.add(lw);
-  const lr=new THREE.Mesh(new THREE.ConeGeometry(190,90,4),lam(0x3d2b1f));lr.rotation.y=Math.PI/4;lr.scale.set(1.1,1,0.8);lr.position.y=165;lodge.add(lr);
-  boxes.push({x:9980-130,y:2150-90,w:260,h:180,top:120});
+  // skyltar
+  [...PISTES,...OFFPISTE].forEach(p=>{const s=p.pts[0],dir=Math.sign(p.pts[1][0]-s[0]);const sx=s[0]-dir*90,z=terrain(sx,s[1]);
+    const sg=new THREE.Mesh(new THREE.PlaneGeometry(130,34),new THREE.MeshBasicMaterial({side:THREE.DoubleSide,map:canvasTex(512,134,(g,w,h)=>{g.fillStyle=p.col?'#'+p.col.toString(16).padStart(6,'0'):'#ff7a1a';g.fillRect(0,0,w,h);g.font=`900 ${h*0.44}px system-ui`;g.fillStyle='#fff';g.textAlign='center';g.textBaseline='middle';g.fillText(p.name.toUpperCase(),w/2,h/2+3);})}));
+    sg.position.set(sx,z+95,s[1]);sg.rotation.y=Math.PI/2;scene.add(sg);
+    const post=new THREE.Mesh(new THREE.CylinderGeometry(3,3,80,6),darkMetal);post.position.set(sx,z+40,s[1]);scene.add(post);});
+  // liftar: stolpar, kablar, stationer
+  for(const L of LIFTS){
+    const yaw=-Math.atan2(L.uy,L.ux);
+    for(const T of L.towers){const z=terrain(T.x,T.y);
+      const m=new THREE.Mesh(new THREE.CylinderGeometry(L.type==='tbar'?5:7,L.type==='tbar'?7:10,T.top-z,8),lam(L.type==='gondola'?0x9ca3af:0x6b7280));m.position.set(T.x,z+(T.top-z)/2,T.y);scene.add(m);
+      const cb=new THREE.Mesh(new THREE.BoxGeometry(10,8,L.type==='tbar'?60:90),lam(0x4b5563));cb.position.set(T.x,T.top,T.y);cb.rotation.y=yaw;scene.add(cb);}
+    for(const off of (L.type==='tbar'?[L.off,-L.off]:[L.off,-L.off])){const pts=[];
+      for(let t=0;t<=1.0001;t+=0.01){const x=L.x0+(L.x1-L.x0)*t+L.px*off,y=L.y0+(L.y1-L.y0)*t+L.py*off;pts.push(V3(x,cableZ(L,t),y));}
+      scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:0x222222})));}
+    const st=(x,y,label)=>{const z=terrain(x,y);const hgt=HANG[L.type]+20;
+      const roof=new THREE.Mesh(new THREE.BoxGeometry(220,10,190),lam(L.type==='gondola'?0x1d4ed8:L.type==='tbar'?0x16a34a:0xd93030));roof.position.set(x,z+hgt,y);roof.rotation.y=yaw;scene.add(roof);
+      [[-100,-85],[100,-85],[-100,85],[100,85]].forEach(([dx,dz])=>{const c=Math.cos(-yaw),s=Math.sin(-yaw);const p=new THREE.Mesh(new THREE.CylinderGeometry(5,5,hgt,6),lam(0x6b7280));p.position.set(x+dx*c-dz*s,z+hgt/2,y+dx*s+dz*c);scene.add(p);});
+      const sg=new THREE.Mesh(new THREE.PlaneGeometry(170,40),new THREE.MeshBasicMaterial({side:THREE.DoubleSide,map:canvasTex(560,132,(g,w,h)=>{g.fillStyle=L.type==='gondola'?'#1d4ed8':L.type==='tbar'?'#16a34a':'#d93030';g.fillRect(0,0,w,h);g.font=`900 ${h*0.42}px system-ui`;g.fillStyle='#fff';g.textAlign='center';g.textBaseline='middle';g.fillText(label,w/2,h/2+3);})}));
+      sg.position.set(x-L.ux*111,z+hgt-25,y-L.uy*111);sg.rotation.y=yaw-Math.PI/2;scene.add(sg);};
+    st(L.x0,L.y0,L.name.toUpperCase());st(L.x1,L.y1,'TOPPEN');
+    decal(L.pad.r*2,L.pad.r*2,L.pad.x,L.pad.y,0,(g,w,h)=>{g.fillStyle='rgba(217,48,48,.75)';g.beginPath();g.arc(w/2,h/2,w/2-6,0,TAU);g.fill();
+      g.fillStyle='#fff';g.font=`900 ${h*0.2}px system-ui`;g.textAlign='center';g.textBaseline='middle';g.fillText('LIFT',w/2,h/2);},terrain(L.pad.x,L.pad.y)+1.2);
+  }
 }
-// slå ihop allt statiskt med samma material → färre ritanrop (viktigt för iPhone)
+// slå ihop allt statiskt med samma material → färre ritanrop
 function mergeStatic(){
   scene.updateMatrixWorld(true);
-  const groups=new Map(),cache=new Map();
+  const groups=new Map();
   scene.traverse(o=>{
-    if(!o.isMesh||o.isInstancedMesh||Array.isArray(o.material)||o.material.transparent)return;
+    if(!o.isMesh||o.isInstancedMesh||Array.isArray(o.material)||o.material.transparent||o.geometry===terrGeo)return;
     const m=o.material,g=o.geometry;
+    if(m===snowKMat||m===snowSide)return;
     let key=m.map?m.uuid:'L'+m.color.getHex()+'|'+m.side+'|'+(m.vertexColors?1:0)+'|'+m.type;
     key+='|'+Object.keys(g.attributes).sort().join(',');
     if(!groups.has(key))groups.set(key,{mat:m,list:[]});groups.get(key).list.push(o);
@@ -1025,9 +1109,9 @@ function mergeStatic(){
     const names=Object.keys(list[0].geometry.attributes);
     const arrs={};names.forEach(n=>arrs[n]=[]);
     for(const o of list){
-      let g=o.geometry.index?o.geometry.toNonIndexed():o.geometry.clone();
+      const g=o.geometry.index?o.geometry.toNonIndexed():o.geometry.clone();
       g.applyMatrix4(o.matrixWorld);
-      for(const n of names){const a=g.attributes[n];arrs[n].push(a.array);}
+      for(const n of names)arrs[n].push(g.attributes[n].array);
       o.parent.remove(o);
     }
     const geo=new THREE.BufferGeometry();
@@ -1039,27 +1123,78 @@ function mergeStatic(){
   }
 }
 mergeStatic();
-// stolar som åker
-const CHAIRS=26;
-const chairSeat=new THREE.InstancedMesh(new THREE.BoxGeometry(34,5,44),lam(0x1d4ed8),CHAIRS);
-const chairBar=new THREE.InstancedMesh(new THREE.CylinderGeometry(1.5,1.5,58,5),lam(0x333333),CHAIRS);
-scene.add(chairSeat,chairBar);
+
+// liftarnas stolar, gondoler och knappar som åker
+const liftUnits=[];
+for(const L of LIFTS){const n=Math.round(L.len/(L.type==='gondola'?260:200));for(let i=0;i<n*2;i++)liftUnits.push({L,q:i/n});}
+const uChair=liftUnits.filter(u=>u.L.type==='chair'),uGon=liftUnits.filter(u=>u.L.type==='gondola'),uT=liftUnits.filter(u=>u.L.type==='tbar');
+const chairSeat=new THREE.InstancedMesh(new THREE.BoxGeometry(34,5,48),lam(0x1d4ed8),uChair.length);
+const chairBack=new THREE.InstancedMesh(new THREE.BoxGeometry(4,26,48),lam(0x1d4ed8),uChair.length);
+const chairBar=new THREE.InstancedMesh(new THREE.CylinderGeometry(1.5,1.5,58,5),lam(0x333333),uChair.length);
+const gonBox=new THREE.InstancedMesh(new THREE.BoxGeometry(64,70,60),lam(0xd93030),uGon.length);
+const gonBar=new THREE.InstancedMesh(new THREE.CylinderGeometry(2,2,60,5),lam(0x333333),uGon.length);
+const tBar=new THREE.InstancedMesh(new THREE.CylinderGeometry(1.5,1.5,90,5),lam(0x444444),uT.length);
+scene.add(chairSeat,chairBack,chairBar,gonBox,gonBar,tBar);
 let liftClock=0;
-function updateChairs(dt){
-  liftClock+=dt;const d=new THREE.Object3D();
-  for(let i=0;i<CHAIRS;i++){
-    let q=((i/CHAIRS)*2+liftClock/LIFT_T)%2;
-    const up=q<1,x=up?LBX+q*(LTX-LBX):LTX-(q-1)*(LTX-LBX),y=LY+(up?-28:28),z=cableZ(x);
-    d.position.set(x,z-58,y);d.rotation.set(0,0,0);d.scale.setScalar(1);d.updateMatrix();chairSeat.setMatrixAt(i,d.matrix);
-    d.position.set(x,z-29,y);d.updateMatrix();chairBar.setMatrixAt(i,d.matrix);
-  }
-  chairSeat.instanceMatrix.needsUpdate=chairBar.instanceMatrix.needsUpdate=true;
+const dUnit=new THREE.Object3D();
+function unitPose(u){
+  const L=u.L;let q=((u.q+liftClock/L.T)%2+2)%2;const up=q<1,t=up?q:2-q;
+  const off=up?L.off:-L.off;
+  return {x:L.x0+(L.x1-L.x0)*t+L.px*off,y:L.y0+(L.y1-L.y0)*t+L.py*off,z:cableZ(L,t),yaw:-Math.atan2(L.uy,L.ux)+(up?0:Math.PI)};
+}
+function updateLiftUnits(dt){
+  liftClock+=dt;
+  uChair.forEach((u,i)=>{const p=unitPose(u);dUnit.rotation.set(0,p.yaw,0);dUnit.scale.setScalar(1);
+    dUnit.position.set(p.x,p.z-58,p.y);dUnit.updateMatrix();chairSeat.setMatrixAt(i,dUnit.matrix);
+    dUnit.position.set(p.x-Math.cos(-p.yaw)*16,p.z-46,p.y-Math.sin(-p.yaw)*16);dUnit.updateMatrix();chairBack.setMatrixAt(i,dUnit.matrix);
+    dUnit.position.set(p.x,p.z-29,p.y);dUnit.updateMatrix();chairBar.setMatrixAt(i,dUnit.matrix);});
+  uGon.forEach((u,i)=>{const p=unitPose(u);dUnit.rotation.set(0,p.yaw,0);dUnit.position.set(p.x,p.z-95,p.y);dUnit.updateMatrix();gonBox.setMatrixAt(i,dUnit.matrix);
+    dUnit.position.set(p.x,p.z-30,p.y);dUnit.updateMatrix();gonBar.setMatrixAt(i,dUnit.matrix);});
+  uT.forEach((u,i)=>{const p=unitPose(u);dUnit.rotation.set(0,p.yaw,0);dUnit.position.set(p.x,p.z-45,p.y);dUnit.updateMatrix();tBar.setMatrixAt(i,dUnit.matrix);});
+  for(const m of [chairSeat,chairBack,chairBar,gonBox,gonBar,tBar])m.instanceMatrix.needsUpdate=true;
+}
+// spelarens egen stol/gondol/knapp (så att man ser att gubben sitter)
+const myChair=new THREE.Group();scene.add(myChair);
+{const seat=new THREE.Mesh(new THREE.BoxGeometry(34,5,52),lam(0xff7a1a));seat.position.y=0;myChair.add(seat);
+  const back=new THREE.Mesh(new THREE.BoxGeometry(4,30,52),lam(0xff7a1a));back.position.set(-17,15,0);myChair.add(back);
+  const bar=new THREE.Mesh(new THREE.CylinderGeometry(1.8,1.8,60,6),lam(0x333333));bar.position.set(-8,30,0);myChair.add(bar);
+  const safe=new THREE.Mesh(new THREE.CylinderGeometry(1.4,1.4,52,6),lam(0x333333));safe.rotation.x=Math.PI/2;safe.position.set(14,26,0);myChair.add(safe);
+  myChair.userData.kind='chair';}
+const myGon=new THREE.Group();scene.add(myGon);
+{const glass=new THREE.MeshLambertMaterial({color:0x9fd3f5,transparent:true,opacity:0.32});
+  const floor=new THREE.Mesh(new THREE.BoxGeometry(70,4,64),lam(0xd93030));myGon.add(floor);
+  const roof=new THREE.Mesh(new THREE.BoxGeometry(70,6,64),lam(0xd93030));roof.position.y=80;myGon.add(roof);
+  const box=new THREE.Mesh(new THREE.BoxGeometry(68,76,62),glass);box.position.y=40;myGon.add(box);
+  const bench=new THREE.Mesh(new THREE.BoxGeometry(18,22,60),lam(0x333333));bench.position.set(-24,11,0);myGon.add(bench);
+  const bar=new THREE.Mesh(new THREE.CylinderGeometry(2,2,60,6),lam(0x333333));bar.position.y=112;myGon.add(bar);}
+const myT=new THREE.Mesh(new THREE.CylinderGeometry(1.5,1.5,1,6),lam(0x444444));scene.add(myT);
+const myTbar=new THREE.Mesh(new THREE.CylinderGeometry(2.5,2.5,26,6),lam(0x444444));myTbar.rotation.x=Math.PI/2;scene.add(myTbar);
+function updateMyLift(){
+  const lf=P.lift;myChair.visible=myGon.visible=myT.visible=myTbar.visible=false;if(!lf)return;
+  const L=lf.L,t=Math.min(lf.s,1),q=liftPos(L,t),cz=cableZ(L,t),yaw=-Math.atan2(L.uy,L.ux);
+  if(L.type==='chair'){myChair.visible=true;myChair.position.set(q.x,cz-58,q.y);myChair.rotation.y=yaw;}
+  else if(L.type==='gondola'){myGon.visible=true;myGon.position.set(q.x,cz-152,q.y);myGon.rotation.y=yaw;}
+  else{myT.visible=myTbar.visible=true;setLimb(myT,V3(q.x,cz,q.y),V3(q.x,P.z+30,q.y));myTbar.position.set(q.x,P.z+30,q.y);myTbar.rotation.set(Math.PI/2,0,0);myTbar.rotation.order='YXZ';myTbar.rotation.y=yaw;}
 }
 // moln
-for(let i=0;i<26;i++){
-  const c=new THREE.Group();c.position.set(-3000+rnd()*22000,1600+rnd()*900,-3000+rnd()*11000);scene.add(c);
+for(let i=0;i<30;i++){
+  const c=new THREE.Group();c.position.set(-3000+rnd()*33000,1700+rnd()*900,-3000+rnd()*11000);scene.add(c);
   for(let j=0;j<4;j++){const s=new THREE.Mesh(new THREE.SphereGeometry(110+rnd()*80,10,8),new THREE.MeshBasicMaterial({color:0xffffff,fog:false}));
     s.position.set(j*130-190,rnd()*30,rnd()*80);s.scale.y=0.55;c.add(s);}
+}
+
+/* ---------- årstider ---------- */
+function applySeason(){
+  const w=season==='winter';
+  grassMat.map=w?snowTex:grassTex;grassMat.needsUpdate=true;
+  terrGeo.attributes.color.array.set(w?terrCols.winter:terrCols.summer);terrGeo.attributes.color.needsUpdate=true;
+  capM.visible=w;
+  snowKMat.color.setHex(w?0xf3f7fb:0x9a7b53);snowSide.color.setHex(w?0xd8e3ee:0x7a5f3e);
+  if(window.__leafM)window.__leafM.material.color.setHex(w?0x9fb7a0:0x4f9a3f);
+  scene.background.setHex(w?0xb7d7ee:SKY);scene.fog.color.setHex(w?0xb7d7ee:SKY);
+  $('bSeason').textContent=w?'❄️':'☀️';
+  try{localStorage.setItem(LS_SEASON,season);}catch(e){}
+  if(typeof refreshMountainNPCs==='function')refreshMountainNPCs();
 }
 
 /* =========================================================
@@ -1102,8 +1237,6 @@ function makePerson(o){
   if(o.hat==='cap'){
     const c=new THREE.Mesh(new THREE.SphereGeometry(9.6,14,10,0,TAU,0,Math.PI*0.5),lam(o.helmet));c.position.y=1;head.add(c);
     const brim=new THREE.Mesh(new THREE.BoxGeometry(10,1.5,13),lam(o.helmet));brim.position.set(8,2.5,0);head.add(brim);
-  }else if(o.hat==='hair'){
-    const h=new THREE.Mesh(new THREE.SphereGeometry(9.6,12,8,0,TAU,0,Math.PI*0.55),lam(o.helmet));h.position.set(-1,1.5,0);head.add(h);
   }else{
     const h=new THREE.Mesh(new THREE.SphereGeometry(11,16,12,0,TAU,0,Math.PI*0.56),lam(o.helmet));h.position.y=1.5;head.add(h);
     const stripe=new THREE.Mesh(new THREE.BoxGeometry(22.4,3,4),lam(o.stripe||0x111111));stripe.position.y=8;head.add(stripe);
@@ -1167,32 +1300,35 @@ function makeScooter(c){
     const gr=new THREE.Mesh(new THREE.CylinderGeometry(2.8,2.8,11,10),lam(0x111111));gr.rotation.x=Math.PI/2;gr.position.set(0,83,s*19);barPivot.add(gr);});
   return {g,deckPivot,barPivot,wheels:[wR,wF]};
 }
-function makeBMX(c){
+function makeBike(c,mtb){
+  const k=mtb?1.3:1;
   const g=new THREE.Group();
-  const HT=V3(22,44,0);
+  const HT=V3(22*k,44*k,0);
   const framePivot=new THREE.Group();framePivot.position.set(HT.x,0,0);g.add(framePivot);
-  const fp=(x,y,z)=>V3(x-HT.x,y,z);
-  const tube=(a,b,r)=>{const m=unitCyl(r||2.2,c.frame);setLimb(m,a,b);framePivot.add(m);};
+  const fp=(x,y,z)=>V3(x*k-HT.x,y*k,z);
+  const tube=(a,b,r)=>{const m=unitCyl((r||2.2)*(mtb?1.25:1),c.frame);setLimb(m,a,b);framePivot.add(m);};
   const BB=fp(0,17,0),RA=fp(-30,14,0),ST=fp(-8,46,0),HTt=fp(22,48,0),HTb=fp(22,38,0);
   tube(BB,HTb,2.5);tube(ST,HTt,2.3);tube(BB,ST,2.4);
   [-1,1].forEach(s=>{tube(V3(BB.x,BB.y,s*3),V3(RA.x,RA.y,s*4.5),1.6);tube(V3(ST.x,ST.y-4,s*2),V3(RA.x,RA.y,s*4.5),1.4);});
-  const seat=new THREE.Mesh(new THREE.BoxGeometry(18,4,9),lam(0x111111));seat.position.copy(fp(-9,52,0));seat.rotation.z=0.15;framePivot.add(seat);
-  const post=unitCyl(1.6,0x888888);setLimb(post,ST,fp(-9,52,0));framePivot.add(post);
-  const wR=wheel(14,4,c.hub);wR.position.copy(RA);framePivot.add(wR);
+  const seatPos=fp(-9,mtb?56:52,0);
+  const seat=new THREE.Mesh(new THREE.BoxGeometry(18,4,9),lam(0x111111));seat.position.copy(seatPos);seat.rotation.z=0.15;framePivot.add(seat);
+  const post=unitCyl(1.6,0x888888);setLimb(post,ST,seatPos);framePivot.add(post);
+  if(mtb){const shock=new THREE.Mesh(new THREE.CylinderGeometry(3,3,16,8),lam(0xff7a1a));setLimb(shock,fp(-6,30,0),fp(6,38,0));framePivot.add(shock);}
+  const wR=wheel(14*k,mtb?6:4,c.hub);wR.position.copy(RA);framePivot.add(wR);
   const crank=new THREE.Mesh(new THREE.BoxGeometry(4,16,2),lam(0x222222));crank.position.copy(BB);framePivot.add(crank);
   const sprocket=new THREE.Mesh(new THREE.CylinderGeometry(6,6,1.5,14),lam(0xcccccc));sprocket.rotation.x=Math.PI/2;sprocket.position.copy(BB).setZ(4);framePivot.add(sprocket);
   [-1,1].forEach(s=>{const pe=new THREE.Mesh(new THREE.BoxGeometry(9,2,6),lam(0x222222));pe.position.set(BB.x+s*7,BB.y+s*-7,s*11);framePivot.add(pe);
-    const peg=new THREE.Mesh(new THREE.CylinderGeometry(1.8,1.8,7,8),lam(0x999999));peg.rotation.x=Math.PI/2;peg.position.set(RA.x,RA.y,s*7);framePivot.add(peg);});
+    if(!mtb){const peg=new THREE.Mesh(new THREE.CylinderGeometry(1.8,1.8,7,8),lam(0x999999));peg.rotation.x=Math.PI/2;peg.position.set(RA.x,RA.y,s*7);framePivot.add(peg);}});
   const barPivot=new THREE.Group();barPivot.position.set(HT.x,0,0);g.add(barPivot);
-  const wF=wheel(14,4,c.hub);wF.position.set(6,14,0);barPivot.add(wF);
-  [-1,1].forEach(s=>{const f=unitCyl(1.8,c.frame);setLimb(f,V3(6,14,s*4),V3(0,40,s*3));barPivot.add(f);});
-  const headT=new THREE.Mesh(new THREE.CylinderGeometry(3,3,12,10),lam(c.frame));headT.position.set(0,44,0);barPivot.add(headT);
-  const stem=new THREE.Mesh(new THREE.BoxGeometry(7,5,7),lam(0x222222));stem.position.set(0,52,0);barPivot.add(stem);
-  [-1,1].forEach(s=>{const r=unitCyl(1.7,0x333333);setLimb(r,V3(0,52,s*3),V3(-3,66,s*12));barPivot.add(r);});
-  const bar=new THREE.Mesh(new THREE.CylinderGeometry(1.7,1.7,52,10),lam(0x333333));bar.rotation.x=Math.PI/2;bar.position.set(-3,66,0);barPivot.add(bar);
-  const cross=new THREE.Mesh(new THREE.CylinderGeometry(1.3,1.3,20,8),lam(0x333333));cross.rotation.x=Math.PI/2;cross.position.set(-2,60,0);barPivot.add(cross);
-  [-1,1].forEach(s=>{const gr=new THREE.Mesh(new THREE.CylinderGeometry(2.6,2.6,10,10),lam(0x111111));gr.rotation.x=Math.PI/2;gr.position.set(-3,66,s*21);barPivot.add(gr);});
-  return {g,deckPivot:framePivot,barPivot,wheels:[wR,wF]};
+  const wF=wheel(14*k,mtb?6:4,c.hub);wF.position.set(6*k,14*k,0);barPivot.add(wF);
+  [-1,1].forEach(s=>{const f=unitCyl(mtb?3:1.8,mtb?0x222222:c.frame);setLimb(f,V3(6*k,14*k,s*4),V3(0,40*k,s*3));barPivot.add(f);});
+  const headT=new THREE.Mesh(new THREE.CylinderGeometry(3,3,12,10),lam(c.frame));headT.position.set(0,44*k,0);barPivot.add(headT);
+  const stem=new THREE.Mesh(new THREE.BoxGeometry(7,5,7),lam(0x222222));stem.position.set(0,52*k,0);barPivot.add(stem);
+  const BH=mtb?62*k:66;
+  if(!mtb)[-1,1].forEach(s=>{const r=unitCyl(1.7,0x333333);setLimb(r,V3(0,52,s*3),V3(-3,66,s*12));barPivot.add(r);});
+  const bar=new THREE.Mesh(new THREE.CylinderGeometry(1.7,1.7,mtb?60:52,10),lam(0x333333));bar.rotation.x=Math.PI/2;bar.position.set(-3,BH,0);barPivot.add(bar);
+  [-1,1].forEach(s=>{const gr=new THREE.Mesh(new THREE.CylinderGeometry(2.6,2.6,10,10),lam(0x111111));gr.rotation.x=Math.PI/2;gr.position.set(-3,BH,s*(mtb?25:21));barPivot.add(gr);});
+  return {g,deckPivot:framePivot,barPivot,wheels:[wR,wF],bh:BH,hx:HT.x-3};
 }
 function makeSkate(c){
   const g=new THREE.Group();
@@ -1213,19 +1349,40 @@ function makeSnowboard(c){
   const top=new THREE.Mesh(new THREE.BoxGeometry(50,0.4,15),lam(0xffffff));top.position.y=1.3;boardPivot.add(top);
   return {g,boardPivot,wheels:[]};
 }
+function makeCarVeh(c){
+  const g=new THREE.Group();
+  const body=new THREE.Mesh(new THREE.BoxGeometry(190,34,92),lam(c.car));body.position.y=30;g.add(body);
+  const hood=new THREE.Mesh(new THREE.BoxGeometry(60,6,88),lam(c.car));hood.position.set(62,49,0);g.add(hood);
+  const glass=new THREE.Mesh(new THREE.BoxGeometry(96,40,86),new THREE.MeshLambertMaterial({color:0x9fd3f5,transparent:true,opacity:0.35}));glass.position.set(-12,66,0);g.add(glass);
+  const roof=new THREE.Mesh(new THREE.BoxGeometry(96,5,88),lam(c.car));roof.position.set(-12,88,0);g.add(roof);
+  [-1,1].forEach(s=>{const p=new THREE.Mesh(new THREE.BoxGeometry(5,40,5),lam(c.car));p.position.set(34,66,s*42);g.add(p);const q=p.clone();q.position.x=-58;g.add(q);});
+  const wheels=[];
+  [[-60,-44],[60,-44],[-60,44],[60,44]].forEach(([x,z])=>{const w=wheel(17,12,0xcccccc);w.position.set(x,17,z);g.add(w);wheels.push(w);});
+  [[96,24],[96,-24]].forEach(([x,z])=>{const l=new THREE.Mesh(new THREE.BoxGeometry(2,8,16),new THREE.MeshBasicMaterial({color:0xfff6cc}));l.position.set(x,34,z);g.add(l);});
+  [[-96,30],[-96,-30]].forEach(([x,z])=>{const l=new THREE.Mesh(new THREE.BoxGeometry(2,8,14),new THREE.MeshBasicMaterial({color:0xd93030}));l.position.set(x,34,z);g.add(l);});
+  const sw=new THREE.Mesh(new THREE.TorusGeometry(9,1.6,6,14),lam(0x111111));sw.position.set(22,58,-20);sw.rotation.y=Math.PI/2;sw.rotation.x=0.3;g.add(sw);
+  const seat=new THREE.Mesh(new THREE.BoxGeometry(30,8,34),lam(0x222222));seat.position.set(-14,32,-20);g.add(seat);
+  return {g,wheels,car:true};
+}
 function makeVehicle(type,c){
   if(type==='kick')return makeScooter(c);
-  if(type==='bmx')return makeBMX(c);
+  if(type==='bmx')return makeBike(c,false);
+  if(type==='mtb')return makeBike(c,true);
   if(type==='skate')return makeSkate(c);
   if(type==='snowboard')return makeSnowboard(c);
+  if(type==='car')return makeCarVeh(c);
   return {g:new THREE.Group(),wheels:[]};
 }
-// poser per fordon (ride = åker, tuck = i luften)
+const SIT_RAW={footL:[16,14,-7],footR:[16,14,7],kneeL:[14,40,-7],kneeR:[14,40,7],hipL:[-6,42,-6],hipR:[-6,42,6],pelvis:[-6,44,0],neck:[-4,76,0],head:[-2,88,0],shL:[-4,73,-12],shR:[-4,73,12],elL:[2,56,-16],elR:[2,56,16],haL:[10,48,-12],haR:[10,48,12],footYaw:0};
+const shiftPose=(p,dx,dy,dz,over)=>{const r={};for(const k in p)r[k]=Array.isArray(p[k])?[p[k][0]+dx,p[k][1]+dy,p[k][2]+dz]:p[k];return Object.assign(r,over||{});};
+const CAR_SIT=shiftPose(SIT_RAW,-10,-8,-20,{haL:[20,52,-28],haR:[20,52,-12],elL:[6,58,-30],elR:[6,58,-10],footL:[34,10,-27],footR:[34,10,-13],kneeL:[16,36,-27],kneeR:[16,36,-13]});
 const POSES={
   kick:[{footL:[10,12,-4],footR:[-16,12,4.5],kneeL:[15,32,-6],kneeR:[-6,31,7],hipL:[-2,50,-6],hipR:[-2,50,6],pelvis:[-2,52,0],neck:[4,84,0],head:[7,96,0],shL:[3,81,-12],shR:[3,81,12],elL:[11,70,-17],elR:[11,70,17],haL:[STEM,83,-19],haR:[STEM,83,19],footYaw:0},
         {footL:[8,30,-4],footR:[-12,30,4.5],kneeL:[16,48,-7],kneeR:[4,46,7],hipL:[-3,55,-6],hipR:[-3,55,6],pelvis:[-3,57,0],neck:[6,86,0],head:[9,97,0],shL:[5,83,-12],shR:[5,83,12],elL:[13,74,-17],elR:[13,74,17],haL:[STEM,83,-19],haR:[STEM,83,19],footYaw:0}],
   bmx:[{footL:[7,12,-10],footR:[-7,24,10],kneeL:[14,34,-8],kneeR:[4,42,9],hipL:[-10,52,-6],hipR:[-10,52,6],pelvis:[-10,54,0],neck:[4,82,0],head:[8,93,0],shL:[3,79,-12],shR:[3,79,12],elL:[10,66,-18],elR:[10,66,18],haL:[19,66,-21],haR:[19,66,21],footYaw:0},
        {footL:[4,20,-12],footR:[-6,24,12],kneeL:[16,44,-9],kneeR:[8,46,10],hipL:[-6,56,-6],hipR:[-6,56,6],pelvis:[-6,58,0],neck:[6,84,0],head:[10,94,0],shL:[5,81,-12],shR:[5,81,12],elL:[11,70,-18],elR:[11,70,18],haL:[19,66,-21],haR:[19,66,21],footYaw:0}],
+  mtb:[{footL:[9,16,-12],footR:[-9,30,12],kneeL:[18,44,-9],kneeR:[6,52,10],hipL:[-12,68,-6],hipR:[-12,68,6],pelvis:[-12,70,0],neck:[8,98,0],head:[13,109,0],shL:[7,95,-13],shR:[7,95,13],elL:[16,86,-22],elR:[16,86,22],haL:[25,80,-25],haR:[25,80,25],footYaw:0},
+       {footL:[6,24,-12],footR:[-8,30,12],kneeL:[20,54,-9],kneeR:[10,56,10],hipL:[-8,72,-6],hipR:[-8,72,6],pelvis:[-8,74,0],neck:[10,100,0],head:[15,111,0],shL:[9,97,-13],shR:[9,97,13],elL:[17,88,-22],elR:[17,88,22],haL:[25,80,-25],haR:[25,80,25],footYaw:0}],
   skate:[{footL:[13,11,0],footR:[-13,11,0],kneeL:[14,28,5],kneeR:[-11,28,5],hipL:[6,46,0],hipR:[-7,46,0],pelvis:[-1,48,0],neck:[1,77,1],head:[2,89,2],shL:[12,74,1],shR:[-10,74,1],elL:[22,63,4],elR:[-19,63,4],haL:[27,52,6],haR:[-25,52,6],footYaw:Math.PI/2},
          {footL:[12,24,0],footR:[-12,24,0],kneeL:[16,40,9],kneeR:[-10,40,9],hipL:[6,52,0],hipR:[-7,52,0],pelvis:[-1,54,0],neck:[1,80,3],head:[2,92,4],shL:[12,77,3],shR:[-10,77,3],elL:[24,68,8],elR:[-20,68,8],haL:[30,60,10],haR:[-26,60,10],footYaw:Math.PI/2}],
   snowboard:[{footL:[15,7,0],footR:[-15,7,0],kneeL:[16,25,6],kneeR:[-13,25,6],hipL:[6,42,0],hipR:[-7,42,0],pelvis:[-1,44,0],neck:[1,72,2],head:[2,84,3],shL:[12,69,2],shR:[-10,69,2],elL:[22,58,6],elR:[-19,58,6],haL:[28,48,8],haR:[-25,48,8],footYaw:Math.PI/2},
@@ -1236,8 +1393,10 @@ const POSES={
           {footL:[6,26,-7],footR:[-6,26,7],kneeL:[16,42,-7],kneeR:[8,42,7],hipL:[-4,52,-6],hipR:[-4,52,6],pelvis:[-4,54,0],neck:[8,80,0],head:[11,91,0],shL:[6,77,-12],shR:[6,77,12],elL:[10,66,-18],elR:[10,66,18],haL:[14,56,-16],haR:[14,56,16],footYaw:0}],
   ski:[{footL:[2,5,-8],footR:[2,5,8],kneeL:[12,24,-8],kneeR:[12,24,8],hipL:[-6,42,-7],hipR:[-6,42,7],pelvis:[-6,44,0],neck:[6,72,0],head:[10,84,0],shL:[5,69,-12],shR:[5,69,12],elL:[12,58,-17],elR:[12,58,17],haL:[18,50,-17],haR:[18,50,17],footYaw:0},
        {footL:[4,16,-8],footR:[4,16,8],kneeL:[16,34,-8],kneeR:[16,34,8],hipL:[-4,46,-7],hipR:[-4,46,7],pelvis:[-4,48,0],neck:[8,74,0],head:[12,86,0],shL:[7,71,-12],shR:[7,71,12],elL:[14,62,-17],elR:[14,62,17],haL:[20,54,-17],haR:[20,54,17],footYaw:0}],
+  car:[CAR_SIT,CAR_SIT],
 };
 for(const k in POSES)POSES[k]=POSES[k].map(mkPose);
+const SIT=mkPose(SIT_RAW);
 const HANDS_OUT={elL:V3(6,82,-24),elR:V3(6,82,24),haL:V3(4,90,-36),haR:V3(4,90,36)};
 const SIDE=t=>t==='skate'||t==='snowboard';
 
@@ -1251,7 +1410,7 @@ function makeAvatar(R,type,lk){
   const body=new THREE.Group();body.scale.setScalar(S);body.position.y=-45*S;flipG.add(body);
   const veh=makeVehicle(type,lk);body.add(veh.g);
   const person=makePerson({...lk,side:SIDE(type),feet:type==='inline'?'skate':type==='ski'?'ski':'shoe',poles:type==='ski',goggles:type==='ski'||type==='snowboard'});body.add(person.g);
-  const shadow=new THREE.Mesh(new THREE.CircleGeometry(26,20),new THREE.MeshBasicMaterial({color:0,transparent:true,opacity:.3,depthWrite:false}));
+  const shadow=new THREE.Mesh(new THREE.CircleGeometry(type==='car'?70:26,20),new THREE.MeshBasicMaterial({color:0,transparent:true,opacity:.3,depthWrite:false}));
   shadow.rotation.x=-Math.PI/2;scene.add(shadow);
   const A={R,type,root,tilt,flipG,body,veh,person,shadow,pose:{},tuckW:0,handsW:0,ride:POSES[type][0],tuck:POSES[type][1]};
   avatars.push(A);return A;
@@ -1271,12 +1430,17 @@ function poseAvatar(A,dt){
   A.flipG.rotation.set(0,0,-R.flip);
   const v=A.veh;
   if(v.deckPivot)v.deckPivot.rotation.set(0,0,0);if(v.barPivot)v.barPivot.rotation.set(0,0,0);if(v.boardPivot)v.boardPivot.rotation.set(0,0,0);
-  v.wheels.forEach(w=>w.rotation.z=-R.wheel);
-  let tuck=R.lift?1:R.grind?0.5:R.air?0.35:0,hands=0;
+  v.wheels.forEach(w=>w.rotation.z=-R.wheel*(A.type==='car'?0.35:A.type==='mtb'?0.45:1));
+  const seated=R.lift&&R.lift.L.type!=='tbar';
+  v.g.visible=!(seated&&!['ski','snowboard','inline','walk'].includes(A.type));
+  if(seated){A.tilt.rotation.set(0,0,0);posePerson(A.person,lerpPose(SIT,SIT,0,A.pose));A.shadow.visible=false;return;}
+  A.shadow.visible=true;
+  let tuck=R.grind?0.5:R.air?0.35:0,hands=0;
   const tr=R.tr||[];
   for(const a of tr){const p=clamp(1-a.t/a.d,0,1);
     switch(a.k){
       case 'bar':if(v.barPivot)v.barPivot.rotation.y=p*TAU;hands=1;break;
+      case 'nohand':hands=1;break;
       case 'whip':if(v.deckPivot)v.deckPivot.rotation.y=p*TAU;tuck=1;break;
       case 'whipR':if(v.deckPivot)v.deckPivot.rotation.y=-p*TAU;tuck=1;break;
       case 'kflip':if(v.boardPivot)v.boardPivot.rotation.x=p*TAU;tuck=1;break;
@@ -1286,10 +1450,10 @@ function poseAvatar(A,dt){
     }
   }
   if(R.flipT>0||(R.flipRate||0)>0.5)tuck=1;
+  if(A.type==='car')tuck=0;
   A.tuckW+=(tuck-A.tuckW)*Math.min(1,dt*12);
   A.handsW+=(hands-A.handsW)*Math.min(1,dt*14);
   const p=lerpPose(A.ride,A.tuck,A.tuckW,A.pose);
-  // gång- och skridskosteg
   if(!R.air&&!R.lift&&!R.grind&&(A.type==='walk'||A.type==='inline')){
     const sp=Math.hypot(R.vx,R.vy),amp=Math.min(1,sp/(A.type==='walk'?160:260));
     const ph=R.wheel*(A.type==='walk'?0.55:0.22),s=Math.sin(ph),c=Math.cos(ph);
@@ -1302,6 +1466,7 @@ function poseAvatar(A,dt){
       p.haL.x+=10*amp*s;p.haR.x-=10*amp*s;
     }
   }
+  if(R.lift&&R.lift.L.type==='tbar'){p.haR.lerp(V3(4,70,4),1);p.elR.lerp(V3(6,72,10),1);}
   if(A.handsW>0.01&&!SIDE(A.type)){for(const k in HANDS_OUT)p[k].lerp(HANDS_OUT[k],A.handsW);}
   for(const a of tr){const pr=clamp(1-a.t/a.d,0,1),e=Math.sin(Math.PI*pr);
     switch(a.k){
@@ -1327,20 +1492,20 @@ function poseAvatar(A,dt){
   }
   posePerson(A.person,p);
   const gh=ground(R.x,R.y),hgt=Math.max(0,R.z-gh);
-  A.shadow.position.set(R.x,gh+0.8,R.y);A.shadow.scale.setScalar(1+hgt/300);A.shadow.material.opacity=R.lift?0.1:Math.max(.08,.32-hgt/800);
+  A.shadow.position.set(R.x,gh+0.8,R.y);A.shadow.rotation.z=-R.ang;A.shadow.scale.set(A.type==='car'?1.6:1,1,1).multiplyScalar(1+hgt/300);A.shadow.material.opacity=Math.max(.08,.32-hgt/800);
 }
 
 let player=makeAvatar(P,look.veh,lookToAvatar(look));
 function rebuildPlayer(){
+  if(P.crashT>0||player.rag){P.crashT=0;endRagdoll();}
   removeAvatar(player);
-  P.veh=look.veh;P.maxs=VEH[look.veh].maxs;P.tr=[];
+  P.veh=look.veh;P.maxs=VEH[look.veh].maxs;P.tr=[];P.lift=null;P.grind=null;
   player=makeAvatar(P,look.veh,lookToAvatar(look));
   setButtons();
   try{localStorage.setItem(LS_LOOK,JSON.stringify(look));}catch(e){}
 }
 setButtons();
 
-// gnistor vid grind
 const sparks=[];
 {const geo=new THREE.BoxGeometry(1.6,1.6,1.6);const mat=new THREE.MeshBasicMaterial({color:0xffc04a});
   for(let i=0;i<24;i++){const m=new THREE.Mesh(geo,mat);m.visible=false;scene.add(m);sparks.push({m,life:0,v:new THREE.Vector3()});}}
@@ -1356,20 +1521,23 @@ function updateSparks(dt){
    ========================================================= */
 function parkRoutes(pk){
   const out=[];
-  kickers.filter(k=>k.p===pk.id).forEach(k=>{
+  kickers.filter(k=>k.p===pk.id&&!k.ramp).forEach(k=>{
     const lipX=k.x+k.c*k.len,lipY=k.y+k.s*k.len;
     const a=[k.x-k.c*320,k.y-k.s*320],b=[lipX+k.c*300,lipY+k.s*300];
-    const cl=p=>[clamp(p[0],pk.x0+80,pk.x1-80),clamp(p[1],pk.y0+80,pk.y1-80)];
+    const cl=p=>[clamp(p[0],pk.x0+pk.D+40,pk.x1-pk.D-40),clamp(p[1],pk.y0+pk.D+40,pk.y1-pk.D-40)];
     out.push([cl(a),cl(b)]);
   });
   qps.filter(q=>q.park===pk).forEach(q=>{
-    if(q.t1-q.t0<300)return;
+    if(q.t1-q.t0<300||pk.H>200)return;
     for(let i=0;i<2;i++){const t=q.t0+(q.t1-q.t0)*(0.25+0.5*rnd());out.push([worldOf(q,-q.D-380,t),worldOf(q,30,t)]);}
   });
   return out;
 }
-const ROUTES={A:parkRoutes(PARKS[0]),B:parkRoutes(PARKS[1])};
-ROUTES.M=PISTES.map(p=>{const r=[];for(let d=200;d<p.len;d+=260)r.push((q=>[q.x,q.y])(pointAlong(p,d,(rnd()-0.5)*p.w*0.4)));return r;});
+const ROUTES={A:parkRoutes(PARKS[0]),B:parkRoutes(PARKS[1]),C:parkRoutes(PARKS[2])};
+const FRONT_PISTES=[0,1,2],BACK_PISTES=[4,5];
+const pisteRoute=p=>{const r=[];for(let d=200;d<p.len;d+=260)r.push((q=>[q.x,q.y])(pointAlong(p,d,(rnd()-0.5)*p.w*0.4)));return r;};
+ROUTES.M=FRONT_PISTES.map(i=>pisteRoute(PISTES[i]));
+ROUTES.E=BACK_PISTES.map(i=>pisteRoute(PISTES[i]));
 const NPC_DEF=[
   {p:'A',type:'bmx',look:{frame:0xd93030,hub:0xffffff,top:0x2e8b57,pants:0x23262d,skin:0xe0ac84,glove:0x222222,shoe:0x333333,helmet:0x111111,stripe:0xd93030}},
   {p:'A',type:'skate',look:{deck:0x7b3fd1,hub:0xf5e663,top:0xffffff,pants:0x4b5a73,skin:0xc68a5e,glove:0xc68a5e,shoe:0x111111,helmet:0xd93030,hat:'cap'}},
@@ -1377,27 +1545,36 @@ const NPC_DEF=[
   {p:'A',type:'inline',look:{top:0xec4899,pants:0x111827,skin:0xf6d7bd,glove:0x111111,shoe:0xffffff,helmet:0xec4899,stripe:0xffffff,wheel:0xf5e663}},
   {p:'B',type:'bmx',look:{frame:0x1d4ed8,hub:0xffd23a,top:0x9ca3af,pants:0x111827,skin:0xf1c7a4,glove:0x111111,shoe:0xffffff,helmet:0xfacc15,stripe:0x1d4ed8}},
   {p:'B',type:'kick',look:{deck:0x111111,hub:0xff7a1a,bar:0xff7a1a,top:0x7b3fd1,pants:0x2f3540,skin:0xd9a27b,glove:0x111111,shoe:0x111111,helmet:0x16a34a,stripe:0x111111}},
-  {p:'M',type:'ski',look:{top:0xd93030,pants:0x111827,skin:0xf1c7a4,glove:0x111111,shoe:0x222222,helmet:0xffffff,stripe:0xd93030,skiCol:0xffd23a}},
-  {p:'M',type:'snowboard',look:{deck:0x16a34a,top:0xff7a1a,pants:0x2f3540,skin:0xd9a27b,glove:0x111111,shoe:0x111111,helmet:0x111111,stripe:0xff7a1a}},
-  {p:'M',type:'ski',look:{top:0x2b6cff,pants:0x2f3540,skin:0xb07850,glove:0x111111,shoe:0x222222,helmet:0x111111,stripe:0x2b6cff,skiCol:0x111111}},
-  {p:'M',type:'snowboard',look:{deck:0x7b3fd1,top:0xf5f5f5,pants:0x3b5b8c,skin:0xf6d7bd,glove:0x111111,shoe:0x111111,helmet:0xec4899,stripe:0xffffff}},
+  {p:'C',type:'bmx',look:{frame:0x111111,hub:0xff7a1a,top:0xffd23a,pants:0x111827,skin:0xb07850,glove:0x111111,shoe:0x111111,helmet:0xd93030,stripe:0x111111}},
+  {p:'C',type:'kick',look:{deck:0x2b6cff,hub:0xffffff,bar:0xdfe4ea,top:0x16a34a,pants:0x2f3540,skin:0xf1c7a4,glove:0x111111,shoe:0xffffff,helmet:0x2b6cff,stripe:0xffffff}},
+  {p:'M',w:'ski',s:'mtb',look:{frame:0xd93030,hub:0xffffff,top:0xd93030,pants:0x111827,skin:0xf1c7a4,glove:0x111111,shoe:0x222222,helmet:0xffffff,stripe:0xd93030,skiCol:0xffd23a}},
+  {p:'M',w:'snowboard',s:'mtb',look:{deck:0x16a34a,frame:0x16a34a,hub:0xffd23a,top:0xff7a1a,pants:0x2f3540,skin:0xd9a27b,glove:0x111111,shoe:0x111111,helmet:0x111111,stripe:0xff7a1a}},
+  {p:'M',w:'ski',s:'mtb',look:{frame:0x2b6cff,hub:0xffffff,top:0x2b6cff,pants:0x2f3540,skin:0xb07850,glove:0x111111,shoe:0x222222,helmet:0x111111,stripe:0x2b6cff,skiCol:0x111111}},
+  {p:'E',w:'snowboard',s:'mtb',look:{deck:0x7b3fd1,frame:0x7b3fd1,hub:0xffffff,top:0xf5f5f5,pants:0x3b5b8c,skin:0xf6d7bd,glove:0x111111,shoe:0x111111,helmet:0xec4899,stripe:0xffffff}},
+  {p:'E',w:'ski',s:'mtb',look:{frame:0xf59e0b,hub:0xffffff,top:0xf59e0b,pants:0x111111,skin:0xf1c7a4,glove:0x111111,shoe:0x222222,helmet:0xf59e0b,stripe:0x111111,skiCol:0x2b6cff}},
 ];
 const npcs=NPC_DEF.map(n=>{
   let x,y,ang=rnd()*TAU;
-  if(n.p==='M'){const r=ROUTES.M[Math.floor(rnd()*ROUTES.M.length)];const i=Math.floor(rnd()*(r.length-2));[x,y]=r[i];ang=Math.PI;}
-  else{const pk=PARKS.find(p=>p.id===n.p);let tries=0;do{x=pk.x0+300+rnd()*(pk.x1-pk.x0-600);y=pk.y0+300+rnd()*(pk.y1-pk.y0-600);}while((obstacle(x,y)>0||obstacle(x+40,y)>0||obstacle(x-40,y)>0)&&++tries<80);}
-  const R=newRider(x,y,ang,n.type);
-  R.npc={type:n.type,park:n.p,route:null,idx:0,t:0,stuck:0,pace:n.p==='M'?0.25:0.78+rnd()*0.22,trick:null,T:0};
+  const mtn=n.p==='M'||n.p==='E';
+  const type=mtn?(season==='winter'?n.w:n.s):n.type;
+  if(mtn){const r=ROUTES[n.p][Math.floor(rnd()*ROUTES[n.p].length)];const i=Math.floor(rnd()*(r.length-2));[x,y]=r[i];}
+  else{const pk=PARKS.find(p=>p.id===n.p);let tries=0;do{x=pk.x0+pk.D+150+rnd()*(pk.x1-pk.x0-2*pk.D-300);y=pk.y0+pk.D+150+rnd()*(pk.y1-pk.y0-2*pk.D-300);}while((obstacle(x,y)>0||obstacle(x+40,y)>0||obstacle(x-40,y)>0)&&++tries<80);}
+  const R=newRider(x,y,ang,type);
+  R.npc={def:n,type,park:n.p,route:null,idx:0,t:0,stuck:0,pace:mtn?0.25:0.78+rnd()*0.22,trick:null,T:0};
   R.onTakeoff=npcPlanTrick;
-  makeAvatar(R,n.type,n.look);
+  R.av=makeAvatar(R,type,n.look);
   return R;
 });
+function refreshMountainNPCs(){
+  for(const R of npcs){const n=R.npc;if(n.park!=='M'&&n.park!=='E')continue;
+    const type=season==='winter'?n.def.w:n.def.s;if(type===n.type)continue;
+    removeAvatar(R.av);n.type=type;R.veh=type;R.maxs=VEH[type].maxs;R.av=makeAvatar(R,type,n.def.look);n.route=null;}
+}
 function pickRoute(R){
   const n=R.npc,list=ROUTES[n.park];
-  if(n.park==='M'){
-    // börja om från toppen (som om de åkt liften)
+  if(n.park==='M'||n.park==='E'){
     const r=list[Math.floor(rnd()*list.length)];n.route=r.map(p=>p.slice());n.idx=1;n.t=0;
-    if(!n.route||Math.hypot(R.x-n.route[0][0],R.y-n.route[0][1])>400||true){R.x=n.route[0][0];R.y=n.route[0][1];R.z=ground(R.x,R.y);R.vx=R.vy=0;R.air=false;R.ang=Math.atan2(n.route[1][1]-R.y,n.route[1][0]-R.x);}
+    R.x=n.route[0][0];R.y=n.route[0][1];R.z=ground(R.x,R.y);R.vx=R.vy=0;R.air=false;R.ang=Math.atan2(n.route[1][1]-R.y,n.route[1][0]-R.x);
     return;
   }
   const r=list[Math.floor(rnd()*list.length)];
@@ -1406,6 +1583,7 @@ function pickRoute(R){
 const NPC_TRICKS={
   skate:[['kflip'],['hflip'],['shove'],['grab'],['kflip','shove']],
   bmx:[['bar'],['whip'],['super'],['table'],['bar','whip']],
+  mtb:[['nohand'],['super'],['table'],['whip']],
   kick:[['whip'],['bar'],['whipR'],['super'],['whip','bar']],
   inline:[['grab'],['christ'],['liu'],['misty']],
   ski:[['grab'],['iron'],['daffy'],['misty']],
@@ -1416,8 +1594,8 @@ function npcPlanTrick(R){
   if(T<0.55)return;
   const list=NPC_TRICKS[R.npc.type],r=rnd();
   R.npc.trick=list[Math.floor(rnd()*list.length)];
-  if(r<0.3&&R.flipTo===null)R.npc.spin=rnd()<0.5?TAU:Math.PI*2;
-  else if(r<0.42&&T>1.15)R.npc.flip=rnd()<0.6?-TAU:TAU;
+  if(r<0.3&&R.flipTo===null)R.npc.spin=TAU;
+  else if(r<0.42&&T>1.1)R.npc.flip=rnd()<0.6?-TAU:TAU;
 }
 const ease=x=>x<0?0:x>1?1:x*x*(3-2*x);
 function npcAirAnim(R){
@@ -1430,27 +1608,26 @@ function updateNPC(R,dt){
   if(!n.route)pickRoute(R);
   n.t+=dt;
   let steer=0,thr=0;
+  const mtn=n.park==='M'||n.park==='E';
   if(!R.air){
     R.tr=[];
     const [tx,ty]=n.route[n.idx];
     const dx=tx-R.x,dy=ty-R.y,d=Math.hypot(dx,dy);
     let want=Math.atan2(dy,dx);
-    const wall=a=>{let prev=obstacle(R.x,R.y);for(let s=14;s<=84;s+=14){const h=obstacle(R.x+Math.cos(a)*s,R.y+Math.sin(a)*s);if(h-prev>8)return true;prev=h;}return false;};
+    const wall=a=>{let prev=obstacle(R.x,R.y);for(let s=14;s<=84;s+=14){const sx=R.x+Math.cos(a)*s,sy=R.y+Math.sin(a)*s;if(treeAt(sx,sy,10))return true;const h=obstacle(sx,sy);if(h-prev>8)return true;prev=h;}return false;};
     if(wall(R.ang)||wall(want)){
       for(const o of [0.45,-0.45,0.9,-0.9,1.4,-1.4,2.0,-2.0]){const a=want+o;if(!wall(a)){want=a;break;}}
     }
     const diff=wrap(want-R.ang);
     steer=clamp(diff*2.2,-1,1);
     thr=Math.abs(diff)<1.1?n.pace:0.15;
-    if(n.park==='M'&&Math.hypot(R.vx,R.vy)>520)thr=-0.4;
-    if(d<(n.park==='M'?140:90)||n.t>(n.park==='M'?14:9)){n.idx++;n.t=0;if(n.idx>=n.route.length)pickRoute(R);}
+    if(mtn&&Math.hypot(R.vx,R.vy)>430)thr=-0.4;
+    if(d<(mtn?140:90)||n.t>(mtn?14:9)){n.idx++;n.t=0;if(n.idx>=n.route.length)pickRoute(R);}
     const sp=Math.hypot(R.vx,R.vy);
-    n.stuck=sp<25||R.bumped?n.stuck+dt:0;R.bumped=false;R.hitHard=false;
+    n.stuck=sp<25||R.bumped?n.stuck+dt:0;R.bumped=false;
     if(n.stuck>1.4){n.stuck=0;pickRoute(R);R.ang+=Math.PI*(0.6+rnd()*0.8);}
   }else npcAirAnim(R);
-  if(physics(R,steer,thr,dt)){
-    R.ang=landBase(R);R.baseAng=R.ang;R.spin=R.flip=0;R.tr=[];R.flipRate=0;n.trick=null;
-  }
+  if(physics(R,steer,thr,dt)){R.ang=landBase(R);R.baseAng=R.ang;R.spin=R.flip=0;R.tr=[];R.flipRate=0;n.trick=null;}
   R.hitHard=false;
 }
 
@@ -1477,36 +1654,36 @@ const PED_COL={top:[0xd93030,0x2b6cff,0x16a34a,0xf5f5f5,0x111827,0xf59e0b,0xec48
 const pick=a=>a[Math.floor(rnd()*a.length)];
 const pedCol=()=>({top:pick(PED_COL.top),pants:pick(PED_COL.pants),skin:pick(PED_COL.skin),hair:pick(PED_COL.hair),shoe:pick(PED_COL.shoe)});
 const peds=[];
-for(let i=0;i<30;i++){
+for(let i=0;i<40;i++){
   const r=roads[i%roads.length],side=rnd()<0.5?-1:1;
-  const ped={...makePed(pedCol()),r,side,p:r.a+300+rnd()*(r.b-r.a-600),dir:rnd()<0.5?-1:1,speed:40+rnd()*35,ph:rnd()*10,stop:0,x:0,y:0};
-  peds.push(ped);
+  peds.push({...makePed(pedCol()),r,side,p:r.a+300+rnd()*(r.b-r.a-600),dir:rnd()<0.5?-1:1,speed:40+rnd()*35,ph:rnd()*10,stop:0,hop:0});
 }
-// publik som tittar
 const fans=[];
 function addFan(x,y,z,face){const f={...makePed(pedCol()),x,y,z,face,ph:rnd()*10};f.g.position.set(x,z,y);f.g.rotation.y=-face;fans.push(f);}
-qps.forEach(q=>{if(q.t1-q.t0<500)return;const n=q.park.id==='A'?2:1;for(let i=0;i<n;i++){const t=q.t0+(q.t1-q.t0)*(0.3+0.4*rnd());const [x,y]=worldOf(q,q.deck*0.45,t);addFan(x,y,q.H,Math.atan2(-q.ny,-q.nx));}});
-[[10350,1950],[10420,1990],[10300,2030],[10460,1400],[3600,1200],[3620,1250]].forEach(([x,y])=>addFan(x,y,ground(x,y),x>9000?0:Math.PI));
+qps.forEach(q=>{if(q.t1-q.t0<500)return;const n=q.park.id==='B'?1:2;for(let i=0;i<n;i++){const t=q.t0+(q.t1-q.t0)*(0.3+0.4*rnd());const [x,y]=worldOf(q,q.deck*0.45,t);addFan(x,y,q.H,Math.atan2(-q.ny,-q.nx));}});
+[[10350,1950],[10420,1990],[10300,2030],[10460,1400],[3600,1200],[3620,1250],[20900,1900],[20950,1950]].forEach(([x,y])=>addFan(x,y,ground(x,y),x>20000?Math.PI:x>9000?0:Math.PI));
 function updatePeds(dt){
+  const isCar=VEH[P.veh].car,rad=isCar?52:26;
   for(const pd of peds){
-    pd.stop-=dt;
+    pd.stop-=dt;pd.hop-=dt;
     const r=pd.r,off=(ROADW/2+20)*pd.side;
     let sp=pd.stop>0?0:pd.speed;
     const nx=r.h?pd.p:r.c+off,ny=r.h?r.c+off:pd.p;
     const dP=Math.hypot(P.x-nx,P.y-ny);
-    if(dP<26&&Math.abs(P.z-ground(nx,ny))<30&&!P.crashT){
-      const ax=(P.x-nx)/(dP||1),ay=(P.y-ny)/(dP||1);P.x=nx+ax*27;P.y=ny+ay*27;
+    if(dP<rad&&Math.abs(P.z-ground(nx,ny))<40&&!P.crashT){
+      const ax=(P.x-nx)/(dP||1),ay=(P.y-ny)/(dP||1);P.x=nx+ax*(rad+1);P.y=ny+ay*(rad+1);
       const vn=P.vx*ax+P.vy*ay;if(vn<0){P.vx-=ax*vn*1.6;P.vy-=ay*vn*1.6;}
-      if(pd.stop<=0){pd.stop=1.2;if(Math.hypot(P.vx,P.vy)>150)addPopup(pick(['Hoppsan!','Akta!','Oj!']),'','#fff');}
+      if(pd.stop<=0){pd.stop=1.2;pd.hop=0.5;if(Math.hypot(P.vx,P.vy)>150)addPopup(pick(['Hoppsan!','Akta!','Oj!']),'','#fff');}
     }
+    if(honkT>0&&dP<450&&pd.hop<=0)pd.hop=0.5;
     pd.p+=pd.dir*sp*dt;
     if(pd.p<r.a+150||pd.p>r.b-150){pd.dir*=-1;pd.p=clamp(pd.p,r.a+150,r.b-150);}
-    if(local(r.h?pd.p+pd.dir*30:nx,r.h?ny:pd.p+pd.dir*30)>4){pd.dir*=-1;}
+    if(local(r.h?pd.p+pd.dir*30:nx,r.h?ny:pd.p+pd.dir*30)>4)pd.dir*=-1;
     pd.ph+=sp*dt*0.09;
-    pd.g.position.set(nx,0,ny);pd.g.rotation.y=-(r.h?(pd.dir>0?0:Math.PI):(pd.dir>0?Math.PI/2:-Math.PI/2));
+    pd.g.position.set(nx,pd.hop>0?Math.sin(pd.hop/0.5*Math.PI)*22:0,ny);pd.g.rotation.y=-(r.h?(pd.dir>0?0:Math.PI):(pd.dir>0?Math.PI/2:-Math.PI/2));
     const sw=sp>0?Math.sin(pd.ph)*0.5:0;
     pd.legs[0].rotation.z=sw;pd.legs[1].rotation.z=-sw;pd.arms[0].rotation.z=-sw*0.8;pd.arms[1].rotation.z=sw*0.8;
-    pd.arms[0].rotation.x=pd.arms[1].rotation.x=0;
+    pd.arms[0].rotation.x=pd.arms[1].rotation.x=pd.hop>0?Math.PI*0.8:0;if(pd.hop>0)pd.arms[0].rotation.x*=-1;
   }
   for(const f of fans){
     f.ph+=dt;const near=Math.hypot(P.x-f.x,P.y-f.y)<1300;
@@ -1516,25 +1693,25 @@ function updatePeds(dt){
     f.g.position.y=f.z+(up?Math.abs(Math.sin(f.ph*10))*4:0);
   }
 }
-// bilar som kör
 const traffic=[];
-[[0,1,1200],[0,-1,5600],[1,1,3000],[1,-1,7600],[3,1,-800],[3,-1,2000],[4,1,500],[2,-1,1500]].forEach(([ri,dir,p])=>{
+[[0,1,1200],[0,-1,5600],[1,1,3000],[1,-1,7600],[3,1,-800],[3,-1,2000],[4,1,500],[2,-1,1500],[5,1,23000],[6,-1,25000],[7,1,0]].forEach(([ri,dir,p])=>{
   const r=roads[ri];const g=makeCarMesh(pick([0xd93030,0x1d4ed8,0xf5f5f5,0x222222,0x16a34a,0xf59e0b,0x7b3fd1]));scene.add(g);
   traffic.push({r,dir,p,g,speed:280,v:280});
 });
 function updateTraffic(dt){
+  const rad=VEH[P.veh].car?60:32;
   for(const c of traffic){
     const r=c.r,lane=c.dir*42*(r.h?1:-1);
     const x=r.h?c.p:r.c+lane,y=r.h?r.c+lane:c.p;
     const fx=r.h?c.dir:0,fy=r.h?0:c.dir;
     const dx=P.x-x,dy=P.y-y,ahead=dx*fx+dy*fy,lat=Math.abs(-dx*fy+dy*fx);
-    const blocked=(ahead>0&&ahead<300&&lat<70&&P.z<80)||peds.some(pd=>false);
+    const blocked=ahead>0&&ahead<320&&lat<80&&P.z<80;
     c.v+=((blocked?0:c.speed)-c.v)*Math.min(1,dt*(blocked?4:1));
     c.p+=c.dir*c.v*dt;
     if(c.p>r.b-80||c.p<r.a+80){c.dir*=-1;c.p=clamp(c.p,r.a+80,r.b-80);}
     c.g.position.set(x,0,y);c.g.rotation.y=-Math.atan2(fy,fx);
-    if(ahead>-62&&ahead<62&&lat<32&&P.z<55&&!P.crashT){
-      const s=(-dx*fy+dy*fx)>=0?1:-1;P.x+=-fy*s*(34-lat);P.y+=fx*s*(34-lat);P.vx+=-fy*s*120;P.vy+=fx*s*120;
+    if(ahead>-62-rad+32&&ahead<62+rad-32&&lat<rad&&P.z<55&&!P.crashT){
+      const s=(-dx*fy+dy*fx)>=0?1:-1;P.x+=-fy*s*(rad+2-lat);P.y+=fx*s*(rad+2-lat);P.vx+=-fy*s*120;P.vy+=fx*s*120;
     }
   }
 }
@@ -1551,18 +1728,19 @@ const ragHolder=new THREE.Group();ragHolder.scale.setScalar(S);scene.add(ragHold
 const gnd=(x,z)=>ground(clamp(x,WX0,WX1),clamp(z,WY0,WY1));
 function startRagdoll(){
   const A=player;if(A.rag)return;
-  if(!A.pose.head)poseAvatar(A,0.016);
-  A.body.updateMatrixWorld(true);
-  const vx=P.vx,vy=P.vz||0,vz=P.vy,fx=Math.cos(P.ang),fz=Math.sin(P.ang);
+  poseAvatar(A,0.016);
+  A.root.updateMatrixWorld(true);
+  const sp=Math.hypot(P.vx,P.vy),k=Math.min(1,360/Math.max(sp,1));
+  const vx=P.vx*k,vy=Math.min(P.vz||0,150),vz=P.vy*k,fx=Math.cos(P.ang),fz=Math.sin(P.ang);
   const pts={};
-  for(const k of RAG_KEYS){
-    const w=A.body.localToWorld(A.pose[k].clone());
-    const up=(w.y-P.z)/60;const kick=(up-0.5)*140;
-    const v=new THREE.Vector3(vx*0.9+fx*kick+(Math.random()-0.5)*40,vy*0.6+40+Math.random()*30,vz*0.9+fz*kick+(Math.random()-0.5)*40);
-    pts[k]={p:w,o:w.clone().addScaledVector(v,-1/60),r:k==='head'?6:3};
+  for(const kk of RAG_KEYS){
+    const w=A.body.localToWorld(A.pose[kk].clone());
+    const up=(w.y-P.z)/60;const kick=(up-0.5)*120;
+    const v=new THREE.Vector3(vx*0.8+fx*kick+(Math.random()-0.5)*40,vy*0.5+30+Math.random()*30,vz*0.8+fz*kick+(Math.random()-0.5)*40);
+    pts[kk]={p:w,o:w.clone().addScaledVector(v,-1/60),r:kk==='head'?6:3};
   }
   const links=RAG_LINKS.map(([a,b])=>[pts[a],pts[b],pts[a].p.distanceTo(pts[b].p)]);
-  const veh={pos:A.root.position.clone(),vel:new THREE.Vector3(vx*1.1,Math.max(vy,0)*0.5+120,vz*1.1),rx:0,rz:0,wx:(Math.random()-0.5)*14,wz:-8-Math.random()*6,yaw:-P.ang};
+  const veh={pos:A.root.position.clone(),vel:new THREE.Vector3(vx*0.9,Math.max(vy,0)*0.4+(A.type==='car'?40:110),vz*0.9),rx:0,rz:0,wx:(Math.random()-0.5)*(A.type==='car'?4:14),wz:(A.type==='car'?-2:-8)-Math.random()*4,yaw:-P.ang};
   A.rag={pts,links,veh};
   ragHolder.add(A.person.g);A.person.g.position.set(0,0,0);A.person.g.rotation.set(0,0,0);
 }
@@ -1583,18 +1761,23 @@ function stepRagdoll(dt){
       for(const k in rg.pts){
         const q=rg.pts[k],p=q.p,g=gnd(p.x,p.z)+q.r;
         if(p.y<g){p.y=g;q.o.x+=(p.x-q.o.x)*0.25;q.o.z+=(p.z-q.o.z)*0.25;if(q.o.y<p.y)q.o.y=p.y+(q.o.y-p.y)*0.3;}
+        const t=treeAt(p.x,p.z,q.r);
+        if(t){const dx=p.x-t.x,dz=p.z-t.y,d=Math.hypot(dx,dz)||1,R=t.r+q.r;p.x=t.x+dx/d*R;p.z=t.y+dz/d*R;q.o.x=p.x;q.o.z=p.z;}
         p.x=clamp(p.x,WX0,WX1);p.z=clamp(p.z,WY0,WY1);
       }
     }
   }
   const v=rg.veh;
-  v.vel.y-=G*dt;v.pos.addScaledVector(v.vel,dt);v.rx+=v.wx*dt;v.rz+=v.wz*dt;
+  v.vel.y-=G*dt;
+  const nx=v.pos.x+v.vel.x*dt,nz=v.pos.z+v.vel.z*dt;
+  if(treeAt(nx,nz,12)){v.vel.x*=-0.3;v.vel.z*=-0.3;}else{v.pos.x=nx;v.pos.z=nz;}
+  v.pos.y+=v.vel.y*dt;v.rx+=v.wx*dt;v.rz+=v.wz*dt;
   const g=gnd(v.pos.x,v.pos.z);
-  const lift=14*Math.abs(Math.sin(v.rx));
+  const lift=(A.type==='car'?0:14)*Math.abs(Math.sin(v.rx));
   if(v.pos.y<g+lift){v.pos.y=g+lift;v.vel.y=-v.vel.y*0.3;v.vel.x*=0.7;v.vel.z*=0.7;v.wx*=0.6;v.wz*=0.6;
     if(Math.abs(v.vel.y)<40){v.wx=v.wz=0;
       v.rz=wrap(v.rz);v.rz+=(0-v.rz)*Math.min(1,dt*8);
-      const tx=(Math.sin(v.rx)>=0?1:-1)*Math.PI/2;v.rx=wrap(v.rx);v.rx+=(tx-v.rx)*Math.min(1,dt*8);}}
+      const tx=A.type==='car'?0:(Math.sin(v.rx)>=0?1:-1)*Math.PI/2;v.rx=wrap(v.rx);v.rx+=(tx-v.rx)*Math.min(1,dt*8);}}
   const pel=rg.pts.pelvis.p;P.x=pel.x;P.y=pel.z;P.z=Math.max(gnd(pel.x,pel.z),pel.y-25);
 }
 const ragPose={footYaw:0,headYaw:0};
@@ -1606,7 +1789,7 @@ function renderRagdoll(A){
   A.person.parts.head.lookAt(rg.pts.head.p.clone().sub(rg.pts.neck.p).add(rg.pts.head.p));
   const v=rg.veh;
   A.root.position.copy(v.pos);A.root.rotation.set(v.rx,v.yaw,v.rz,'YXZ');
-  A.tilt.rotation.set(0,0,0);A.flipG.rotation.set(0,0,0);
+  A.tilt.rotation.set(0,0,0);A.flipG.rotation.set(0,0,0);A.veh.g.visible=true;
   const pel=rg.pts.pelvis.p,gh=gnd(pel.x,pel.z);
   A.shadow.position.set(pel.x,gh+0.8,pel.z);A.shadow.material.opacity=0.28;A.shadow.scale.setScalar(1.3);
 }
@@ -1616,8 +1799,9 @@ function endRagdoll(){
   A.body.add(A.person.g);A.person.g.position.set(0,0,0);A.person.g.rotation.set(0,0,0);
   A.root.rotation.set(0,0,0);
   A.rag=null;
-  P.x=clamp(pel.x,WX0+20,WX1-20);P.y=clamp(pel.z,WY0+20,WY1-20);
-  for(let i=0;i<40&&obstacle(P.x,P.y)>2;i++){P.x+=Math.cos(P.ang+Math.PI)*15;P.y+=Math.sin(P.ang+Math.PI)*15;}
+  if(A.type==='car'){P.x=rg.veh.pos.x;P.y=rg.veh.pos.z;}else{P.x=pel.x;P.y=pel.z;}
+  P.x=clamp(P.x,WX0+20,WX1-20);P.y=clamp(P.y,WY0+20,WY1-20);
+  for(let i=0;i<40&&(obstacle(P.x,P.y)>2||treeAt(P.x,P.y,16));i++){P.x+=Math.cos(P.ang+Math.PI)*15;P.y+=Math.sin(P.ang+Math.PI)*15;}
   P.z=ground(P.x,P.y);P.vx=P.vy=P.vz=0;P.air=false;P.crashT=0;P.spin=P.flip=0;P.baseAng=P.ang;P.flipTo=null;P.tr=[];
 }
 
@@ -1626,21 +1810,22 @@ function endRagdoll(){
    ========================================================= */
 const raceGates=[[1500,2750],[3400,2750],[4150,2100],[4150,600],[4150,-450],[2200,-450],[300,-450],[-450,600],[-450,2100],[-250,2750]];
 const slalom=[];{const p=PISTES[1];let s=1;for(let d=350;d<p.len-250;d+=360){const q=pointAlong(p,d,s*55);slalom.push([q.x,q.y,q.ang]);s=-s;}}
+const dhGates=[];{const p=PISTES[4];for(let d=400;d<p.len-200;d+=500){const q=pointAlong(p,d,0);dhGates.push([q.x,q.y,q.ang]);}}
 const STARS=[[1700,1150],[3750,500],[5650,450],[SHOP_PAD.x,SHOP_PAD.y],[2600,2750],[6150,2750],[4150,-450],[8450,1500],[1700,-450],[10350,1600]];
 const COMPS=[
-  {id:'kick',veh:'kick',name:'Trickjakten',desc:'Samla så många trickpoäng du kan på 60 s i Lilla parken.',type:'score',time:60,start:[1700,1950,-Math.PI/2],med:[2500,5000,9000],unit:'p'},
-  {id:'bmx',veh:'bmx',name:'Big Air',desc:'Ditt bästa enskilda trick på 60 s räknas. Mega-kickern väntar!',type:'best',time:60,start:[4500,1150,0],med:[700,1500,3000],unit:'p'},
+  {id:'kick',veh:'kick',name:'Trickjakten',desc:'Samla så många trickpoäng du kan på 60 s i Lilla parken.',type:'score',time:60,start:[1700,1950,-Math.PI/2],med:[2000,4000,7000],unit:'p'},
+  {id:'bmx',veh:'bmx',name:'Big Air',desc:'Ditt bästa enskilda trick på 60 s räknas. Mega-kickern väntar!',type:'best',time:60,start:[4500,1150,0],med:[600,1300,2500],unit:'p'},
   {id:'skate',veh:'skate',name:'Grindkungen',desc:'Grinda så länge du kan på 60 s. Räcken finns i båda parkerna.',type:'grind',time:60,start:[300,1990,0],med:[3,7,12],unit:'s'},
   {id:'inline',veh:'inline',name:'Stadsracet',desc:'Åk genom alla portar runt stan så snabbt du kan.',type:'race',time:180,start:[0,2750,0],gates:raceGates,med:[75,58,48],unit:'s',low:true},
-  {id:'snowboard',veh:'snowboard',name:'Slopestyle',desc:'Åk Hoppbacken från toppen och samla poäng på hoppen innan mål.',type:'run',time:150,start:[15150,1750,Math.PI],finishX:10450,med:[1500,3500,6500],unit:'p'},
-  {id:'ski',veh:'ski',name:'Storslalom',desc:'Åk genom alla portar i Skogsbacken. Missad port = +5 s.',type:'slalom',time:240,start:[15150,2350,Math.PI*0.8],gates:slalom,finishX:10450,med:[45,32,24],unit:'s',low:true},
+  {id:'snowboard',veh:'snowboard',name:'Slopestyle',desc:'Åk Hoppbacken från toppen och samla poäng på hoppen innan mål.',type:'run',time:150,start:[15150,1750,Math.PI],finishX:10450,finishY:1700,med:[1200,3000,5500],unit:'p',season:'winter'},
+  {id:'ski',veh:'ski',name:'Storslalom',desc:'Åk genom alla portar i Skogsbacken. Missad port = +5 s.',type:'slalom',time:240,start:[15150,2350,Math.PI*0.8],gates:slalom,finishX:10450,finishY:2550,med:[55,40,30],unit:'s',low:true,season:'winter'},
+  {id:'mtb',veh:'mtb',name:'Downhill',desc:'Cykla Östra backen från toppen ner till Bergsbyn så snabbt du kan (sommar).',type:'race',time:240,start:[16420,1750,0],gates:dhGates.concat([[21150,1750]]),med:[60,45,36],unit:'s',low:true,season:'summer'},
+  {id:'car',veh:'car',name:'Gigantstunt',desc:'Kör bil i Gigantparken och gör så många poäng du kan på 90 s.',type:'score',time:90,start:[23900,1350,0],med:[800,2000,4000],unit:'p'},
   {id:'walk',veh:'walk',name:'Stjärnjakten',desc:'Hitta 10 stjärnor i stan på 150 s. Leta högt och lågt!',type:'collect',time:150,start:[1700,1950,-Math.PI/2],med:[4,7,10],unit:'st'},
 ];
 const compGroup=new THREE.Group();scene.add(compGroup);
 function compBest(id){try{return JSON.parse(localStorage.getItem(LS_COMP+id)||'null');}catch(e){return null;}}
-function medalFor(def,val){
-  let m=0;for(let i=0;i<3;i++){if(def.low?val<=def.med[i]:val>=def.med[i])m=i+1;}return m;
-}
+function medalFor(def,val){let m=0;for(let i=0;i<3;i++){if(def.low?val<=def.med[i]:val>=def.med[i])m=i+1;}return m;}
 const MEDALS=['','🥉','🥈','🥇'];
 function fmt(def,v){return def.unit==='s'?v.toFixed(1)+' s':def.unit==='st'?v+' st':Math.round(v)+' p';}
 function buildCompCards(){
@@ -1674,13 +1859,14 @@ function clearComp(){while(compGroup.children.length)compGroup.remove(compGroup.
 function startComp(def){
   clearComp();
   $('comps').hidden=true;$('menu').hidden=true;$('result').hidden=true;
+  if(def.season&&season!==def.season){season=def.season;applySeason();}
   if(look.veh!==def.veh){look.veh=def.veh;rebuildPlayer();}
   resetP(def.start[0],def.start[1],def.start[2]);
-  comp={def,t:0,val:0,pre:3,gi:0,pen:0,marks:[],got:0,done:false,lastPre:4};
-  if(def.gates){def.gates.forEach((g,i)=>{const a=def.type==='race'?Math.atan2(g[1]-(i?def.gates[i-1][1]:def.start[1]),g[0]-(i?def.gates[i-1][0]:def.start[0])):g[2];
-    comp.marks.push(def.type==='race'?gateMesh(g[0],g[1],a,0x9ca3af,240):poleGate(g[0],g[1],i%2?0x2b6cff:0xd93030));});}
+  comp={def,t:0,val:0,pre:3,gi:0,pen:0,marks:[],done:false,lastPre:4};
+  if(def.gates){def.gates.forEach((g,i)=>{const prev=i?def.gates[i-1]:def.start;const a=def.type==='race'?Math.atan2(g[1]-prev[1],g[0]-prev[0]):g[2];
+    comp.marks.push(def.type==='race'?gateMesh(g[0],g[1],a,0x9ca3af,def.id==='mtb'?320:240):poleGate(g[0],g[1],i%2?0x2b6cff:0xd93030));});}
   if(def.type==='collect')STARS.forEach(s=>comp.marks.push(starMesh(s[0],s[1])));
-  if(def.finishX){const y=def.start[1];const fg=gateMesh(def.finishX,def.type==='slalom'?PISTES[1].pts[PISTES[1].pts.length-1][1]:PISTES[0].pts[PISTES[0].pts.length-1][1],Math.PI,0xd93030,340);comp.finish=fg;}
+  if(def.finishX)gateMesh(def.finishX,def.finishY,Math.PI,0xd93030,340);
   $('compHud').hidden=false;document.body.classList.add('incomp');
   running=true;
 }
@@ -1693,18 +1879,16 @@ function updateComp(dt){
   const c=comp,d=c.def;
   if(c.pre>0){
     c.pre-=dt;const n=Math.ceil(c.pre);if(n!==c.lastPre&&n>0){c.lastPre=n;addPopup(String(n),'','#fff',true);}
-    if(c.pre<=0){addPopup('KÖR!','','#ffd23a',true);}
-    P.vx=P.vy=0;
-    $('compHud').textContent=d.name+' – gör dig redo';return;
+    if(c.pre<=0)addPopup('KÖR!','','#ffd23a',true);
+    P.vx=P.vy=0;$('compHud').textContent=d.name+' – gör dig redo';return;
   }
   c.t+=dt;
-  // portar
   if(d.type==='race'||d.type==='slalom'){
     const g=d.gates[c.gi];
     if(g){
       c.marks.forEach((m,i)=>{m.visible=i>=c.gi;});
       const dist=Math.hypot(P.x-g[0],P.y-g[1]);
-      if(dist<(d.type==='race'?140:70)){c.gi++;addPopup('Port '+c.gi+'/'+d.gates.length,'','#9be7ff');}
+      if(dist<(d.type==='race'?(d.id==='mtb'?180:140):70)){c.gi++;addPopup('Port '+c.gi+'/'+d.gates.length,'','#9be7ff');}
       else if(d.type==='slalom'&&P.x<g[0]-90){c.gi++;c.pen+=5;addPopup('Missad port','+5 s','#ff5a5a');}
     }
     if(d.type==='race'&&c.gi>=d.gates.length)return endComp(true);
@@ -1727,7 +1911,7 @@ function updateComp(dt){
 }
 function endComp(ok){
   const c=comp,d=c.def;if(!c)return;
-  if(P.grind){leaveGrind(0);}
+  if(P.grind)leaveGrind(0);
   let val=d.type==='race'?c.t:d.type==='slalom'?c.t+c.pen+(d.gates.length-c.gi)*5:c.val;
   if(d.type==='run'&&!ok)val=0;
   const m=ok?medalFor(d,val):0;
@@ -1737,7 +1921,7 @@ function endComp(ok){
   $('resMedal').textContent=m?MEDALS[m]:'💪';
   $('resTitle').textContent=d.name;
   $('resText').textContent=ok?`Resultat: ${fmt(d,val)}${isBest?' – nytt personbästa!':''}${m?'':' – ingen medalj den här gången.'}${m<3?' Guld: '+(d.low?'under ':'')+fmt(d,d.med[2]):''}`:'Tiden tog slut. Försök igen!';
-  running=false;clearComp();comp={def:d,done:true};$('compHud').hidden=true;
+  running=false;clearComp();comp={def:d,done:true};
   $('result').hidden=false;
 }
 $('bAgain').onclick=()=>{const d=comp&&comp.def;$('result').hidden=true;comp=null;if(d)startComp(d);};
@@ -1747,26 +1931,34 @@ $('bResClose').onclick=()=>{$('result').hidden=true;comp=null;running=true;};
    KAMERA
    ========================================================= */
 let camYaw=P.ang,camH=P.z,edT=0;
-const BACK=150,UP=70;
 function updateCamera(dt,snap){
   if(editing){
-    edT+=dt;const a=P.ang+Math.PI*0.7+Math.sin(edT*0.5)*0.6;
-    const d=125,cx=P.x+Math.cos(a)*d,cz=P.y+Math.sin(a)*d;
-    camera.position.set(cx,P.z+60,cz);
-    const rx=Math.sin(a),rz=-Math.cos(a),off=Math.min(90,40*camera.aspect);
+    edT+=dt;const a=P.ang+Math.PI*0.7+Math.sin(edT*0.5)*0.6,isCar=VEH[P.veh].car;
+    const d=isCar?230:125,cx=P.x+Math.cos(a)*d,cz=P.y+Math.sin(a)*d;
+    camera.position.set(cx,P.z+(isCar?95:60),cz);
+    const rx=Math.sin(a),rz=-Math.cos(a),off=Math.min(isCar?160:90,(isCar?70:40)*camera.aspect);
     camera.lookAt(P.x+rx*off,P.z+34,P.y+rz*off);
     return;
+  }
+  const isCar=VEH[P.veh].car;
+  if(P.lift){
+    const L=P.lift.L;
+    const tx=P.x-L.ux*150-L.px*210,ty=P.y-L.uy*150-L.py*210,tz=P.z+(L.type==='tbar'?70:80);
+    const k2=snap||Math.hypot(tx-camera.position.x,ty-camera.position.z)>800?1:Math.min(1,dt*3);
+    camera.position.x+=(tx-camera.position.x)*k2;camera.position.z+=(ty-camera.position.z)*k2;camera.position.y+=(tz-camera.position.y)*k2;
+    const fl=ground(camera.position.x,camera.position.z)+25;if(camera.position.y<fl)camera.position.y=fl;
+    camera.lookAt(P.x+L.ux*50,P.z+30,P.y+L.uy*50);camYaw=P.ang;camH=P.z;return;
   }
   const target=P.air?P.baseAng:P.ang;
   const k=snap?1:Math.min(1,dt*(P.air?2.2:3.5));
   camYaw+=wrap(target-camYaw)*k;
   camH+=(P.z-camH)*(snap?1:Math.min(1,dt*(P.air?2:5)));
-  const back=P.lift?190:BACK;
+  const back=P.lift?(P.lift.L.type==='gondola'?260:200):isCar?250:150;
   let cx=P.x-Math.cos(camYaw)*back,cz=P.y-Math.sin(camYaw)*back;
   cx=clamp(cx,WX0,WX1);cz=clamp(cz,WY0,WY1);
-  let cy=camH+UP+(P.lift?40:0);const floor=ground(cx,cz)+25;if(cy<floor)cy=floor;
+  let cy=camH+(isCar?110:70)+(P.lift?50:0);const floor=ground(cx,cz)+25;if(cy<floor)cy=floor;
   camera.position.set(cx,cy,cz);
-  camera.lookAt(P.x+Math.cos(camYaw)*70,P.z+35,P.y+Math.sin(camYaw)*70);
+  camera.lookAt(P.x+Math.cos(camYaw)*70,P.z+(P.lift?10:35),P.y+Math.sin(camYaw)*70);
 }
 function resize(){
   const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);
@@ -1775,7 +1967,66 @@ function resize(){
 window.addEventListener('resize',resize);resize();
 
 /* =========================================================
-   ÅKAREDITOR OCH BUTIK
+   KARTA
+   ========================================================= */
+const mapCv=$('mapCv'),mctx=mapCv.getContext('2d');
+let mapBg=null,mapScale=1;
+const MAP_PLACES=[['Lilla parken',1700,1150],['Stora parken',6150,1150],['Butiken',SHOP_PAD.x,SHOP_PAD.y-150],['Trapporna',3750,500],
+  ['Skidberget',12800,1100],['Toppen',15800,1100],['Bergsbyn',24800,3300],['Gigantparken',24800,1350]];
+function buildMapBg(){
+  const W=Math.min(1100,innerWidth-24),H=Math.round(W*(WY1-WY0)/(WX1-WX0));
+  const sc=W/(WX1-WX0);mapScale=sc;
+  const c=document.createElement('canvas');c.width=W*2;c.height=H*2;const g=c.getContext('2d');g.scale(2,2);
+  const X=x=>(x-WX0)*sc,Y=y=>(y-WY0)*sc,w=season==='winter';
+  g.fillStyle=w?'#e9eff5':'#7cb35a';g.fillRect(0,0,W,H);
+  // berg
+  for(let x=MX0;x<MX1;x+=100)for(let y=WY0;y<WY1;y+=100){const h=terrain(x+50,y+50)/MH;
+    g.fillStyle=w?`rgba(${200-h*70|0},${215-h*60|0},${235-h*40|0},1)`:`rgba(${110-h*40|0},${160-h*60|0},${80-h*30|0},1)`;g.fillRect(X(x),Y(y),100*sc+0.6,100*sc+0.6);}
+  g.fillStyle=w?'rgba(40,90,60,.45)':'rgba(25,70,35,.55)';for(const t of forest){g.fillRect(X(t.x)-0.6,Y(t.y)-0.6,1.3,1.3);}
+  // pister
+  g.lineCap='round';
+  for(const p of PISTES){g.strokeStyle='#'+p.col.toString(16).padStart(6,'0');g.lineWidth=Math.max(2,p.w*sc);g.beginPath();p.pts.forEach(([x,y],i)=>i?g.lineTo(X(x),Y(y)):g.moveTo(X(x),Y(y)));g.stroke();}
+  g.setLineDash([4,3]);g.strokeStyle='#ff7a1a';g.lineWidth=2;
+  for(const p of OFFPISTE){g.beginPath();p.pts.forEach(([x,y],i)=>i?g.lineTo(X(x),Y(y)):g.moveTo(X(x),Y(y)));g.stroke();}
+  g.setLineDash([]);
+  // vägar, hus, parker
+  g.fillStyle='#4b5059';for(const r of roads){if(r.h)g.fillRect(X(r.a),Y(r.c-ROADW/2),(r.b-r.a)*sc,ROADW*sc);else g.fillRect(X(r.c-ROADW/2),Y(r.a),ROADW*sc,(r.b-r.a)*sc);}
+  g.fillRect(X(CX1),Y(1100-ROADW/2),1300*sc,ROADW*sc);
+  g.fillStyle='#c98b6b';for(const h of houses)g.fillRect(X(h.x),Y(h.y),h.w*sc,h.h*sc);
+  for(const pk of PARKS){g.fillStyle='#c9ccd2';g.fillRect(X(pk.x0),Y(pk.y0),(pk.x1-pk.x0)*sc,(pk.y1-pk.y0)*sc);g.strokeStyle='#6b7280';g.lineWidth=1.5;g.strokeRect(X(pk.x0),Y(pk.y0),(pk.x1-pk.x0)*sc,(pk.y1-pk.y0)*sc);}
+  g.fillStyle='#c79a62';for(const k of kickers){if(k.p==='M')continue;g.save();g.translate(X(k.x),Y(k.y));g.rotate(k.ang);g.fillRect(0,-k.wid/2*sc,k.len*sc,k.wid*sc);g.restore();}
+  // liftar
+  for(const L of LIFTS){g.strokeStyle='#111';g.lineWidth=1.6;g.beginPath();g.moveTo(X(L.x0),Y(L.y0));g.lineTo(X(L.x1),Y(L.y1));g.stroke();
+    g.fillStyle='#d93030';g.beginPath();g.arc(X(L.pad.x),Y(L.pad.y),3.5,0,TAU);g.fill();}
+  g.fillStyle='#16a34a';g.beginPath();g.arc(X(SHOP_PAD.x),Y(SHOP_PAD.y),3.5,0,TAU);g.fill();
+  // namn
+  g.font='800 11px system-ui';g.textAlign='center';g.lineWidth=3;g.strokeStyle='rgba(0,0,0,.55)';g.fillStyle='#fff';
+  for(const [n,x,y] of MAP_PLACES){g.strokeText(n,X(x),Y(y));g.fillText(n,X(x),Y(y));}
+  g.font='700 9px system-ui';for(const L of LIFTS){const mx=X((L.x0+L.x1)/2),my=Y((L.y0+L.y1)/2)-4;g.strokeText(L.name,mx,my);g.fillText(L.name,mx,my);}
+  mapBg={c,W,H,X,Y};
+}
+function drawMap(){
+  if(!mapBg)buildMapBg();
+  const {c,W,H,X,Y}=mapBg;
+  mapCv.width=W*2;mapCv.height=H*2;mapCv.style.width=W+'px';mapCv.style.height=H+'px';
+  mctx.setTransform(1,0,0,1,0,0);mctx.drawImage(c,0,0);mctx.scale(2,2);
+  for(const n of npcs){mctx.fillStyle='#fff';mctx.beginPath();mctx.arc(X(n.x),Y(n.y),2,0,TAU);mctx.fill();}
+  mctx.save();mctx.translate(X(P.x),Y(P.y));mctx.rotate(P.ang);
+  mctx.fillStyle='#ffd23a';mctx.strokeStyle='#111';mctx.lineWidth=1.5;mctx.beginPath();mctx.moveTo(9,0);mctx.lineTo(-6,-6);mctx.lineTo(-3,0);mctx.lineTo(-6,6);mctx.closePath();mctx.fill();mctx.stroke();mctx.restore();
+}
+let mapOpen=false,mapWasRunning=false;
+$('bMap').addEventListener('click',()=>{mapOpen=true;mapWasRunning=running;running=false;$('mapBox').hidden=false;mapBg=null;drawMap();});
+$('bMapClose').addEventListener('click',()=>{mapOpen=false;$('mapBox').hidden=true;running=mapWasRunning;});
+mapCv.addEventListener('pointerdown',e=>{
+  if(comp&&!comp.done){addPopup('Inte under tävling','','#ff5a5a');return;}
+  const r=mapCv.getBoundingClientRect(),x=WX0+(e.clientX-r.left)/mapScale,y=WY0+(e.clientY-r.top)/mapScale;
+  let tx=clamp(x,WX0+50,WX1-50),ty=clamp(y,WY0+50,WY1-50);
+  for(let i=0;i<60&&(obstacle(tx,ty)>2||treeAt(tx,ty,30));i++){const a=i*2.4,rr=20+i*12;tx=clamp(x+Math.cos(a)*rr,WX0+50,WX1-50);ty=clamp(y+Math.sin(a)*rr,WY0+50,WY1-50);}
+  resetP(tx,ty,P.ang);mapOpen=false;$('mapBox').hidden=true;running=true;$('menu').hidden=true;addPopup(whereAmI(tx,ty),'','#fff');
+});
+
+/* =========================================================
+   ÅKAREDITOR, BUTIK, ÅRSTID
    ========================================================= */
 const ROW_DEF=[['veh','Fordon'],['hat','Huvud'],['helmet','Hjälm / keps'],['top','Tröja'],['pants','Byxor'],['skin','Hud'],['shoe','Skor'],['vcol','Fordonsfärg']];
 const hex=c=>'#'+c.toString(16).padStart(6,'0');
@@ -1802,22 +2053,26 @@ $('bEdit').addEventListener('click',()=>{
   editing=true;menu.hidden=true;editor.hidden=false;document.body.classList.add('editing');buildEditor();edT=0;
 });
 $('bDone').addEventListener('click',()=>{editing=false;editor.hidden=true;menu.hidden=false;document.body.classList.remove('editing');updateCamera(0,true);});
+let shopWasRunning=false;
 function buildShop(){
   const box=$('shopGrid');box.innerHTML='';
   for(const v of VEH_ORDER){const b=document.createElement('button');b.type='button';b.className='vbtn'+(look.veh===v?' sel':'');
-    b.innerHTML=`<em>${VEH[v].icon}</em>${VEH[v].name}`;b.onclick=()=>{look.veh=v;rebuildPlayer();$('shop').hidden=true;running=true;addPopup(VEH[v].name+'!','',null);};box.appendChild(b);}
+    b.innerHTML=`<em>${VEH[v].icon}</em>${VEH[v].name}`;b.onclick=()=>{look.veh=v;rebuildPlayer();$('shop').hidden=true;running=true;$('menu').hidden=true;addPopup(VEH[v].name+'!','',null);};box.appendChild(b);}
 }
-$('shopBtn').addEventListener('click',()=>{running=false;buildShop();$('shop').hidden=false;});
-$('bShopClose').addEventListener('click',()=>{$('shop').hidden=true;running=true;});
+function openShop(){if(comp&&!comp.done){addPopup('Inte under tävling','','#ff5a5a');return;}shopWasRunning=running;running=false;buildShop();$('shop').hidden=false;}
+$('bVeh').addEventListener('click',openShop);
+$('bShopClose').addEventListener('click',()=>{$('shop').hidden=true;running=shopWasRunning;});
+$('bSeason').addEventListener('click',()=>{season=season==='winter'?'summer':'winter';applySeason();addPopup(season==='winter'?'Vinter ❄️':'Sommar ☀️','',null);});
 $('bComps').addEventListener('click',()=>{buildCompCards();menu.hidden=true;$('comps').hidden=false;});
 $('bCompsClose').addEventListener('click',()=>{$('comps').hidden=true;menu.hidden=false;});
+applySeason();
 
 /* =========================================================
    LOOP
    ========================================================= */
-const live=$('live'),whereEl=$('where'),shopBtn=$('shopBtn');
+const live=$('live'),whereEl=$('where');
 function liveText(){
-  if(P.lift)return 'Liften '+Math.round(P.lift.s*100)+' %';
+  if(P.lift)return P.lift.L.name+' '+Math.round(Math.min(1,P.lift.s)*100)+' %';
   if(P.grind)return VEH[P.veh].g+' '+P.grind.t.toFixed(1)+' s';
   if(!P.air||P.crashT>0)return '';
   const t=trickWords(P);const parts=t.parts.slice();
@@ -1825,51 +2080,54 @@ function liveText(){
   if(P.flipT>0)parts.push('flip…');
   return parts.join(' + ');
 }
-function step(dt){
-  if(comp&&!comp.done)updateComp(dt);
-  if(!(comp&&comp.pre>0))updatePlayer(dt);
-  npcs.forEach(n=>updateNPC(n,dt));
-  collide();
-  updatePeds(dt);updateTraffic(dt);
-  cheerT-=dt;
-}
 function collide(){
   const all=[P,...npcs];
   for(let i=0;i<all.length;i++)for(let j=i+1;j<all.length;j++){
     const a=all[i],b=all[j];if(Math.abs(a.z-b.z)>25||a.crashT>0||b.crashT>0||a.grind||b.grind||a.lift||b.lift)continue;
-    const dx=b.x-a.x,dy=b.y-a.y;if(Math.abs(dx)>30||Math.abs(dy)>30)continue;const d=Math.hypot(dx,dy);
-    if(d>0&&d<30){
-      const nx=dx/d,ny=dy/d,push=(30-d)/2;
+    const rr=(VEH[a.veh].car||VEH[b.veh].car)?55:30;
+    const dx=b.x-a.x,dy=b.y-a.y;if(Math.abs(dx)>rr||Math.abs(dy)>rr)continue;const d=Math.hypot(dx,dy);
+    if(d>0&&d<rr){
+      const nx=dx/d,ny=dy/d,push=(rr-d)/2;
       a.x-=nx*push;a.y-=ny*push;b.x+=nx*push;b.y+=ny*push;
       const va=a.vx*nx+a.vy*ny,vb=b.vx*nx+b.vy*ny;
       if(va-vb>0){a.vx+=(vb-va)*nx*0.8;a.vy+=(vb-va)*ny*0.8;b.vx+=(va-vb)*nx*0.8;b.vy+=(va-vb)*ny*0.8;}
     }
   }
 }
+function step(dt){
+  if(comp&&!comp.done)updateComp(dt);
+  if(!(comp&&comp.pre>0))updatePlayer(dt);
+  npcs.forEach(n=>updateNPC(n,dt));
+  collide();
+  updatePeds(dt);updateTraffic(dt);
+  cheerT-=dt;honkT-=dt;
+}
 let last=performance.now(),whereT=0;
 function frame(t){
   const dt=Math.min(0.033,(t-last)/1000);last=t;clock+=dt;
   if(running)step(dt);
   P.flipRate=(P.air&&P.flipT>0)?1:0;
-  // dölj figurer långt bort (sparar mycket på iPhone)
   const cx=camera.position.x,cz=camera.position.z,vis=(x,y,r)=>(x-cx)*(x-cx)+(y-cz)*(y-cz)<r*r;
-  for(const a of avatars){const v=a===player||vis(a.R.x,a.R.y,2600);a.root.visible=a.shadow.visible=v;if(v)poseAvatar(a,dt);}
+  for(const a of avatars){const v=a===player||vis(a.R.x,a.R.y,2600);a.root.visible=v;a.shadow.visible=v&&a.shadow.visible;if(v)poseAvatar(a,dt);else a.shadow.visible=false;}
   for(const pd of peds)pd.g.visible=vis(pd.g.position.x,pd.g.position.z,2200);
   for(const f of fans)f.g.visible=vis(f.x,f.y,2200);
   for(const c of traffic)c.g.visible=vis(c.g.position.x,c.g.position.z,3200);
-  updateSparks(dt);updateChairs(running?dt:0);
+  updateSparks(dt);updateLiftUnits(running?dt:0);updateMyLift();
   updateCamera(dt,false);
   live.textContent=liveText();
   if((whereT-=dt)<=0){whereT=0.4;whereEl.textContent=whereAmI(P.x,P.y);
-    shopBtn.hidden=!(running&&!editing&&!comp&&!P.air&&!P.crashT&&Math.hypot(P.x-SHOP_PAD.x,P.y-SHOP_PAD.y)<SHOP_PAD.r+10);}
+    if(running&&!comp&&!P.air&&!P.crashT&&Math.hypot(P.x-SHOP_PAD.x,P.y-SHOP_PAD.y)<SHOP_PAD.r&&!P.shopShown){P.shopShown=true;openShop();}
+    if(Math.hypot(P.x-SHOP_PAD.x,P.y-SHOP_PAD.y)>SHOP_PAD.r+40)P.shopShown=false;}
   renderer.render(scene,camera);
   requestAnimationFrame(frame);
 }
 $('bStart').addEventListener('click',()=>{menu.hidden=true;running=true;last=performance.now();});
-$('bPause').addEventListener('click',()=>{running=false;menu.hidden=false;$('bStart').textContent='FORTSÄTT';if(comp&&!comp.done){clearComp();}});
+$('bPause').addEventListener('click',()=>{running=false;menu.hidden=false;$('bStart').textContent='FORTSÄTT';if(comp&&!comp.done)clearComp();});
 updHud();avatars.forEach(a=>poseAvatar(a,0.016));updateCamera(0,true);
-window.__kick={info:()=>{renderer.render(scene,camera);return renderer.info.render.calls+' calls, '+renderer.info.render.triangles+' tris'},resetP,P,npcs,peds,traffic,ground,terrain,qps,rails,step,jump,trickBtn,js,avatars,poseAvatar,updateCamera,look,rebuildPlayer,get player(){return player},
-  render:()=>renderer.render(scene,camera),start:()=>{menu.hidden=true;running=true;},PARKS,COMPS,startComp,get comp(){return comp},forest,PISTES,LIFT_PAD,SHOP_PAD,setVeh:v=>{look.veh=v;rebuildPlayer();}};
+window.__kick={info:()=>{renderer.render(scene,camera);return renderer.info.render.calls+' calls, '+renderer.info.render.triangles+' tris'},
+  resetP,P,npcs,peds,traffic,ground,terrain,qps,rails,step,jump,trickBtn,js,avatars,poseAvatar,updateCamera,look,rebuildPlayer,get player(){return player},
+  render:()=>renderer.render(scene,camera),start:()=>{menu.hidden=true;running=true;},PARKS,COMPS,startComp,get comp(){return comp},forest,PISTES,LIFTS,SHOP_PAD,
+  setVeh:v=>{look.veh=v;rebuildPlayer();},setSeason:s=>{season=s;applySeason();},treeAt,kickers};
 requestAnimationFrame(frame);
 })();
 </script>
