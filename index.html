@@ -90,7 +90,7 @@ button{font:inherit;cursor:pointer}
     <button class="big" id="bStart">ÅK!</button>
     <div id="err" hidden>Spelet kunde inte laddas. Öppna appen med internet en gång.</div>
     <div class="help"><b>På marken:</b> joystick framåt = åk, åt sidan = sväng, bakåt = broms · HOPP: hoppa<br>
-      <b>I luften:</b> joystick åt sidan = 180/360 · framåt = frontflip · bakåt = backflip<br>
+      <b>I luften:</b> joystick åt sidan = 180/360 · knuffa framåt = frontflip · bakåt = backflip (håll kvar = dubbel)<br>
       BARSPIN snurrar styret · TAILWHIP snurrar decket · Landa rakt – inte mitt i ett snurr!</div>
     <footer class="appfoot"><span>Version <b class="appver"></b></span><button type="button" class="updBtn">Uppdatera appen</button></footer>
   </div>
@@ -101,7 +101,7 @@ button{font:inherit;cursor:pointer}
 <script>
 (function(){
 'use strict';
-const APP_VERSION='0.4';
+const APP_VERSION='0.5';
 const LS_BEST='kick:best';
 
 document.querySelectorAll('.appver').forEach(el=>el.textContent=APP_VERSION);
@@ -120,7 +120,7 @@ if(!window.THREE){document.getElementById('err').hidden=false;document.getElemen
    ========================================================= */
 const W=3400,H=2300,QP=160,QPH=105;
 const G=820, ACC=430, FRICT=55, SLOPE=650, TURN=2.7;
-const BAR_DUR=0.30, WHIP_DUR=0.40, SPIN_RATE=8.5, FLIP_RATE=8.2;
+const BAR_DUR=0.30, WHIP_DUR=0.40, SPIN_RATE=8.5, FLIP_DUR=0.6, CRASH_T=2.6;
 const TAU=Math.PI*2;
 
 const boxes=[
@@ -300,7 +300,7 @@ function readKeys(){
 function jump(){if(!running||P.crashT>0||P.air)return;takeoff(P,330);}
 function barspin(){if(!running||!P.air||P.crashT>0||P.barT>0)return;P.barT=BAR_DUR;}
 function tailwhip(){if(!running||!P.air||P.crashT>0||P.whipT>0)return;P.whipT=WHIP_DUR;}
-P.onTakeoff=R=>{R.tricks=[];};
+P.onTakeoff=R=>{R.tricks=[];R.flipT=0;};
 
 const NUM=['','','Double','Triple','Quad'];
 const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
@@ -316,9 +316,12 @@ function trickWords(R){
   return {parts,half,nf,nw,nb};
 }
 function landPlayer(){
+  if(P.flipT>0&&1-P.flipT/FLIP_DUR>0.8){P.flip=P.flipStart+P.flipDir*TAU;P.flipT=0;}
+  if(P.barT>0&&P.barT<BAR_DUR*0.2)P.barT=0;
+  if(P.whipT>0&&P.whipT<WHIP_DUR*0.2){P.whipT=0;P.tricks.push('whip');}
   const rs=wrap(P.spin),rf=wrap(P.flip);
   const clean=Math.abs(rs)<0.8, fakie=Math.abs(rs)>Math.PI-0.8;
-  if(P.barT>0||P.whipT>0||Math.abs(rf)>0.8||(!clean&&!fakie)){
+  if(P.barT>0||P.whipT>0||P.flipT>0||Math.abs(rf)>0.8||(!clean&&!fakie)){
     P.ang=landBase(P);crash();return;
   }
   P.ang=landBase(P)+(fakie?Math.PI:0);P.baseAng=P.ang;
@@ -331,7 +334,11 @@ function landPlayer(){
   if(pts>best){best=pts;try{localStorage.setItem(LS_BEST,best);}catch(e){}setTimeout(()=>addPopup('Nytt rekord!','','#ffd23a'),350);}
   updHud();
 }
-function crash(){P.crashT=1.3;P.barT=P.whipT=0;P.barAng=P.whipAng=0;P.tricks=[];P.spin=0;P.flip=0;P.baseAng=P.ang;addPopup('Krasch!','','#ff5a5a');}
+function crash(){
+  startRagdoll();
+  P.crashT=CRASH_T;P.barT=P.whipT=P.flipT=0;P.barAng=P.whipAng=0;P.tricks=[];P.spin=0;P.flip=0;P.baseAng=P.ang;
+  addPopup('Krasch!','','#ff5a5a');
+}
 const pops=document.getElementById('pops');
 function addPopup(t,sub,col){
   const d=document.createElement('div');d.className='pop';d.textContent=t;if(col)d.style.color=col;
@@ -345,17 +352,21 @@ const live=document.getElementById('live');
 function updatePlayer(dt){
   readKeys();
   if(P.crashT>0){
-    P.crashT-=dt;P.vx*=Math.pow(0.02,dt);P.vy*=Math.pow(0.02,dt);
-    if(P.air){if(physics(P,0,0,dt)){P.ang=landBase(P);}}else moveFlat(P,dt);
-    if(P.crashT<=0){P.vx=P.vy=0;P.spin=P.flip=0;}
+    P.crashT-=dt;stepRagdoll(dt);
+    if(P.crashT<=0)endRagdoll();
     return;
   }
   if(P.barT>0){P.barT-=dt;P.barAng=(1-Math.max(P.barT,0)/BAR_DUR)*TAU;if(P.barT<=0){P.barT=0;P.barAng=0;P.tricks.push('bar');}}
   if(P.whipT>0){P.whipT-=dt;P.whipAng=(1-Math.max(P.whipT,0)/WHIP_DUR)*TAU;if(P.whipT<=0){P.whipT=0;P.whipAng=0;P.tricks.push('whip');}}
   const steer=Math.abs(js.x)>0.15?js.x:0, thr=-js.y;
   if(P.air){
-    P.spin+=steer*SPIN_RATE*dt;
-    if(Math.abs(thr)>0.3)P.flip+=thr*FLIP_RATE*dt;
+    if(steer)P.spin+=steer*SPIN_RATE*dt;
+    else{const tgt=Math.round(P.spin/Math.PI)*Math.PI;P.spin+=clamp(tgt-P.spin,-5*dt,5*dt);}
+    if(P.flipT>0){
+      P.flipT-=dt;const p=1-Math.max(P.flipT,0)/FLIP_DUR;
+      P.flip=P.flipStart+P.flipDir*TAU*(p<1?p*p*(3-2*p):1);
+      if(P.flipT<=0){P.flipT=0;P.flip=P.flipStart+P.flipDir*TAU;}
+    }else if(Math.abs(thr)>0.5){P.flipDir=Math.sign(thr);P.flipStart=P.flip;P.flipT=FLIP_DUR;}
   }
   if(physics(P,steer,thr,dt))landPlayer();
 }
@@ -677,6 +688,7 @@ function makeAvatar(R,type,look){
 }
 function poseAvatar(A,dt){
   const R=A.R;
+  if(A.rag){renderRagdoll(A);return;}
   A.root.position.set(R.x,R.z,R.y);A.root.rotation.y=-R.ang;
   A.tilt.rotation.z=R.pitch;A.tilt.rotation.x=-R.roll;
   A.flipG.rotation.z=-R.flip;
@@ -785,7 +797,7 @@ function updateNPC(R,dt){
 function collide(){
   const all=[P,...npcs];
   for(let i=0;i<all.length;i++)for(let j=i+1;j<all.length;j++){
-    const a=all[i],b=all[j];if(Math.abs(a.z-b.z)>25)continue;
+    const a=all[i],b=all[j];if(Math.abs(a.z-b.z)>25||a.crashT>0||b.crashT>0)continue;
     const dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);
     if(d>0&&d<30){
       const nx=dx/d,ny=dy/d,push=(30-d)/2;
@@ -794,6 +806,90 @@ function collide(){
       if(va-vb>0){a.vx+=(vb-va)*nx*0.8;a.vy+=(vb-va)*ny*0.8;b.vx+=(va-vb)*nx*0.8;b.vy+=(va-vb)*ny*0.8;}
     }
   }
+}
+
+/* =========================================================
+   RAGDOLL vid krasch
+   ========================================================= */
+const RAG_KEYS=['head','neck','pelvis','hipL','hipR','kneeL','kneeR','footL','footR','shL','shR','elL','elR','haL','haR'];
+const RAG_LINKS=[['head','neck'],['neck','pelvis'],['neck','shL'],['neck','shR'],['shL','shR'],['pelvis','hipL'],['pelvis','hipR'],['hipL','hipR'],
+  ['shL','hipL'],['shR','hipR'],['shL','hipR'],['shR','hipL'],['head','shL'],['head','shR'],['neck','hipL'],['neck','hipR'],
+  ['shL','elL'],['elL','haL'],['shR','elR'],['elR','haR'],['hipL','kneeL'],['kneeL','footL'],['hipR','kneeR'],['kneeR','footR'],
+  ['pelvis','kneeL'],['pelvis','kneeR'],['neck','elL'],['neck','elR']];
+const ragHolder=new THREE.Group();ragHolder.scale.setScalar(S);scene.add(ragHolder);
+const gnd=(x,z)=>ground(clamp(x,1,W-1),clamp(z,1,H-1));
+function startRagdoll(){
+  const A=player;if(A.rag)return;
+  A.body.updateMatrixWorld(true);
+  const vx=P.vx,vy=P.vz||0,vz=P.vy,fx=Math.cos(P.ang),fz=Math.sin(P.ang);
+  const pts={};
+  for(const k of RAG_KEYS){
+    const w=A.body.localToWorld(A.pose[k].clone());
+    // överkroppen kastas framåt, benen bakåt → åkaren tumlar
+    const up=(w.y-P.z)/60;const kick=(up-0.5)*140;
+    const v=new THREE.Vector3(vx*0.9+fx*kick+(Math.random()-0.5)*40,vy*0.6+40+Math.random()*30,vz*0.9+fz*kick+(Math.random()-0.5)*40);
+    pts[k]={p:w,o:w.clone().addScaledVector(v,-1/60),r:k==='head'?6:3};
+  }
+  const links=RAG_LINKS.map(([a,b])=>[pts[a],pts[b],pts[a].p.distanceTo(pts[b].p)]);
+  // kickbiken flyger iväg för sig själv
+  const veh={pos:A.root.position.clone(),vel:new THREE.Vector3(vx*1.1,Math.max(vy,0)*0.5+120,vz*1.1),rx:0,rz:0,wx:(Math.random()-0.5)*14,wz:-8-Math.random()*6,yaw:-P.ang};
+  A.rag={pts,links,veh};
+  ragHolder.add(A.person.g);A.person.g.position.set(0,0,0);A.person.g.rotation.set(0,0,0);
+}
+function stepRagdoll(dt){
+  const A=player,rg=A.rag;if(!rg)return;
+  const sub=3,h=dt/sub;
+  for(let s=0;s<sub;s++){
+    for(const k in rg.pts){
+      const q=rg.pts[k],p=q.p,o=q.o;
+      const vx=(p.x-o.x)*0.995,vy=(p.y-o.y)*0.995,vz=(p.z-o.z)*0.995;
+      o.copy(p);p.x+=vx;p.y+=vy-G*h*h;p.z+=vz;
+    }
+    for(let it=0;it<6;it++){
+      for(const [a,b,L] of rg.links){
+        const dx=b.p.x-a.p.x,dy=b.p.y-a.p.y,dz=b.p.z-a.p.z,d=Math.hypot(dx,dy,dz)||0.001,f=(d-L)/d*0.5;
+        a.p.x+=dx*f;a.p.y+=dy*f;a.p.z+=dz*f;b.p.x-=dx*f;b.p.y-=dy*f;b.p.z-=dz*f;
+      }
+      for(const k in rg.pts){
+        const q=rg.pts[k],p=q.p,g=gnd(p.x,p.z)+q.r;
+        if(p.y<g){p.y=g;q.o.x+=(p.x-q.o.x)*0.25;q.o.z+=(p.z-q.o.z)*0.25;if(q.o.y<p.y)q.o.y=p.y+(q.o.y-p.y)*0.3;}
+        p.x=clamp(p.x,-250,W+250);p.z=clamp(p.z,-250,H+250);
+      }
+    }
+  }
+  const v=rg.veh;
+  v.vel.y-=G*dt;v.pos.addScaledVector(v.vel,dt);v.rx+=v.wx*dt;v.rz+=v.wz*dt;
+  const g=gnd(v.pos.x,v.pos.z);
+  const lift=14*Math.abs(Math.sin(v.rx));
+  if(v.pos.y<g+lift){v.pos.y=g+lift;v.vel.y=-v.vel.y*0.3;v.vel.x*=0.7;v.vel.z*=0.7;v.wx*=0.6;v.wz*=0.6;
+    if(Math.abs(v.vel.y)<40){v.wx=v.wz=0;
+      v.rz=wrap(v.rz);v.rz+=(0-v.rz)*Math.min(1,dt*8);
+      const tx=(Math.sin(v.rx)>=0?1:-1)*Math.PI/2;v.rx=wrap(v.rx);v.rx+=(tx-v.rx)*Math.min(1,dt*8);}}
+  // kameran följer kroppen
+  const pel=rg.pts.pelvis.p;P.x=pel.x;P.y=pel.z;P.z=Math.max(gnd(pel.x,pel.z),pel.y-25);
+}
+const ragPose={footYaw:0,headYaw:0};
+function renderRagdoll(A){
+  const rg=A.rag;
+  for(const k in rg.pts)(ragPose[k]||(ragPose[k]=new THREE.Vector3())).copy(rg.pts[k].p).multiplyScalar(1/S);
+  posePerson(A.person,ragPose);
+  A.person.parts.head.lookAt(rg.pts.head.p.clone().sub(rg.pts.neck.p).add(rg.pts.head.p));
+  const v=rg.veh;
+  A.root.position.copy(v.pos);A.root.rotation.set(v.rx,v.yaw,v.rz,'YXZ');
+  A.tilt.rotation.set(0,0,0);A.flipG.rotation.z=0;
+  const pel=rg.pts.pelvis.p,gh=gnd(pel.x,pel.z);
+  A.shadow.position.set(pel.x,gh+0.6,pel.z);A.shadow.material.opacity=0.28;A.shadow.scale.setScalar(1.3);
+}
+function endRagdoll(){
+  const A=player,rg=A.rag;if(!rg)return;
+  const pel=rg.pts.pelvis.p;
+  A.body.add(A.person.g);A.person.g.position.set(0,0,0);A.person.g.rotation.set(0,0,0);
+  A.root.rotation.set(0,0,0);
+  A.rag=null;
+  P.x=clamp(pel.x,20,W-20);P.y=clamp(pel.z,20,H-20);
+  // flytta ut ur hinder
+  for(let i=0;i<40&&obstacle(P.x,P.y)>2;i++){P.x+=Math.cos(P.ang+Math.PI)*15;P.y+=Math.sin(P.ang+Math.PI)*15;}
+  P.z=ground(P.x,P.y);P.vx=P.vy=P.vz=0;P.air=false;P.crashT=0;P.spin=P.flip=0;P.baseAng=P.ang;P.flipTo=null;
 }
 
 /* =========================================================
@@ -825,7 +921,7 @@ window.addEventListener('resize',resize);resize();
 function liveText(){
   if(!P.air||P.crashT>0)return '';
   const t=trickWords(P);const parts=t.parts.slice();
-  if(P.whipT>0)parts.push('…');
+  if(P.whipT>0||P.flipT>0)parts.push('…');
   return parts.join(' + ');
 }
 function step(dt){
@@ -837,7 +933,7 @@ let last=performance.now();
 function frame(t){
   const dt=Math.min(0.033,(t-last)/1000);last=t;
   if(running)step(dt);
-  P.flipRate=(P.air&&Math.abs(js.y)>0.3)?1:0;
+  P.flipRate=(P.air&&P.flipT>0)?1:0;
   avatars.forEach(a=>poseAvatar(a,dt));
   updateCamera(dt,false);
   live.textContent=liveText();
