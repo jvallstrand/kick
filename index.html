@@ -16,15 +16,30 @@ body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:c
 img{max-width:100%}[hidden]{display:none!important}
 h1{font-size:4rem;margin:0;letter-spacing:.05em}
 p{opacity:.8}
+.appfoot{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.25);padding-top:12px;margin-top:24px;font:500 14px system-ui,-apple-system,sans-serif;color:rgba(255,255,255,.75)}
+.appfoot b{color:#fff;font-weight:700;font-variant-numeric:tabular-nums}
+.updBtn{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:8px;font:700 14px system-ui,-apple-system,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px}
+.updBtn:disabled{opacity:.6}
 </style>
 </head>
 <body>
 <main style="text-align:center">
   <h1>⚽ Kick</h1>
   <p>Spelet kommer snart.</p>
+  <footer class="appfoot"><span>Version <b class="appver"></b></span><button type="button" class="updBtn">Uppdatera appen</button></footer>
 </main>
 <script>
 // Kick – spelkod kommer här. localStorage-nycklar prefixas med "kick:".
+const APP_VERSION='0.1';
+document.querySelectorAll('.appver').forEach(el=>el.textContent=APP_VERSION);
+document.querySelectorAll('.updBtn').forEach(btn=>btn.addEventListener('click',async()=>{
+  document.querySelectorAll('.updBtn').forEach(b=>{b.disabled=true;b.textContent='Uppdaterar…';});
+  try{
+    if('serviceWorker' in navigator){const regs=await navigator.serviceWorker.getRegistrations();await Promise.all(regs.map(r=>r.update().catch(()=>{})));}
+    if(window.caches){const ks=await caches.keys();await Promise.all(ks.filter(k=>k.startsWith('kick-')).map(k=>caches.delete(k)));}
+  }catch(e){}
+  location.reload();
+}));
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}</script>
 </body>
